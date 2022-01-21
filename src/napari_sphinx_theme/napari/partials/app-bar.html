@@ -1,0 +1,21 @@
+<header class="app-bar">
+  <nav>
+    <a href="/">
+      {% include "partials/icons/napari.html" %}
+      <span>napari</span>
+    </a>
+  </nav>
+
+  <div class="search-container">
+    <form action="{{ pathto('search') }}">
+      <input
+        aria-label="Search input for searching napari.org site."
+        name="q"
+      />
+
+      <button aria-label="Submit search query" type="button">
+        {% include "partials/icons/menu.html" %}
+      </button>
+    </form>
+  </div>
+</header>

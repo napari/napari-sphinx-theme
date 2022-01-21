@@ -1,0 +1,2 @@
+'theme/**/*':
+  - yarn prettier:fix
