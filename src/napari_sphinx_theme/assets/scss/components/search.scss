@@ -1,0 +1,18 @@
+ul.search {
+  @apply m-0 p-0;
+  @apply space-y-2;
+
+  & > li {
+    @apply list-none m-0 px-0 py-2;
+
+    border-top: solid black 1px;
+
+    &::before {
+      @apply hidden;
+    }
+
+    &:last-child {
+      border-bottom: solid black 1px;
+    }
+  }
+}

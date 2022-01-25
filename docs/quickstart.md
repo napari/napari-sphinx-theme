@@ -4,3 +4,5 @@
 :start-after: <!-- start quickstart -->
 :end-before: <!-- end quickstart -->
 ```
+
+<div data-component="calendar"></div>

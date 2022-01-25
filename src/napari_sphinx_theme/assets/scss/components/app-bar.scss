@@ -1,0 +1,47 @@
+.app-bar {
+  @apply bg-napari-primary h-napari-app-bar;
+  @apply px-6 screen-495:px-12;
+  @apply grid grid-cols-3;
+  @apply screen-1150:grid-cols-4 screen-1425:grid-cols-napari-5;
+  @apply gap-6 screen-495:gap-12;
+  @apply justify-center items-center;
+
+  .search-container {
+    @apply flex items-center;
+    @apply w-full;
+    @apply justify-self-end;
+    @apply col-span-2 screen-1150:col-span-3;
+  }
+
+  nav {
+    @apply flex items-center;
+
+    a {
+      @apply inline-flex items-center no-underline text-black;
+
+      svg {
+        @apply w-4 h-4 screen-875:w-6 screen-875:h-6 mr-1;
+      }
+
+      span {
+        @apply font-bold;
+      }
+    }
+  }
+
+  form {
+    @apply flex flex-auto items-center;
+
+    border-bottom: solid black 1px;
+
+    input {
+      @apply flex flex-auto w-0;
+      @apply border-none outline-none;
+      @apply bg-transparent text-black;
+    }
+
+    button {
+      @apply bg-transparent border-none;
+    }
+  }
+}

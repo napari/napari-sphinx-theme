@@ -1,0 +1,16 @@
+.page-content {
+  @apply col-span-3;
+  @apply prose;
+
+  max-width: unset;
+
+  img {
+    @apply w-full;
+  }
+
+  a > img {
+    @apply m-0;
+
+    width: unset;
+  }
+}

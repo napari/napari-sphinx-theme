@@ -1,0 +1,23 @@
+.footer {
+  @apply flex flex-row flex-wrap items-center justify-start w-full;
+  @apply pt-6 pb-2 px-6 screen-495:px-12 bg-black;
+
+  a {
+    @apply text-white whitespace-nowrap;
+    @apply mr-4 last:mr-0 mb-4;
+    @apply flex flex-row items-center;
+
+    & > svg {
+      @apply inline-block mr-1;
+
+      height: 1em;
+      width: 1em;
+    }
+
+    & > span {
+      @apply font-semibold;
+
+      font-size: 0.875em;
+    }
+  }
+}

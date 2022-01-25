@@ -1,0 +1,5 @@
+.page {
+  @apply flex;
+  @apply screen-1150:grid gap-12 justify-center;
+  @apply screen-1150:grid-cols-napari-4 screen-1425:grid-cols-napari-5;
+}

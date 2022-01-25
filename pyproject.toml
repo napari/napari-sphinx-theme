@@ -9,8 +9,8 @@ additional-compiled-static-assets = [
 ]
 
 [project]
-name = "furo"
-description = "A clean customisable Sphinx documentation theme."
+name = "napari-sphinx-theme"
+description = "furo fork for napari."
 dynamic = ["version"]
 readme = "README.md"
 
@@ -57,4 +57,4 @@ doc = [
 ]
 
 [project.entry-points]
-"sphinx.html_themes" = {furo = "furo"}
+"sphinx.html_themes" = {napari = "napari_sphinx_theme"}
