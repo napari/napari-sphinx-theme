@@ -18,13 +18,12 @@ import os
 
 # -- Project information -----------------------------------------------------
 
-project = "PyData Sphinx Theme"
-copyright = "2019, PyData Community"
-author = "PyData Community"
+project = "napari Sphinx Theme"
+copyright = "2021, napari Community"
+author = "napari Community"
 
-import pydata_sphinx_theme
 
-release = pydata_sphinx_theme.__version__
+release = '0.8.0'
 version = release.replace("dev0", "")
 
 # -- General configuration ---------------------------------------------------
@@ -77,7 +76,7 @@ myst_enable_extensions = [
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "pydata_sphinx_theme"
+html_theme = "napari"
 # html_logo = "_static/pandas.svg"  # For testing
 
 html_theme_options = {

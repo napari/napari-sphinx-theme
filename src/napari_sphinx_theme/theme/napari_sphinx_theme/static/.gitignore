@@ -1,0 +1,6 @@
+scripts/napari-sphinx-theme.js
+scripts/napari-sphinx-theme.js.map
+styles/napari-sphinx-theme.css
+styles/napari-sphinx-theme.css.map
+webpack-macros.html
+vendor/*

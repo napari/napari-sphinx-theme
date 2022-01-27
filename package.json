@@ -1,6 +1,6 @@
 {
-  "name": "pydata_sphinx_theme",
-  "repository": "https://github.com/pydata/pydata-sphinx-theme",
+  "name": "napari_sphinx_theme",
+  "repository": "https://github.com/napari/napari-sphinx-theme",
   "scripts": {
     "build": "webpack"
   },

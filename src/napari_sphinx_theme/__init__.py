@@ -1,5 +1,5 @@
 """
-Bootstrap-based sphinx theme from the PyData community
+Bootstrap-based sphinx theme from the napari community
 """
 import os
 from pathlib import Path
@@ -506,9 +506,9 @@ def setup_edit_url(app, pagename, templatename, context, doctree):
 
 def setup(app):
     here = Path(__file__).parent.resolve()
-    theme_path = here / "theme" / "pydata_sphinx_theme"
+    theme_path = here / "theme" / "napari_sphinx_theme"
 
-    app.add_html_theme("pydata_sphinx_theme", str(theme_path))
+    app.add_html_theme("napari", str(theme_path))
 
     app.set_translator("html", BootstrapHTML5Translator)
     # Read the Docs uses ``readthedocs`` as the name of the build, and also
