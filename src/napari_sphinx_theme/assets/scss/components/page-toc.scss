@@ -1,0 +1,18 @@
+.page-toc {
+  @apply tw-hidden screen-1425:tw-block;
+
+  ul {
+    @apply tw-flex tw-flex-col tw-p-0 tw-space-y-4;
+
+    border-left: solid black 1px;
+
+    li {
+      @apply tw-list-none tw-pl-6 tw-min-h-6 tw-h-auto tw-transition-colors;
+      border-left: solid 4px transparent;
+
+      &:hover {
+        border-left: solid 4px theme('colors.napari-primary');
+      }
+    }
+  }
+}

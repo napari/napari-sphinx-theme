@@ -1,0 +1,23 @@
+.footer {
+  @apply tw-flex tw-flex-row tw-flex-wrap tw-items-center tw-justify-start tw-w-full;
+  @apply tw-pt-6 tw-pb-2 tw-px-6 screen-495:tw-px-12 tw-bg-black;
+
+  a {
+    @apply tw-text-white tw-whitespace-nowrap;
+    @apply tw-mr-4 last:tw-mr-0 tw-mb-4;
+    @apply tw-flex tw-flex-row tw-items-center;
+
+    & > svg {
+      @apply tw-inline-block tw-mr-1;
+
+      height: 1em;
+      width: 1em;
+    }
+
+    & > span {
+      @apply tw-font-semibold;
+
+      font-size: 0.875em;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+.navbar.navbar-light {
+  &,
+  &-light {
+    background-color: theme('colors.napari-primary') !important;
+  }
+}
+
+.app-bar {
+  @apply tw-bg-napari-primary tw-h-napari-app-bar;
+  @apply tw-px-6 screen-495:tw-px-12;
+  @apply tw-grid tw-grid-cols-3;
+  @apply screen-1150:tw-grid-cols-4 screen-1425:tw-grid-cols-napari-5;
+  @apply tw-gap-6 screen-495:tw-gap-12;
+  @apply tw-justify-center tw-items-center;
+
+  .search-container {
+    @apply tw-flex tw-items-center;
+    @apply tw-w-full;
+    @apply tw-justify-self-end;
+    @apply tw-col-span-2 screen-1150:tw-col-span-3;
+  }
+
+  nav {
+    @apply tw-flex tw-items-center;
+
+    a {
+      @apply tw-inline-flex tw-items-center tw-no-underline tw-text-black;
+
+      svg {
+        @apply tw-w-4 tw-h-4 screen-875:tw-w-6 screen-875:tw-h-6 tw-mr-1;
+      }
+
+      span {
+        @apply tw-font-bold;
+      }
+    }
+  }
+
+  form {
+    @apply tw-flex tw-flex-auto tw-items-center;
+
+    border-bottom: solid black 1px;
+
+    input {
+      @apply tw-flex tw-flex-auto tw-w-0;
+      @apply tw-border-none tw-outline-none;
+      @apply tw-bg-transparent tw-text-black;
+    }
+
+    button {
+      @apply tw-bg-transparent tw-border-none;
+    }
+  }
+}

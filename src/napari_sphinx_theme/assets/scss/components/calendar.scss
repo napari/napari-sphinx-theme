@@ -1,0 +1,148 @@
+@import '@/scss/utils';
+
+$breakpoint: theme('screens.screen-495');
+
+@mixin popup-width($sidePadding) {
+  width: calc(100vw - #{2 * calculate-rem($sidePadding)});
+}
+
+/**
+ * By default, `react-calendar` includes no styling, so we need to provide our
+ * own using the Calendar component's CSS classes.
+ */
+
+.react-calendar {
+  // Make containers fill empty space.
+  &,
+  &__viewContainer {
+    @apply tw-flex tw-flex-1 tw-flex-col;
+  }
+
+  &__month-view {
+    // Why does react-calendar have nested divs without class names :(
+    &,
+    & > div,
+    & > div > div {
+      @apply tw-flex tw-flex-1 tw-flex-col;
+    }
+  }
+
+  &__month-view__days {
+    @apply tw-grid-cols-7 tw-h-full;
+
+    // Override react-calendar display flex styling. The library uses the
+    // `style` attribute, so we need to use `!important` to override it.
+    display: grid !important;
+  }
+
+  // Styles to apply to the month view day tiles.
+  &__month-view__days__day {
+    @apply tw-flex tw-flex-col tw-space-y-1;
+
+    // Calendar tile component is always a button, since there's currently no
+    // way to customize the tile:
+    // https://github.com/wojtekmaj/react-calendar/issues/572
+    @apply tw-cursor-default;
+
+    // Disable blue highlight when on tapping on webkit mobile devices.
+    -webkit-tap-highlight-color: transparent;
+    max-width: 100% !important;
+
+    abbr {
+      @apply tw-mt-1 tw-ml-1 tw-font-semibold;
+    }
+
+    // Styles to apply to day tiles for the active week.
+    &.active-week {
+      // Show active week day numbers in black box.
+      abbr {
+        @apply tw-bg-black tw-text-white;
+        @apply tw-flex tw-items-center tw-justify-center;
+        @apply tw-w-6 tw-h-6;
+      }
+
+      // Show the current day in a blue circle.
+      &.active-day abbr {
+        @apply tw-bg-napari-primary tw-rounded-full tw-text-black;
+      }
+    }
+
+    // Set tile background color based on row parity. Since `react-calendar`
+    // doesn't use rows for rendering each week, we need to use the `nth-child`
+    // selector to apply styles for the 7 days in a week.
+    $offset: 0;
+    @for $i from 0 through 8 {
+      &:nth-child(n + #{$offset}) {
+        @if $i % 2 == 0 {
+          @apply tw-bg-napari-hover-gray;
+        } @else {
+          @apply tw-bg-white;
+        }
+      }
+
+      // Add 1 initially to apply styling to the last day.
+      @if $i == 0 {
+        $offset: $offset + 1;
+      }
+
+      $offset: $offset + 7;
+    }
+
+    ul {
+      @apply tw-mt-2 tw-mb-0;
+
+      & > li {
+        @apply tw-m-0 tw-p-0 tw-overflow-ellipsis tw-whitespace-nowrap;
+
+        &::before {
+          @apply tw-hidden;
+        }
+      }
+    }
+  }
+
+  &__month-view__weekdays {
+    @apply tw-border-b tw-border-black;
+  }
+
+  &__month-view__weekdays__weekday {
+    @apply tw-flex tw-justify-center;
+    @apply tw-font-bold tw-uppercase;
+
+    abbr[title] {
+      @apply tw-no-underline;
+    }
+  }
+}
+
+.napari-calendar {
+  @apply tw-font-barlow;
+
+  &__popup {
+    @include popup-width(50px);
+
+    border-bottom: 1px solid #000;
+    border-left: 1px solid theme('colors.napari-light');
+    border-right: 1px solid theme('colors.napari-light');
+
+    @media (max-width: $breakpoint) {
+      @include popup-width(25px);
+    }
+  }
+
+  &__day-list {
+    ul > li {
+      @apply tw-p-0 tw-pl-3;
+
+      &::before {
+        @apply tw-hidden;
+      }
+    }
+  }
+
+  &__popup-metadata {
+    a {
+      @apply tw-underline;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+.page {
+  @apply tw-flex;
+  @apply screen-1150:tw-grid tw-gap-12 tw-justify-center;
+  @apply screen-1150:tw-grid-cols-napari-4 screen-1425:tw-grid-cols-napari-5;
+}

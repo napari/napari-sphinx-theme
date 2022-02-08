@@ -1,0 +1,38 @@
+.global-toc {
+  @apply tw-hidden screen-1150:tw-flex;
+
+  & > ul {
+    @apply tw-m-0 tw-p-0;
+  }
+
+  li {
+    @apply tw-list-none tw-py-2;
+  }
+
+  a[href='#'] {
+    @apply tw-font-semibold;
+  }
+
+  .toctree-l2,
+  .toctree-l3 {
+    @apply tw-hidden;
+
+    border-left: solid black 1px;
+
+    &.current {
+      @apply tw-block;
+    }
+  }
+
+  .toctree-l2 {
+    a {
+      @apply tw-pl-2;
+    }
+  }
+
+  .toctree-l3 {
+    a {
+      @apply tw-pl-5;
+    }
+  }
+}

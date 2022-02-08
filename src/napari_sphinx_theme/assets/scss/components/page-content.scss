@@ -1,0 +1,16 @@
+.page-content {
+  @apply tw-col-span-3;
+  @apply tw-prose;
+
+  max-width: unset;
+
+  img {
+    @apply tw-w-full;
+  }
+
+  a > img {
+    @apply tw-m-0;
+
+    width: unset;
+  }
+}

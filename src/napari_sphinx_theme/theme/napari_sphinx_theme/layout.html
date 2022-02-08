@@ -1,14 +1,15 @@
 {%- extends "basic/layout.html" %}
-{%- import "static/webpack-macros.html" as _webpack with context %}
 
 {%- block css %}
-    {{ _webpack.head_pre_bootstrap() }}
-    {{ _webpack.head_pre_icons() }}
-    {% block fonts %}
-      {{ _webpack.head_pre_fonts() }}
-    {% endblock %}
-    {{- css() }}
-    {{ _webpack.head_js_preload() }}
+  <link rel="stylesheet" href="{{ pathto('_static/fa/all.min.css', 1) }}">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ pathto('_static/webfonts/fa-solid-900.woff2', 1) }}">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ pathto('_static/webfonts/fa-brands-400.woff2', 1) }}">
+  <link href="{{ pathto('_static/styles/theme.css', 1) }}" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+  {{- css() }}
 {%- endblock %}
 
 {%- block extrahead %}
@@ -100,10 +101,7 @@
       </div>
     </div>
 
-
-  {%- block scripts_end %}
-  {{ _webpack.body_post() }}
-  {%- endblock %}
+    <script src="{{ pathto('_static/scripts/napari-sphinx-theme.js', 1) }}"></script>
 
 {%- endblock %}
 

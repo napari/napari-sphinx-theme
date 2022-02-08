@@ -1,0 +1,18 @@
+ul.search {
+  @apply tw-m-0 tw-p-0;
+  @apply tw-space-y-2;
+
+  & > li {
+    @apply tw-list-none tw-m-0 tw-px-0 tw-py-2;
+
+    border-top: solid black 1px;
+
+    &::before {
+      @apply tw-hidden;
+    }
+
+    &:last-child {
+      border-bottom: solid black 1px;
+    }
+  }
+}

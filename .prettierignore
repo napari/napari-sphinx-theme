@@ -1,0 +1,7 @@
+.nox
+.venv
+docs/
+tests/
+src/napari_sphinx_theme/assets/scripts/*
+src/napari_sphinx_theme/assets/styles/*
+src/napari_sphinx_theme/theme
