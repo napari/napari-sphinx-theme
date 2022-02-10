@@ -3,10 +3,11 @@
   "repository": "https://github.com/napari/napari-sphinx-theme",
   "scripts": {
     "build": "run-s build:*",
-    "build:create-fonta-awesome-dir": "mkdir src/napari_sphinx_theme/theme/napari_sphinx_theme/static/fa",
-    "build:copy-font-awesome-css": "cp node_modules/@fortawesome/fontawesome-free/css/all.min.css src/napari_sphinx_theme/theme/napari_sphinx_theme/static/fa",
-    "build:copy-font-awesome-webfonts": "cp -r node_modules/@fortawesome/fontawesome-free/webfonts src/napari_sphinx_theme/theme/napari_sphinx_theme/static",
-    "build:webpack": "NODE_ENV=production webpack"
+    "build:create-fontawesome-dir": "mkdir -p src/napari_sphinx_theme/theme/napari_sphinx_theme/static/fa",
+    "build:copy-font-awesome-css": "cp -f node_modules/@fortawesome/fontawesome-free/css/all.min.css src/napari_sphinx_theme/theme/napari_sphinx_theme/static/fa",
+    "build:copy-font-awesome-webfonts": "cp -fr node_modules/@fortawesome/fontawesome-free/webfonts src/napari_sphinx_theme/theme/napari_sphinx_theme/static",
+    "build:webpack": "NODE_ENV=production webpack",
+    "dev:webpack": "webpack"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.1",

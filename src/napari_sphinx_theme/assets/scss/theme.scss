@@ -1,4 +1,34 @@
-:root {
-  --pst-font-family-base: Barlow, var(--pst-font-family-base-system);
-  --pst-font-family-heading: Barlow, var(--pst-font-family-base-system);
+a {
+  text-decoration: underline;
+
+  &,
+  &:hover {
+    color: #000;
+  }
+
+  &.headerlink {
+    color: var(--pst-color-headerlink);
+
+    &:hover {
+      background-color: transparent;
+      color: var(--pst-color-headerlink-hover);
+    }
+  }
+}
+
+code {
+  background: var(--napari-gray);
+  color: #000;
+  line-height: 1.5rem;
+  padding: 0.25rem;
+}
+
+span.guilabel {
+  border: 1px solid var(--napari-primary-blue);
+  background: var(--napari-light-blue);
+}
+
+aside.sidebar {
+  border: 1px solid var(--napari-primary-blue);
+  background: var(--napari-light-blue);
 }
