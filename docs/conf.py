@@ -111,7 +111,7 @@ html_theme_options = {
     # "navbar_center": ["navbar-nav", "navbar-version"],  # Just for testing
     "navbar_end": ["version-switcher", "navbar-icon-links"],
     # "left_sidebar_end": ["custom-template.html", "sidebar-ethical-ads.html"],
-    # "footer_items": ["copyright", "sphinx-version", ""]
+    # "footer_items": ['navbar-version', 'napari-footer-links', 'copyright'],
     "switcher": {
         # "json_url": "/_static/switcher.json",
         "json_url": "https://pydata-sphinx-theme.readthedocs.io/en/latest/_static/switcher.json",
