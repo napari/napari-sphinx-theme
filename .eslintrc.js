@@ -9,8 +9,6 @@
  * file the Single Source of Truth for ESLint configuration.
  */
 
-const path = require('path');
-
 const configs = {
   dev: require.resolve('./eslint/dev'),
   e2e: require.resolve('./eslint/e2e'),
@@ -31,6 +29,23 @@ module.exports = {
     {
       files: [getPattern('**/*.ts{,x}')],
       extends: [configs.typescript, configs.react],
+    },
+
+    {
+      files: ['./scripts/**/*.mjs'],
+      extends: [configs.dev],
+      rules: {
+        // Named exports are nicer to work with for a variety of reasons:
+        // https://basarat.gitbook.io/typescript/main-1/defaultisbad
+        'import/no-default-export': 'error',
+        'import/prefer-default-export': 'off',
+
+        // Let ESlint sort our imports for us so we don't have to think about it.
+        'simple-import-sort/exports': 'error',
+        'simple-import-sort/imports': 'error',
+
+        'import/extensions': 'off',
+      },
     },
 
     /*

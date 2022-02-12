@@ -503,6 +503,32 @@ def setup_edit_url(app, pagename, templatename, context, doctree):
 
 # -----------------------------------------------------------------------------
 
+THEME_ENV = os.environ.get('THEME_ENV', 'development')
+
+def add_vite_resources(app, pagename, templatename, context, doctree):
+    is_dev = THEME_ENV == 'development'
+    vite_css = '<link href="{{ pathto(\'_static/styles/theme.css\', 1) }}" rel="stylesheet">'
+    vite_js = '<script src="{{ pathto(\'_static/scripts/napari-sphinx-theme.js\', 1) }}" type="module"></script>'
+    vite_runtime = ''
+
+    if is_dev:
+        vite_css = ''
+        vite_js = '<script src="http://localhost:3000/src/napari_sphinx_theme/assets/napari.tsx" type="module"></script>'
+        vite_runtime = '''
+            <script type="module" src="http://localhost:3000/@vite/client"></script>
+            <script type="module">
+                import RefreshRuntime from 'http://localhost:3000/@react-refresh'
+                RefreshRuntime.injectIntoGlobalHook(window)
+                window.$RefreshReg$ = () => {}
+                window.$RefreshSig$ = () => type => type
+                window.__vite_plugin_react_preamble_installed__ = true
+            </script>
+        '''
+
+    context['vite_css'] = vite_css
+    context['vite_runtime'] = vite_runtime
+    context['vite_js'] = vite_js
+
 
 def setup(app):
     here = Path(__file__).parent.resolve()
@@ -521,6 +547,7 @@ def setup(app):
     app.connect("html-page-context", setup_edit_url)
     app.connect("html-page-context", add_toctree_functions)
     app.connect("html-page-context", update_templates)
+    app.connect("html-page-context", add_vite_resources)
 
     # Include templates for sidebar
     app.config.templates_path.append(str(theme_path / "_templates"))

@@ -3,7 +3,7 @@ help: ## Show this help message.
 
 clean: ## Cleans up compiled assets.
 	rm -rf dist src/*.egg-info
-	rm -rf src/napari_sphinx_theme/theme/napari_sphinx_theme/static/{scripts,styles}/napari*
+	yarn clean
 
 uninstall: ## Uninstalls napari theme.
 	pip uninstall -y napari_sphinx_theme

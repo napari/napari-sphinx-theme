@@ -1,3 +1,4 @@
+import '@/scripts/index';
 import '@/scss/napari.scss';
 import '@/utils/setupDayjsPlugins';
 
@@ -11,6 +12,8 @@ export function main() {
   );
 
   calendarNodes.forEach((node) => render(<Calendar />, node));
+
+  console.log('breh');
 }
 
 document.addEventListener('DOMContentLoaded', main);

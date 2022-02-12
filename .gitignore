@@ -107,6 +107,7 @@ envs/
 .nodeenv/
 .yarn-packages
 node_modules/
+dist-theme
 
 # Editors
 .vscode

@@ -17,7 +17,7 @@ $grid-breakpoints: (
 );
 
 // Import Bootstrap core
-@import "~bootstrap/scss/bootstrap";
+@import "bootstrap/scss/bootstrap";
 
 @import "./base";
 @import "./navbar";
