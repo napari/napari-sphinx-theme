@@ -147,3 +147,20 @@ a code {
 p.centered {
   text-align: center;
 }
+
+.bd-sidebar {
+  li {
+    display: flex;
+    flex-direction: column;
+
+    & > a.reference {
+      padding-left: 30px;
+      padding-right: 0;
+    }
+  }
+
+  label {
+    right: unset;
+    left: 0;
+  }
+}

@@ -279,8 +279,8 @@ def _add_collapse_checkboxes(soup):
         if soup.new_tag is None:
             continue
         label = soup.new_tag("label", attrs={"for": checkbox_name})
-        label.append(soup.new_tag("i", attrs={"class": "fas fa-chevron-down"}))
-        element.insert(1, label)
+        label.append(soup.new_tag("img", attrs={"src": "/_static/icons/sidebar-triangle.svg"}))
+        element.insert(0, label)
 
         # Add the checkbox that's used to store expanded/collapsed state.
         checkbox = soup.new_tag(
@@ -297,7 +297,7 @@ def _add_collapse_checkboxes(soup):
         if "current" in classes:
             checkbox.attrs["checked"] = ""
 
-        element.insert(1, checkbox)
+        element.insert(0, checkbox)
 
 
 def _get_local_toctree_for(
