@@ -9,8 +9,6 @@
  * file the Single Source of Truth for ESLint configuration.
  */
 
-const path = require('path');
-
 const configs = {
   dev: require.resolve('./eslint/dev'),
   e2e: require.resolve('./eslint/e2e'),
@@ -31,6 +29,11 @@ module.exports = {
     {
       files: [getPattern('**/*.ts{,x}')],
       extends: [configs.typescript, configs.react],
+    },
+
+    {
+      files: ['scripts/**/*.mjs'],
+      extends: [configs.dev],
     },
 
     /*

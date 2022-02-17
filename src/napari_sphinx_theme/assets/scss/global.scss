@@ -10,8 +10,15 @@ body {
 }
 
 main[role='main'] {
-  // Override padding-top from pydata.
-  padding-top: 128px !important;
+  padding-top: 0 !important;
+
+  @media (min-width: 720px) {
+    padding-top: 128px !important;
+  }
+}
+
+html {
+  font-size: 100%;
 }
 
 // html {

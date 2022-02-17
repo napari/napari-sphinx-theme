@@ -7,7 +7,8 @@
 
   --pst-font-family-base: Barlow, var(--pst-font-family-base-system);
   --pst-font-family-heading: Barlow, var(--pst-font-family-base-system);
-  // --pst-font-family-monospace: Courier, var(--pst-font-family-monospace-system);
+  --pst-font-family-monospace: 'JetBrains Mono',
+    var(--pst-font-family-monospace-system);
 
   --pst-color-headerlink: var(--napari-dark-gray);
   --pst-color-headerlink-hover: var(--napari-deep-blue);

@@ -3,7 +3,7 @@
 $breakpoint: theme('screens.screen-495');
 
 @mixin popup-width($sidePadding) {
-  width: calc(100vw - #{2 * calculate-rem($sidePadding)});
+  width: calc(100vw - #{2 * to-rem($sidePadding)});
 }
 
 /**

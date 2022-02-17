@@ -1,7 +1,7 @@
 const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { resolve } = require('path');
-const { EnvironmentPlugin } = require('webpack');
+const webpack = require('webpack');
 
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
@@ -9,6 +9,7 @@ module.exports = {
 
   entry: {
     'napari-sphinx-theme': [
+      'webpack-hot-middleware/client',
       './src/napari_sphinx_theme/assets/scripts/index.js',
       './src/napari_sphinx_theme/assets/napari.tsx',
     ],
@@ -57,9 +58,10 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({ filename: 'styles/[name].css' }),
     new ForkTsCheckerPlugin(),
-    new EnvironmentPlugin({
+    new webpack.EnvironmentPlugin({
       ENV: process.env.ENV || 'local',
       GOOGLE_CALENDAR_API_KEY: '',
       GOOGLE_CALENDAR_ID: '',

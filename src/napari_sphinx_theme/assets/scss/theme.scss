@@ -1,3 +1,5 @@
+@import '@/scss/utils';
+
 a {
   text-decoration: underline;
 
@@ -31,4 +33,117 @@ span.guilabel {
 aside.sidebar {
   border: 1px solid var(--napari-primary-blue);
   background: var(--napari-light-blue);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #000 !important;
+  font-weight: bold;
+  margin: to-rem(16px) 0;
+}
+
+h1 {
+  font-size: to-rem(23px);
+  line-height: 130%;
+  margin-bottom: to-rem(43px);
+
+  @media (min-width: 875px) {
+    font-size: to-rem(35px);
+    line-height: 125%;
+  }
+}
+
+h2 {
+  font-size: to-rem(16px);
+  line-height: 125%;
+
+  @media (min-width: 875px) {
+    font-size: to-rem(24px);
+    line-height: 150%;
+  }
+}
+
+h3 {
+  font-size: to-rem(13px);
+  line-height: 125%;
+
+  @media (min-width: 875px) {
+    font-size: to-rem(20px);
+    line-height: 135%;
+  }
+}
+
+h4 {
+  font-size: to-rem(11px);
+  line-height: 175%;
+
+  @media (min-width: 875px) {
+    font-size: to-rem(17px);
+    line-height: 141%;
+  }
+}
+
+p {
+  font-size: to-rem(11px);
+  color: #000 !important;
+  line-height: 1.5;
+
+  @media (min-width: 875px) {
+    font-size: to-rem(17px);
+  }
+}
+
+.section-nav {
+  border: none;
+}
+
+.toc-entry a,
+.section-nav ul {
+  padding-left: 0px;
+}
+
+@for $i from 2 through 5 {
+  .toc-h#{$i} a {
+    border-left: 1px solid black;
+    color: #000 !important;
+    font-size: 14px;
+    line-height: to-rem(24.5px);
+    padding-left: ($i - 2) * 16px + 25px;
+    text-decoration: none;
+
+    &:hover {
+      border-left: 1px solid black;
+    }
+  }
+}
+
+// ul.nav {
+//   display: initial !important;
+// }
+
+#bd-toc-nav {
+  border-left: 1px solid black;
+}
+
+.toc-entry > .nav-link {
+  &,
+  &.active {
+    border-left: 2px solid transparent;
+  }
+
+  &.active-child,
+  &:hover {
+    border-left: 2px solid black;
+  }
+}
+
+code.xref,
+a code {
+  font-weight: normal;
+}
+
+p.centered {
+  text-align: center;
 }
