@@ -1,18 +1,13 @@
-ul.search {
-  @apply tw-m-0 tw-p-0;
-  @apply tw-space-y-2;
+form.search {
+  @apply tw-flex tw-items-center tw-justify-between;
 
-  & > li {
-    @apply tw-list-none tw-m-0 tw-px-0 tw-py-2;
+  border-bottom: 1px solid black;
 
-    border-top: solid black 1px;
+  input {
+    @apply tw-border-none tw-flex-grow;
 
-    &::before {
-      @apply tw-hidden;
-    }
-
-    &:last-child {
-      border-bottom: solid black 1px;
+    &:focus {
+      @apply tw-outline-napari-primary;
     }
   }
 }

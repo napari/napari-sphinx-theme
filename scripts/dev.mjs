@@ -1,5 +1,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-await-in-loop */
+
 import cheerio from 'cheerio';
 import { createHash } from 'crypto';
 import express from 'express';

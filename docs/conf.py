@@ -109,7 +109,7 @@ html_theme_options = {
     # "navbar_align": "left",  # [left, content, right] For testing that the navbar items align properly
     # "navbar_start": ["navbar-logo", "navbar-version"],
     # "navbar_center": ["navbar-nav", "navbar-version"],  # Just for testing
-    "navbar_end": ["version-switcher", "navbar-icon-links"],
+    "navbar_end": [],
     # "left_sidebar_end": ["custom-template.html", "sidebar-ethical-ads.html"],
     # "footer_items": ['navbar-version', 'napari-footer-links', 'copyright'],
     "switcher": {

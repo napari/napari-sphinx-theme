@@ -1,16 +1,101 @@
-.page-content {
-  @apply tw-col-span-3;
-  @apply tw-prose;
+a {
+  @apply tw-underline;
 
-  max-width: unset;
-
-  img {
-    @apply tw-w-full;
+  &,
+  &:hover {
+    @apply tw-text-black;
   }
 
-  a > img {
-    @apply tw-m-0;
+  &.headerlink {
+    color: var(--pst-color-headerlink);
 
-    width: unset;
+    &:hover {
+      @apply tw-bg-transparent;
+      color: var(--pst-color-headerlink-hover);
+    }
   }
+}
+
+code {
+  @apply tw-bg-napari-hover-gray tw-text-black tw-leading-6 tw-p-1;
+}
+
+span.guilabel {
+  @apply tw-border-b tw-border-napari-primary;
+  @apply tw-bg-napari-light;
+}
+
+aside.sidebar {
+  @apply tw-border-b tw-border-napari-primary;
+  @apply tw-bg-napari-light;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply tw-font-bold tw-mx-4;
+
+  color: #000 !important;
+}
+
+h1 {
+  font-size: to-rem(23px);
+  line-height: 130%;
+  margin-bottom: to-rem(43px);
+
+  @media (min-width: 875px) {
+    font-size: to-rem(35px);
+    line-height: 125%;
+  }
+}
+
+h2 {
+  font-size: to-rem(16px);
+  line-height: 125%;
+
+  @media (min-width: 875px) {
+    font-size: to-rem(24px);
+    line-height: 150%;
+  }
+}
+
+h3 {
+  font-size: to-rem(13px);
+  line-height: 125%;
+
+  @media (min-width: 875px) {
+    font-size: to-rem(20px);
+    line-height: 135%;
+  }
+}
+
+h4 {
+  font-size: to-rem(11px);
+  line-height: 175%;
+
+  @media (min-width: 875px) {
+    font-size: to-rem(17px);
+    line-height: 141%;
+  }
+}
+
+p {
+  @apply tw-leading-normal;
+
+  font-size: to-rem(11px);
+  color: #000 !important;
+
+  @media (min-width: 875px) {
+    font-size: to-rem(17px);
+  }
+}
+
+code.xref,
+a code {
+  @apply tw-font-normal;
+}
+
+p.centered {
+  @apply tw-text-center;
 }

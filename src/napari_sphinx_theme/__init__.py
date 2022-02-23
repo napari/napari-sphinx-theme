@@ -279,7 +279,7 @@ def _add_collapse_checkboxes(soup):
         if soup.new_tag is None:
             continue
         label = soup.new_tag("label", attrs={"for": checkbox_name})
-        label.append(soup.new_tag("img", attrs={"src": "/_static/icons/sidebar-triangle.svg"}))
+        label.append(soup.new_tag("img", attrs={"src": "/_static/icons/sidebar-triangle.png"}))
         element.insert(0, label)
 
         # Add the checkbox that's used to store expanded/collapsed state.

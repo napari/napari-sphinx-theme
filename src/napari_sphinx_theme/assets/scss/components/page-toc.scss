@@ -1,18 +1,38 @@
-.page-toc {
-  @apply tw-hidden screen-1425:tw-block;
+.section-nav {
+  @apply tw-border-none;
+}
 
-  ul {
-    @apply tw-flex tw-flex-col tw-p-0 tw-space-y-4;
+.toc-entry a,
+.section-nav ul {
+  @apply tw-pl-0;
+}
 
-    border-left: solid black 1px;
+@for $i from 2 through 5 {
+  .toc-h#{$i} a {
+    @apply tw-text-sm tw-leading-6 tw-no-underline;
 
-    li {
-      @apply tw-list-none tw-pl-6 tw-min-h-6 tw-h-auto tw-transition-colors;
-      border-left: solid 4px transparent;
+    border-left: 1px solid black;
+    color: #000 !important;
+    padding-left: ($i - 2) * 16px + 25px;
 
-      &:hover {
-        border-left: solid 4px theme('colors.napari-primary');
-      }
+    &:hover {
+      border-left: 1px solid black;
     }
+  }
+}
+
+#bd-toc-nav {
+  border-left: 1px solid black;
+}
+
+.toc-entry > .nav-link {
+  &,
+  &.active {
+    border-left: 2px solid transparent;
+  }
+
+  &.active-child,
+  &:hover {
+    border-left: 2px solid black;
   }
 }

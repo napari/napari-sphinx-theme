@@ -1,38 +1,83 @@
-.global-toc {
-  @apply tw-hidden screen-1150:tw-flex;
+@import '@/scss/utils';
 
-  & > ul {
-    @apply tw-m-0 tw-p-0;
-  }
-
+.bd-sidebar {
   li {
-    @apply tw-list-none tw-py-2;
+    @apply tw-flex tw-flex-col;
+
+    & > a.reference {
+      @apply tw-pr-0;
+    }
   }
 
-  a[href='#'] {
+  label {
+    @apply tw-left-0;
+
+    right: unset;
+
+    &:hover {
+      background: none;
+    }
+  }
+
+  .caption-text {
+    font-size: to-rem(11px) !important;
+    letter-spacing: 3px;
+  }
+
+  a.reference,
+  .caption-text {
+    @apply tw-no-underline tw-text-sm;
+
+    color: #000 !important;
+  }
+
+  a.reference:hover,
+  .current.active > a.reference {
     @apply tw-font-semibold;
   }
 
-  .toctree-l2,
-  .toctree-l3 {
-    @apply tw-hidden;
-
-    border-left: solid black 1px;
-
-    &.current {
-      @apply tw-block;
+  .toctree-checkbox {
+    & ~ label > img {
+      @apply tw-select-none tw-transition-transform;
     }
+
+    &:checked ~ label > img {
+      transform: rotate(90deg);
+    }
+  }
+
+  .nav ul {
+    @apply tw-p-0;
+  }
+
+  .toctree-l1 a {
+    padding-left: 32px !important;
   }
 
   .toctree-l2 {
-    a {
-      @apply tw-pl-2;
-    }
+    @apply tw-ml-4;
+
+    border-left: 1px solid #000;
   }
 
-  .toctree-l3 {
-    a {
-      @apply tw-pl-5;
+  @for $i from 2 through 5 {
+    .toctree-l#{$i} {
+      label {
+        left: #{2px * $i};
+      }
+
+      a {
+        @apply tw-text-sm tw-leading-6 tw-no-underline;
+
+        border-left: 2px solid transparent;
+        color: #000 !important;
+        padding-left: #{30px * ($i - 1)} !important;
+
+        &:hover,
+        &.current {
+          border-left: 2px solid black;
+        }
+      }
     }
   }
 }
