@@ -1,0 +1,51 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+
+# This job installs dependencies, build the book, and pushes it to `gh-pages`
+jobs:
+  build-and-deploy-book:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.9]
+    steps:
+      - uses: actions/checkout@v2.3.3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          # Install Python dependencies
+          pip install --upgrade pip build
+          pip install -r requirements.txt
+
+      # Build and install the theme package.
+      - name: Build and install theme
+        env:
+          ENV: prod
+          GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
+          GOOGLE_CALENDAR_API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
+        run: |
+          python -m build
+          pip install dist/napari_sphinx_theme*.whl
+
+      # Build the documentation.
+      - name: Build docs
+        run: sphinx-build -b=html docs/ build/
+
+      # Deploy the book's HTML to github pages
+      - name: GitHub Pages action
+        if: github.repository == 'napari/napari-sphinx-theme' && github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
