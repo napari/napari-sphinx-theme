@@ -132,7 +132,7 @@ def add_toctree_functions(app, pagename, templatename, context, doctree):
                 ul.attrs["class"] = ul.attrs.get("class", []) + ["nav", "bd-sidenav"]
 
             # Add icons and labels for collapsible nested sections
-            _add_collapse_checkboxes(soup)
+            _add_collapse_checkboxes(soup, context)
 
             # Open the navbar to the proper depth
             for ii in range(int(show_nav_level)):
@@ -255,7 +255,7 @@ def add_toctree_functions(app, pagename, templatename, context, doctree):
     context["generate_google_analytics_script"] = generate_google_analytics_script
 
 
-def _add_collapse_checkboxes(soup):
+def _add_collapse_checkboxes(soup, context):
     # based on https://github.com/pradyunsg/furo
 
     toctree_checkbox_count = 0
@@ -279,7 +279,9 @@ def _add_collapse_checkboxes(soup):
         if soup.new_tag is None:
             continue
         label = soup.new_tag("label", attrs={"for": checkbox_name})
-        label.append(soup.new_tag("img", attrs={"src": "/_static/icons/sidebar-triangle.png"}))
+        label.append(soup.new_tag("img", attrs={
+            "src": context["pathto"]("_static/icons/sidebar-triangle.png", 1),
+        }))
         element.insert(0, label)
 
         # Add the checkbox that's used to store expanded/collapsed state.
