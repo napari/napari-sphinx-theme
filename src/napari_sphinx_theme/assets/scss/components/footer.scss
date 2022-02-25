@@ -1,6 +1,21 @@
+@import '@/scss/utils';
+
 .napari-footer {
-  @apply tw-flex tw-flex-row tw-flex-wrap tw-items-center tw-justify-start tw-w-full;
+  @apply tw-flex tw-flex-row tw-flex-wrap;
+  @apply tw-items-center tw-justify-between tw-w-full;
   @apply tw-pt-6 tw-pb-2 tw-px-6 screen-495:tw-px-12 tw-bg-black;
+
+  .footer-item {
+    @apply tw-flex tw-flex-wrap tw-items-center;
+
+    &--with-napari-copyright {
+      @apply tw-w-full tw-justify-end;
+
+      @media (min-width: 780px) {
+        @apply tw-w-max tw-justify-start;
+      }
+    }
+  }
 
   p {
     color: #fff !important;
@@ -22,6 +37,28 @@
       @apply tw-font-semibold;
 
       font-size: 0.875em;
+    }
+  }
+
+  .napari-copyright {
+    @apply tw-flex tw-flex-col tw-text-white;
+
+    &,
+    .copyright {
+      @apply tw-text-sm tw-font-semibold;
+    }
+
+    .sphinx-link,
+    .sphinx-version {
+      @apply tw-flex;
+    }
+
+    .sphinx-link {
+      @apply tw-space-x-1;
+    }
+
+    .sphinx-version {
+      @apply tw-justify-between;
     }
   }
 }

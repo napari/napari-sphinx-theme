@@ -12,6 +12,7 @@ from sphinx.errors import ExtensionError
 from sphinx.util import logging
 
 from .bootstrap_html_translator import BootstrapHTML5Translator
+from .napari_code_theme import *
 
 __version__ = "0.0.0"
 

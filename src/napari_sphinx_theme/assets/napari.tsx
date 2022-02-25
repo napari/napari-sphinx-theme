@@ -2,6 +2,7 @@ import '@/scss/napari.scss';
 import '@/utils/setupDayjsPlugins';
 
 import { last, throttle } from 'lodash';
+import { ComponentType } from 'react';
 import { render } from 'react-dom';
 
 import { Calendar } from '@/components/Calendar';
@@ -56,6 +57,152 @@ function fixCodeLinks() {
   }
 }
 
+/**
+ * We have design right now that asks for the footer item to stay attached to
+ * the right part of the footer. Since CSS is cascading, we can't apply styling
+ * to a parent element due to the existence of a child element, so we need to do
+ * it in JS.
+ */
+function addNapariFooterItemClass() {
+  const napariCopyright = document.querySelector(
+    '.napari-footer .napari-copyright',
+  );
+
+  if (napariCopyright) {
+    napariCopyright.parentElement?.classList.add(
+      'footer-item--with-napari-copyright',
+    );
+  }
+}
+
+function addInPageTocInteractivity() {
+  const pageTocs = Array.from(document.querySelectorAll('.contents > ul'));
+
+  function addTocLevelClass(node: Element, level = 1) {
+    node.classList.add(`toc-l${level}`);
+
+    Array.from(node.querySelectorAll(':scope > li > ul')).forEach((list) =>
+      addTocLevelClass(list, level + 1),
+    );
+  }
+
+  for (const toc of pageTocs) {
+    addTocLevelClass(toc);
+  }
+}
+
+function NewVersionIcon() {
+  return (
+    <svg
+      width="17"
+      height="17"
+      viewBox="0 0 17 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8.49908 1.65512L9.95566 3.33551L10.3194 3.75516L10.8679 3.66818L13.0648 3.3198L13.1039 5.54044L13.1137 6.09516L13.5895 6.38048L15.4975 7.52455L14.093 9.25617L13.7431 9.68746L13.9243 10.2124L14.6487 12.311L12.468 12.7337L11.923 12.8393L11.7244 13.3578L10.9285 15.4366L8.98578 14.3569L8.5 14.0869L8.01422 14.3569L6.07001 15.4374L5.26964 13.3564L5.07068 12.8391L4.52656 12.7337L2.34586 12.311L3.07027 10.2124L3.2512 9.68823L2.90243 9.25713L1.50131 7.52529L3.41052 6.38048L3.88724 6.09462L3.89613 5.53884L3.93163 3.32009L6.12669 3.66818L6.67442 3.75503L7.03816 3.33642L8.49908 1.65512Z"
+        stroke="black"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+      />
+    </svg>
+  );
+}
+
+function VersionChangedIcon() {
+  return (
+    <svg
+      width="15"
+      height="19"
+      viewBox="0 0 15 19"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.09629 15.2467C5.15929 15.0452 4.28581 14.6175 3.55204 14.0009C2.81826 13.3844 2.24647 12.5977 1.88652 11.7094C1.52658 10.8211 1.38942 9.85827 1.487 8.90483C1.58459 7.95139 1.91394 7.0363 2.44636 6.23936"
+        stroke="black"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M5.65749 17.9298L5.80979 12.4373L8.47721 15.2579L5.65749 17.9298Z"
+        fill="black"
+      />
+      <path
+        d="M8.54294 3.7498C9.47994 3.95131 10.3534 4.37899 11.0872 4.99555C11.821 5.61212 12.3928 6.39884 12.7527 7.28711C13.1127 8.17537 13.2498 9.13821 13.1522 10.0917C13.0546 11.0451 12.7253 11.9602 12.1929 12.7571"
+        stroke="black"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M8.98598 1.07007L8.83279 6.55809L6.16537 3.73748L8.98598 1.07007Z"
+        fill="black"
+      />
+      <path
+        d="M6.73219 15.345C5.7241 15.2435 4.75939 14.8829 3.93179 14.2984C3.10419 13.7139 2.44182 12.9253 2.00901 12.0092C1.5762 11.0931 1.38767 10.0806 1.46173 9.07016C1.53579 8.05967 1.86992 7.08551 2.43167 6.2423"
+        stroke="black"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M8.02777 3.66483C9.02361 3.78551 9.97196 4.15917 10.7825 4.75021C11.593 5.34124 12.2387 6.12997 12.658 7.04125C13.0773 7.95253 13.2564 8.95599 13.178 9.95606C13.0997 10.9561 12.7665 11.9195 12.2104 12.7543"
+        stroke="black"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+      />
+    </svg>
+  );
+}
+
+function VersionDeprecatedIcon() {
+  return (
+    <svg
+      width="17"
+      height="17"
+      viewBox="0 0 17 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1 5.39257L5.39257 1H11.6074L16 5.39257V11.6074L11.6074 16H5.39257L1 11.6074V5.39257Z"
+        stroke="black"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M7.792 10.14C7.74533 10.14 7.70333 10.126 7.666 10.098C7.638 10.0607 7.624 10.0187 7.624 9.972L7.442 3.868C7.442 3.82133 7.456 3.784 7.484 3.756C7.52133 3.71867 7.56333 3.7 7.61 3.7H9.248C9.29467 3.7 9.332 3.71867 9.36 3.756C9.39733 3.784 9.416 3.82133 9.416 3.868L9.206 9.972C9.206 10.0187 9.18733 10.0607 9.15 10.098C9.122 10.126 9.08467 10.14 9.038 10.14H7.792ZM8.338 13.486C8.02067 13.486 7.75467 13.3833 7.54 13.178C7.33467 12.9633 7.232 12.6973 7.232 12.38C7.232 12.0533 7.33467 11.7873 7.54 11.582C7.74533 11.3767 8.01133 11.274 8.338 11.274C8.66467 11.274 8.926 11.3767 9.122 11.582C9.32733 11.7873 9.43 12.0533 9.43 12.38C9.43 12.6973 9.32733 12.9633 9.122 13.178C8.91667 13.3833 8.65533 13.486 8.338 13.486Z"
+        fill="black"
+      />
+    </svg>
+  );
+}
+
+function addVersionIcons() {
+  function addIcons(
+    type: 'added' | 'changed' | 'deprecated',
+    Icon: ComponentType,
+  ) {
+    const containers = Array.from(
+      document.querySelectorAll(`.versionmodified.${type}`),
+    );
+
+    containers.forEach((container) =>
+      render(
+        <>
+          <Icon />
+          <span>{container.textContent}</span>
+        </>,
+        container,
+      ),
+    );
+  }
+
+  addIcons('added', NewVersionIcon);
+  addIcons('changed', VersionChangedIcon);
+  addIcons('deprecated', VersionDeprecatedIcon);
+}
+
 function main() {
   const calendarNodes = Array.from(
     document.querySelectorAll('[data-component=calendar]'),
@@ -65,6 +212,9 @@ function main() {
 
   highlightActiveLink();
   fixCodeLinks();
+  addNapariFooterItemClass();
+  addInPageTocInteractivity();
+  addVersionIcons();
 }
 
 document.addEventListener('DOMContentLoaded', main);

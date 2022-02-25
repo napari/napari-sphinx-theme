@@ -1,6 +1,8 @@
 @import '@/scss/utils';
 
 .bd-sidebar {
+  @apply tw-pt-8;
+
   li {
     @apply tw-flex tw-flex-col;
 

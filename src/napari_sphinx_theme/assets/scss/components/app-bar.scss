@@ -1,3 +1,5 @@
+@import '@/scss/utils';
+
 .navbar {
   &.navbar-light {
     &,
@@ -19,18 +21,55 @@
       @apply tw-no-underline;
 
       color: #000 !important;
-      padding-bottom: 20px !important;
-      margin-top: 20px !important;
-      border-bottom: 3px solid transparent;
-    }
-
-    &.active a,
-    &:hover a {
-      border-bottom: 3px solid #000;
+      font-size: to-rem(17px);
+      padding: to-rem(16px) 0 !important;
     }
 
     &.active a {
       font-weight: 700 !important;
+    }
+
+    a > i {
+      @apply tw-ml-2;
+
+      font-size: to-rem(14px) !important;
+    }
+
+    @media (min-width: 960px) {
+      a {
+        padding: 0 to-rem(8px) to-rem(20px) !important;
+        margin-top: to-rem(20px) !important;
+        border-bottom: to-rem(3px) solid transparent;
+      }
+
+      &.active a,
+      &:hover a {
+        border-bottom: to-rem(3px) solid #000;
+      }
+    }
+  }
+}
+
+#version_switcher {
+  button {
+    @apply tw-border-none tw-text-black tw-font-medium tw-text-sm;
+
+    background: none !important;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+#version_switcher_menu {
+  @apply tw-min-w-24;
+
+  .list-group-item {
+    @apply tw-px-2 tw-border-l tw-border-r tw-border-b tw-border-napari-dark-gray;
+
+    &:first-child {
+      @apply tw-border-t;
     }
   }
 }
