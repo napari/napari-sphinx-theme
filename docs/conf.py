@@ -114,7 +114,7 @@ html_theme_options = {
     # "left_sidebar_end": ["custom-template.html", "sidebar-ethical-ads.html"],
     # "footer_items": ['navbar-version', 'napari-footer-links', 'copyright'],
     "switcher": {
-        "json_url": "/_static/switcher.json",
+        "json_url": "/napari-sphinx-theme/_static/switcher.json",
         # "url_template": "https://napari-sphinx-theme.readthedocs.io/en/v{version}/",
         # "url_template": "https://napari.org/napari-sphinx-theme/v{version}/",
         "url_template": "http://localhost:3000/?version={version}",
