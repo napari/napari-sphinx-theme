@@ -100,6 +100,97 @@
 
     <div id="navbar-end">
       
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-primary btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        <span>version <span id="version_switcher_button_text">0.0.0</span></span>
+
+        <svg class="version-switcher-chevron" width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.27197 1.5L8.34304 8.57107L15.4141 1.5" stroke="black" stroke-width="2"/>
+        </svg>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables genindex and {'json_url': '/_static/switcher.json', 'url_template': 'http://localhost:3000/?version={version}', 'version_match': '0.0.0'}.
+-->
+
+<script type="text/javascript">
+// Construct the target URL from the JSON components
+function buildURL(entry) {
+    var template = "http://localhost:3000/?version={version}";  // supplied by jinja
+    template = template.replace("{version}", entry.version);
+    return template;
+}
+
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "genindex.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("/_static/switcher.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "genindex.html";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            // get the base URL for that doc version, add the current page's
+            // path to it, and set as `href`
+            if (!("url" in entry)) {
+                entry.url = buildURL(entry);
+            }
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.0.0 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.0.0") {
+                node.classList.add("active");
+                $("#version_switcher_button_text").text(entry.name);
+                // Add extra class to the button for the selected entry
+                if ("extra_classes" in entry) {
+                    $("#version_switcher_menu").classList.add(...entry.extra_classes);
+                }
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
     </div>
   </div>
 </div>
@@ -453,7 +544,8 @@
 
     <script src="_static/scripts/napari-sphinx-theme.js"></script><footer class="napari-footer">
   
-  <a href="/">
+    <div class="footer-item">
+      <a href="/">
   <svg
   width="30"
   height="30"
@@ -717,14 +809,26 @@
 </svg>
   <span>Zulip</span>
 </a>
+    </div>
   
+    <div class="footer-item">
+      <div class="napari-copyright">
   <p class="copyright">
-    &copy; Copyright 2021, napari Community.<br>
-</p>
-  
-  <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
-</p>
+        Copyright 2021 napari Community<br>
+  </p>
+
+  <div class="sphinx-version">
+    <div class="sphinx-link">
+      <span>Created using</span>
+      <a href="http://sphinx-doc.org/">Sphinx</a>
+    </div>
+
+    
+      <span>4.4.0</span>
+    
+  </div>
+</div>
+    </div>
   
 </footer>
   </body>
