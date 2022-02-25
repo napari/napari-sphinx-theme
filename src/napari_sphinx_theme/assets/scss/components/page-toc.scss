@@ -11,12 +11,12 @@
   .toc-h#{$i} a {
     @apply tw-text-sm tw-leading-6 tw-no-underline;
 
-    border-left: 1px solid black;
+    border-left: 3px solid black;
     color: #000 !important;
     padding-left: ($i - 2) * 16px + 25px;
 
     &:hover {
-      border-left: 1px solid black;
+      border-left: 3px solid theme('colors.napari-primary');
     }
   }
 }
@@ -28,11 +28,11 @@
 .toc-entry > .nav-link {
   &,
   &.active {
-    border-left: 2px solid transparent;
+    border-left: 3px solid transparent;
   }
 
   &.active-child,
   &:hover {
-    border-left: 2px solid black;
+    border-left: 3px solid theme('colors.napari-primary');
   }
 }

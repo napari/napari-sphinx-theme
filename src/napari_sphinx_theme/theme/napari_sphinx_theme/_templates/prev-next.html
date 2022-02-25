@@ -2,7 +2,19 @@
 <div class='prev-next-area'>
     {%- if prev %}
     <a class='left-prev' id="prev-link" href="{{ prev.link|e }}" title="{{ _('previous') }} {{ _('page') }}">
-        <i class="fas fa-angle-left"></i>
+        <svg
+            width="10"
+            height="16"
+            viewBox="0 0 10 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M8.92892 1L1.85786 8.07107L8.92892 15.1421"
+                stroke="black"
+                stroke-width="2"
+            />
+        </svg>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">{{ _("previous") }}</p>
             <p class="prev-next-title">{{ prev_title or prev.title }}</p>
@@ -15,7 +27,20 @@
         <p class="prev-next-subtitle">{{ _("next") }}</p>
         <p class="prev-next-title">{{ next_title or next.title }}</p>
     </div>
-    <i class="fas fa-angle-right"></i>
+
+    <svg
+        width="10"
+        height="16"
+        viewBox="0 0 10 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M1.07108 15L8.14214 7.92893L1.07108 0.857864"
+            stroke="black"
+            stroke-width="2"
+        />
+    </svg>
     </a>
     {%- endif %}
 </div>

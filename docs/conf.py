@@ -19,8 +19,9 @@ import os
 # -- Project information -----------------------------------------------------
 
 project = "napari Sphinx Theme"
-copyright = "2021, napari Community"
+copyright = "2021 napari Community"
 author = "napari Community"
+pygments_style = 'napari_sphinx_theme.NapariCodeTheme'
 
 
 release = '0.0.0'
@@ -109,13 +110,14 @@ html_theme_options = {
     # "navbar_align": "left",  # [left, content, right] For testing that the navbar items align properly
     # "navbar_start": ["navbar-logo", "navbar-version"],
     # "navbar_center": ["navbar-nav", "navbar-version"],  # Just for testing
-    "navbar_end": [],
+    "navbar_end": ["version-switcher"],
     # "left_sidebar_end": ["custom-template.html", "sidebar-ethical-ads.html"],
     # "footer_items": ['navbar-version', 'napari-footer-links', 'copyright'],
     "switcher": {
-        # "json_url": "/_static/switcher.json",
-        "json_url": "https://pydata-sphinx-theme.readthedocs.io/en/latest/_static/switcher.json",
-        "url_template": "https://pydata-sphinx-theme.readthedocs.io/en/v{version}/",
+        "json_url": "/_static/switcher.json",
+        # "url_template": "https://napari-sphinx-theme.readthedocs.io/en/v{version}/",
+        # "url_template": "https://napari.org/napari-sphinx-theme/v{version}/",
+        "url_template": "http://localhost:3000/?version={version}",
         "version_match": version,
     },
 }
@@ -127,6 +129,7 @@ html_sidebars = {
         "custom-template",
     ],  # This ensures we test for custom sidebars
     "demo/no-sidebar": [],  # Test what page looks like with no sidebar items
+    "search": []
 }
 
 

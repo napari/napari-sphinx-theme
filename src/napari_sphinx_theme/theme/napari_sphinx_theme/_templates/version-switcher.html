@@ -1,7 +1,10 @@
 <div class="dropdown" id="version_switcher">
-    <button type="button" class="btn btn-primary btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
-        {{ theme_switcher.get('version_match') }}  <!-- this text may get changed later by javascript -->
-        <span class="caret"></span>
+    <button type="button" class="btn btn-primary btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        <span>version <span id="version_switcher_button_text">{{ theme_switcher.get('version_match') }}</span></span>
+
+        <svg class="version-switcher-chevron" width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.27197 1.5L8.34304 8.57107L15.4141 1.5" stroke="black" stroke-width="2"/>
+        </svg>
     </button>
     <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
     <!-- dropdown will be populated by javascript on page load -->
@@ -73,7 +76,7 @@ function checkPageExistsAndRedirect(event) {
             // version's entry
             if (entry.version == "{{ theme_switcher.get('version_match') }}") {
                 node.classList.add("active");
-                $("#version_switcher_button").text(entry.name);
+                $("#version_switcher_button_text").text(entry.name);
                 // Add extra class to the button for the selected entry
                 if ("extra_classes" in entry) {
                     $("#version_switcher_menu").classList.add(...entry.extra_classes);
