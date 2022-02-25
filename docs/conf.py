@@ -24,7 +24,7 @@ author = "napari Community"
 pygments_style = 'napari_sphinx_theme.NapariCodeTheme'
 
 
-release = '0.0.0'
+release = '0.0.1'
 version = release.replace("dev0", "")
 
 # -- General configuration ---------------------------------------------------
