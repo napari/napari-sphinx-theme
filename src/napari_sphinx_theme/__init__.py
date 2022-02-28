@@ -13,6 +13,7 @@ from sphinx.util import logging
 
 from .bootstrap_html_translator import BootstrapHTML5Translator
 from .napari_code_theme import *
+from .calendar import CalendarDirective
 
 __version__ = "0.0.1"
 
@@ -506,6 +507,27 @@ def setup_edit_url(app, pagename, templatename, context, doctree):
 
 # -----------------------------------------------------------------------------
 
+GOOGLE_CALENDAR_ID = os.environ.get('GOOGLE_CALENDAR_ID', '')
+GOOGLE_CALENDAR_API_KEY = os.environ.get('GOOGLE_CALENDAR_API_KEY', '')
+
+def add_google_calendar_secrets(app, exception):
+    if exception is not None:
+        return
+
+    script_path = os.path.join(
+        app.builder.outdir,
+        '_static',
+        'scripts',
+        'napari-sphinx-theme.js'
+    )
+
+    with open(script_path, 'r') as f:
+        source = f.read()
+        source = source.replace('{google_calendar_id}', GOOGLE_CALENDAR_ID)
+        source = source.replace('{google_calendar_api_key}', GOOGLE_CALENDAR_API_KEY)
+
+    with open(script_path, 'w') as f:
+        f.write(source)
 
 def setup(app):
     here = Path(__file__).parent.resolve()
@@ -524,6 +546,9 @@ def setup(app):
     app.connect("html-page-context", setup_edit_url)
     app.connect("html-page-context", add_toctree_functions)
     app.connect("html-page-context", update_templates)
+    app.connect("build-finished", add_google_calendar_secrets)
+
+    app.add_directive('napari-calendar', CalendarDirective)
 
     # Include templates for sidebar
     app.config.templates_path.append(str(theme_path / "_templates"))

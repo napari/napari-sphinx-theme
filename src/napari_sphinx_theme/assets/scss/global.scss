@@ -10,10 +10,10 @@ body {
 }
 
 main[role='main'] {
-  padding-top: 0 !important;
+  padding: 0 to-rem(25px) 0 !important;
 
   @media (min-width: 720px) {
-    padding-top: 128px !important;
+    padding: to-rem(128px) to-rem(50px) p !important;
   }
 }
 

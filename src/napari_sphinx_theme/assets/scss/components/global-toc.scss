@@ -11,6 +11,10 @@
     }
   }
 
+  a.external::after {
+    @apply tw-hidden;
+  }
+
   label {
     @apply tw-left-0;
 
@@ -23,7 +27,6 @@
 
   .caption-text {
     font-size: to-rem(11px) !important;
-    letter-spacing: 3px;
   }
 
   a.reference,
@@ -33,7 +36,6 @@
     color: #000 !important;
   }
 
-  a.reference:hover,
   .current.active > a.reference {
     @apply tw-font-semibold;
   }
@@ -76,8 +78,12 @@
         padding-left: #{30px * ($i - 1)} !important;
 
         &:hover,
+        &.current:hover {
+          border-left: 2px solid theme('colors.napari-primary');
+        }
+
         &.current {
-          border-left: 2px solid black;
+          border-left: 2px solid #000;
         }
       }
     }

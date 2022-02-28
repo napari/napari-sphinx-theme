@@ -22,7 +22,7 @@
   }
 
   a {
-    @apply tw-text-white tw-whitespace-nowrap;
+    @apply tw-text-white tw-whitespace-nowrap tw-no-underline;
     @apply tw-mr-4 last:tw-mr-0 tw-mb-4;
     @apply tw-flex tw-flex-row tw-items-center;
 

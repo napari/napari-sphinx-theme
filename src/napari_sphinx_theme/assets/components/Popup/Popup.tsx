@@ -34,20 +34,20 @@ export const Popup = forwardRef<HTMLDivElement, Props>(
           },
         }}
       >
-        <div className="flex flex-col items-center">
-          {flipped && <PopupArrow className="z-10 " />}
+        <div className="tw-flex tw-flex-col tw-items-center">
+          {flipped && <PopupArrow className="tw-z-10 " />}
 
           <Paper
             className={clsx(
               paperClassName,
-              'border border-napari-gray -mt-px',
-              flipped ? '-mt-px' : '-mb-px',
+              'tw-border tw-border-solid tw-border-napari-gray tw--mt-px',
+              flipped ? 'tw--mt-px' : 'tw--mb-px',
             )}
           >
             {children}
           </Paper>
 
-          {!flipped && <PopupArrow className="z-10 rotate-180" />}
+          {!flipped && <PopupArrow className="tw-z-10 tw-rotate-180" />}
         </div>
       </Popper>
     );

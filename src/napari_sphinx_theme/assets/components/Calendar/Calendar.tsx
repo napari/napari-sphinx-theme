@@ -6,6 +6,10 @@ import { CalendarFilter } from './CalenderFilter';
 import { CalendarProvider } from './context';
 import { CopyCalendarButton } from './CopyCalendarButton';
 
+interface Props {
+  filter?: boolean;
+}
+
 /**
  * Component for showing napari Google Calendar events with controls for
  * filtering and copying events to the user's calendar.
@@ -13,7 +17,7 @@ import { CopyCalendarButton } from './CopyCalendarButton';
  * For screens smaller than 900px, a week view is rendered with events for the
  * current week. Otherwise, a month view is used.
  */
-export function Calendar() {
+export function Calendar({ filter }: Props) {
   return (
     <div className="tw-flex tw-flex-col tw-flex-1 tw-items-stretch">
       <CalendarProvider>
@@ -34,7 +38,7 @@ export function Calendar() {
             <CalendarNavigation week />
           </div>
 
-          <CalendarFilter />
+          {filter && <CalendarFilter />}
 
           <div className="tw-hidden screen-900:tw-flex tw-flex-col tw-flex-1 tw-items-stretch">
             <CalendarMonthView />

@@ -67,12 +67,12 @@ export function CalendarFilter() {
   const filterBody = (
     <div
       className={clsx(
-        'flex flex-col col-start-2',
-        'justify-center w-full',
-        'screen-900:flex-row screen-900:space-x-2',
+        'tw-flex tw-flex-col tw-col-start-2',
+        'tw-justify-center tw-w-full',
+        'screen-900:tw-flex-row screen-900:tw-space-x-2',
       )}
     >
-      <span className="font-semibold">show:</span>
+      <span className="tw-font-semibold">show:</span>
 
       {ENABLED_FILTERS.map((filterKey) => (
         <FilterCheckbox filterKey={filterKey} key={filterKey} />
@@ -81,23 +81,23 @@ export function CalendarFilter() {
   );
 
   return (
-    <div className="flex py-3 px-6 screen-900:justify-center">
+    <div className="tw-flex tw-py-3 tw-px-6 screen-900:tw-justify-center">
       <div
         className={clsx(
-          'grid grid-cols-[2rem,1fr,min-content] items-center w-full',
-          'screen-900:w-max screen-900:space-x-2',
-          'screen-900:flex screen-900:flex-row',
+          'tw-grid tw-grid-cols-[2rem,1fr,min-content] tw-items-center tw-w-full',
+          'screen-900:tw-w-max screen-900:tw-space-x-2',
+          'screen-900:tw-flex screen-900:tw-flex-row',
         )}
         ref={anchorElRef}
       >
-        <div className="screen-900:hidden">
-          <FilterList className="w-4 h-4" />
+        <div className="screen-900:tw-hidden">
+          <FilterList className="tw-w-4 tw-h-4" />
         </div>
 
-        <div className="screen-900:hidden">
+        <div className="screen-900:tw-hidden">
           <Button
             classes={{
-              label: 'underline',
+              label: 'tw-underline',
             }}
             onClick={() => setOpen((prev) => !prev)}
             variant="text"
@@ -106,22 +106,22 @@ export function CalendarFilter() {
           </Button>
         </div>
 
-        <div className="screen-900:hidden justify-self-end">
+        <div className="screen-900:tw-hidden tw-justify-self-end">
           <IconButton
-            className={clsx(open || 'opacity-0')}
+            className={clsx(open || 'tw-opacity-0')}
             onClick={closeFilter}
           >
-            <Close className="text-black" />
+            <Close className="tw-text-black" />
           </IconButton>
         </div>
 
-        <div className="screen-900:hidden">
+        <div className="screen-900:tw-hidden">
           <Popper open={open} anchorEl={anchorElRef.current}>
             <Paper
               className={clsx(
-                'grid grid-cols-[2rem,1fr,min-content]',
-                'items-center px-9',
-                'naapri-calendar__popup',
+                'tw-grid tw-grid-cols-[2rem,1fr,min-content]',
+                'tw-items-center tw-px-9',
+                'napari-calendar__popup',
               )}
               ref={paperElRef}
               elevation={0}
@@ -131,7 +131,7 @@ export function CalendarFilter() {
           </Popper>
         </div>
 
-        <div className="hidden screen-900:flex">{filterBody}</div>
+        <div className="tw-hidden screen-900:tw-flex">{filterBody}</div>
       </div>
     </div>
   );

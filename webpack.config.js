@@ -3,13 +3,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { resolve } = require('path');
 const webpack = require('webpack');
 
-module.exports = {
-  mode: process.env.NODE_ENV || 'development',
+const env = process.env.NODE_ENV || 'development';
+const isProd = env === 'production';
+
+const config = {
+  mode: env,
   devtool: 'inline-source-map',
 
   entry: {
     'napari-sphinx-theme': [
-      'webpack-hot-middleware/client',
+      ...(isProd ? [] : ['webpack-hot-middleware/client']),
       './src/napari_sphinx_theme/assets/scripts/index.js',
       './src/napari_sphinx_theme/assets/napari.tsx',
     ],
@@ -58,14 +61,16 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    ...(isProd ? [] : [new webpack.HotModuleReplacementPlugin()]),
     new MiniCssExtractPlugin({ filename: 'styles/[name].css' }),
     new ForkTsCheckerPlugin(),
     new webpack.EnvironmentPlugin({
       ENV: process.env.ENV || 'local',
-      GOOGLE_CALENDAR_API_KEY: '',
-      GOOGLE_CALENDAR_ID: '',
-      NODE_ENV: process.env.NODE_ENV || 'development',
+      GOOGLE_CALENDAR_API_KEY: '{google_calendar_api_key}',
+      GOOGLE_CALENDAR_ID: '{google_calendar_id}',
+      NODE_ENV: env,
     }),
   ],
 };
+
+module.exports = config;

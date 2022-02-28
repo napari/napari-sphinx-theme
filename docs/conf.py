@@ -21,7 +21,6 @@ import os
 project = "napari Sphinx Theme"
 copyright = "2021 napari Community"
 author = "napari Community"
-pygments_style = 'napari_sphinx_theme.NapariCodeTheme'
 
 
 release = '0.0.1'
@@ -129,7 +128,8 @@ html_sidebars = {
         "custom-template",
     ],  # This ensures we test for custom sidebars
     "demo/no-sidebar": [],  # Test what page looks like with no sidebar items
-    "search": []
+    "search": [],
+    "demo/kitchen-sink/calendar": [],
 }
 
 
