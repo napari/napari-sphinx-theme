@@ -3,8 +3,6 @@ html_meta:
   "description lang=en": "How to become a contributor to the pydata-sphinx-theme."
 ---
 
-<div data-component="calendar"></div>
-
 # Contribute
 
 These pages contain information about how you can get up-and-running with a development version of this theme, and how you can contribute to the project.

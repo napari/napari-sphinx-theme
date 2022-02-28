@@ -44,8 +44,11 @@ export function CalendarTile({ date }: Props) {
   }, []);
 
   return (
-    <div className="flex overflow-y-auto overflow-x-hidden" ref={tileRef}>
-      <ul className="flex flex-col space-y-1 m-0">
+    <div
+      className="tw-flex tw-overflow-y-auto tw-overflow-x-hidden"
+      ref={tileRef}
+    >
+      <ul className="tw-flex tw-flex-col tw-space-y-1 tw-m-0 tw-p-0">
         {eventList.map((event) => (
           <CalendarEventButton
             key={event.title + event.start.toString()}

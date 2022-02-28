@@ -42,11 +42,11 @@ function CalendarMetadata({
     label = rawLabel;
   }
 
-  const labelClassName = 'break-words min-w-[1%] box-border';
+  const labelClassName = 'tw-break-words tw-min-w-[1%] tw-box-border';
   const isUrl = !html && (isExternalUrl(label) || label.startsWith('/'));
 
   return (
-    <li className="flex space-x-1 napari-calendar__popup-metadata">
+    <li className="tw-flex tw-space-x-1 napari-calendar__popup-metadata">
       <Icon />
 
       {html && (
@@ -61,7 +61,7 @@ function CalendarMetadata({
       )}
 
       {!html && isUrl && (
-        <a className={clsx(labelClassName, 'underline')} href={label}>
+        <a className={clsx(labelClassName, 'tw-underline')} href={label}>
           {label}
         </a>
       )}
@@ -143,24 +143,24 @@ export const CalendarEventPopup = forwardRef<HTMLDivElement, Props>(
     return (
       <Popup
         ref={ref}
-        paperClassName="max-w-64 max-h-96 py-1 flex"
+        paperClassName="tw-max-w-64 tw-max-h-96 tw-py-1 tw-flex"
         placement="top"
         open={open && !!(!event.recurringEventId || recurrence)}
         {...props}
       >
         <FocusTrap focusTrapOptions={{ onDeactivate: onClose }}>
-          <div className="flex flex-col space-y-2 overflow-y-auto py-4 px-5">
-            <p className="font-bold uppercase">
+          <div className="tw-flex tw-flex-col tw-space-y-2 tw-overflow-y-auto tw-py-4 tw-px-5">
+            <p className="tw-font-bold tw-uppercase">
               {event.start.format('dddd MMM D')}
             </p>
-            <p className="font-bold">
+            <p className="tw-font-bold">
               {formatEventTime(event.start)}–{formatEventTime(event.end)}{' '}
               {dayjs().format('z')}
             </p>
 
-            <h2 className="text-2xl font-bold">{event.title}</h2>
+            <h2 className="tw-text-2xl tw-font-bold">{event.title}</h2>
 
-            <ul className="space-y-2">
+            <ul className="tw-space-y-2">
               {metadata
                 .filter(({ label }) => label)
                 .map((metadataProps) => (

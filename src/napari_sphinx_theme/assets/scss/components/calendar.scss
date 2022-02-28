@@ -37,12 +37,12 @@ $breakpoint: theme('screens.screen-495');
 
   // Styles to apply to the month view day tiles.
   &__month-view__days__day {
-    @apply tw-flex tw-flex-col tw-space-y-1;
+    @apply tw-flex tw-flex-col tw-space-y-1 tw-border-none;
 
     // Calendar tile component is always a button, since there's currently no
     // way to customize the tile:
     // https://github.com/wojtekmaj/react-calendar/issues/572
-    @apply tw-cursor-default;
+    cursor: default !important;
 
     // Disable blue highlight when on tapping on webkit mobile devices.
     -webkit-tap-highlight-color: transparent;
@@ -50,6 +50,7 @@ $breakpoint: theme('screens.screen-495');
 
     abbr {
       @apply tw-mt-1 tw-ml-1 tw-font-semibold;
+      @apply tw-border-none tw-cursor-default;
     }
 
     // Styles to apply to day tiles for the active week.

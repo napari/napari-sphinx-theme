@@ -1,46 +1,104 @@
 import '@/scss/napari.scss';
 import '@/utils/setupDayjsPlugins';
 
-import { last, throttle } from 'lodash';
-import { ComponentType } from 'react';
+import { ReactNode } from 'react';
 import { render } from 'react-dom';
 
 import { Calendar } from '@/components/Calendar';
+import { Search } from '@/components/icons';
 
-const HIGHLIGHT_HEADER_THROTTLE_MS = 100;
+function setParentTocVisible(link: Element | null, open: boolean) {
+  if (!link) return;
+  const nav = document.querySelector('#bd-toc-nav');
 
-/**
- * Applies the `active-link` to the deepest child link in the active link
- * hierarchy. This depends on Bootstrap scroll spy adding the `active` class to
- * the TOC links. This is required because for napari, we only want to highlight
- * only the current link and not its parents.
- */
-function highlightActiveLink() {
-  let prevLink: Element | null = null;
-
-  function highlight() {
-    const activeLinks = Array.from(
-      document.querySelectorAll('#bd-toc-nav a.active'),
-    );
-
-    if (activeLinks.length === 0) {
-      return;
+  function toggleVisible(node: Element) {
+    if (open) {
+      node.classList.add('visible');
+    } else {
+      node.classList.remove('visible');
     }
-
-    const activeChildLink = last(activeLinks) ?? null;
-    prevLink?.classList.remove('active-child');
-    activeChildLink?.classList.add('active-child');
-    prevLink = activeChildLink;
   }
 
-  window.addEventListener(
-    'scroll',
-    throttle(highlight, HIGHLIGHT_HEADER_THROTTLE_MS),
-  );
+  if (link.nextElementSibling?.classList.contains('nav')) {
+    toggleVisible(link.nextElementSibling);
+  }
 
-  // Wait a bit before highlighting to give time for the Bootstrap scrollspy to
-  // kick in.
-  setTimeout(highlight, 200);
+  let node: Element | null = link;
+  while (node !== nav) {
+    if (node?.classList.contains('nav')) {
+      toggleVisible(node);
+    }
+
+    node = node?.parentElement ?? null;
+  }
+}
+
+function highlightActivePageTocItem() {
+  const headerLinks = Array.from(document.querySelectorAll('#bd-toc-nav a'));
+  const headerLinkMap = new Map<string, Element>();
+  const headers: Element[] = [];
+
+  for (const headerLink of headerLinks) {
+    const headerId = headerLink.getAttribute('href');
+
+    if (headerId) {
+      headerLinkMap.set(headerId, headerLink);
+      const header = document.querySelector(headerId);
+      if (header) {
+        headers.push(header);
+      }
+    }
+  }
+
+  const appBarHeight = document.querySelector('.navbar')?.clientHeight ?? 0;
+
+  const initialHeader = window.location.hash;
+  let activeHeaderIndex = headers.findIndex(
+    (header) => header.id === initialHeader.slice(1),
+  );
+  let activeHeader = initialHeader
+    ? document.querySelector(initialHeader)
+    : null;
+  let activeLink = headerLinkMap.get(initialHeader);
+
+  if (activeLink) {
+    activeLink.classList.add('active');
+    setParentTocVisible(activeLink, true);
+  }
+
+  function highlight() {
+    const firstHeaderIndex = headers.findIndex(
+      (header) => header.getBoundingClientRect().top > appBarHeight + 16,
+    );
+    const firstHeaderInViewport = headers[firstHeaderIndex];
+
+    if (!firstHeaderInViewport) return;
+
+    if (
+      firstHeaderInViewport.getBoundingClientRect().top <
+      appBarHeight + 16 + 32
+    ) {
+      activeHeader = firstHeaderInViewport;
+      activeHeaderIndex = firstHeaderIndex;
+    } else {
+      activeHeaderIndex = firstHeaderIndex - 1;
+      activeHeader = headers[activeHeaderIndex];
+    }
+
+    if (activeLink?.classList.contains('active')) {
+      activeLink?.classList.remove('active');
+      setParentTocVisible(activeLink, false);
+    }
+
+    activeLink = headerLinkMap.get(`#${activeHeader.id}`);
+
+    if (activeLink && !activeLink?.classList.contains('active')) {
+      activeLink?.classList.add('active');
+      setParentTocVisible(activeLink, true);
+    }
+  }
+
+  window.addEventListener('scroll', highlight);
 }
 
 /**
@@ -91,8 +149,24 @@ function addInPageTocInteractivity() {
   }
 }
 
-function NewVersionIcon() {
-  return (
+function addVersionIcons() {
+  function addIcons(type: 'added' | 'changed' | 'deprecated', icon: ReactNode) {
+    const containers = Array.from(
+      document.querySelectorAll(`.versionmodified.${type}`),
+    );
+
+    containers.forEach((container) =>
+      render(
+        <>
+          {icon}
+          <span>{container.textContent}</span>
+        </>,
+        container,
+      ),
+    );
+  }
+
+  const newVersionIcon = (
     <svg
       width="17"
       height="17"
@@ -108,10 +182,7 @@ function NewVersionIcon() {
       />
     </svg>
   );
-}
-
-function VersionChangedIcon() {
-  return (
+  const changedIcon = (
     <svg
       width="15"
       height="19"
@@ -153,10 +224,8 @@ function VersionChangedIcon() {
       />
     </svg>
   );
-}
 
-function VersionDeprecatedIcon() {
-  return (
+  const deperecatedIcon = (
     <svg
       width="17"
       height="17"
@@ -176,45 +245,184 @@ function VersionDeprecatedIcon() {
       />
     </svg>
   );
+
+  addIcons('added', newVersionIcon);
+  addIcons('changed', changedIcon);
+  addIcons('deprecated', deperecatedIcon);
 }
 
-function addVersionIcons() {
-  function addIcons(
-    type: 'added' | 'changed' | 'deprecated',
-    Icon: ComponentType,
-  ) {
-    const containers = Array.from(
-      document.querySelectorAll(`.versionmodified.${type}`),
-    );
+function replaceSidebarIcons() {
+  const sidebarExternalLinks = Array.from(
+    document.querySelectorAll('.bd-sidebar a.external'),
+  );
 
-    containers.forEach((container) =>
-      render(
-        <>
-          <Icon />
-          <span>{container.textContent}</span>
-        </>,
-        container,
-      ),
+  for (const link of sidebarExternalLinks) {
+    render(
+      <>
+        <span>{link.textContent}</span>
+
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="12" height="12" fill="white" />
+          <path
+            d="M6.42858 0.857143H0.857147V11.1429H11.1429V6"
+            stroke="black"
+            strokeWidth="1.5"
+          />
+          <path
+            d="M7.71428 0.857143H11.1429V4.28571"
+            stroke="black"
+            strokeWidth="1.5"
+          />
+          <path
+            d="M11.1429 0.857143L4.28572 7.71429"
+            stroke="black"
+            strokeWidth="1.5"
+          />
+        </svg>
+      </>,
+
+      link,
     );
   }
+}
 
-  addIcons('added', NewVersionIcon);
-  addIcons('changed', VersionChangedIcon);
-  addIcons('deprecated', VersionDeprecatedIcon);
+function renderCalendars() {
+  const calendarNodes = Array.from(
+    document.querySelectorAll('.napari-calendar'),
+  );
+
+  calendarNodes.forEach((node) =>
+    render(<Calendar filter={node.classList.contains('show-filters')} />, node),
+  );
+}
+
+function fixSearchContainer() {
+  const oldSearchButton = document.querySelector<HTMLInputElement>(
+    '#search-documentation ~ form > input[type=submit]',
+  );
+  const searchButton = document.createElement('button');
+  searchButton.classList.add('search-button');
+
+  if (oldSearchButton) {
+    oldSearchButton.replaceWith(searchButton);
+    render(<Search />, searchButton);
+  }
+
+  const searchTitle = document.querySelector('#search-results > h2');
+  const searchSummary = document.querySelector(
+    '#search-results > .search-summary',
+  );
+
+  if (searchTitle && searchSummary) {
+    const infoContainer = document.createElement('div');
+    infoContainer.classList.add('search-info');
+
+    searchTitle.remove();
+    searchSummary.remove();
+
+    infoContainer.append(searchTitle);
+    infoContainer.append(searchSummary);
+
+    const searchResults = document.querySelector('#search-results');
+    searchResults?.prepend(infoContainer);
+  }
+}
+
+function fixSearchText() {
+  const searchTitle = document.querySelector('.search-info > h2');
+  const searchSummary = document.querySelector(
+    '.search-info > .search-summary',
+  );
+
+  if (searchTitle) {
+    searchTitle.textContent = 'Results';
+
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.addedNodes?.[0]?.textContent === 'Search Results') {
+          searchTitle.textContent = 'Results';
+        }
+      }
+    });
+
+    observer.observe(searchTitle, { childList: true });
+  }
+
+  if (searchSummary) {
+    searchSummary.textContent =
+      '0 matching pages found. Please make sure that all words are spelled correctly.';
+
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        const match = /Search finished, found ([\d]+) page/.exec(
+          mutation.addedNodes?.[0]?.textContent ?? '',
+        );
+
+        if (match) {
+          const count = +match[1];
+          searchSummary.textContent = `${count} matching pages found`;
+        }
+      }
+    });
+
+    observer.observe(searchSummary, { childList: true });
+  }
+}
+
+function fixSearchResults() {
+  const searchResults = document.querySelector('ul.search');
+
+  if (searchResults) {
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        const result = mutation.addedNodes?.[0] as Element | null;
+
+        if (result) {
+          const icon = (
+            <svg
+              width="13"
+              height="16"
+              viewBox="0 0 13 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1.22656H7L12 6.22656V15.2266H1V1.22656Z"
+                stroke="black"
+              />
+              <path d="M6.5 0.726562V6.72656H12.5" stroke="black" />
+            </svg>
+          );
+          const iconContainer = document.createElement('span');
+
+          render(icon, iconContainer);
+          result.prepend(iconContainer);
+        }
+      }
+    });
+
+    observer.observe(searchResults, { childList: true });
+  }
 }
 
 function main() {
-  const calendarNodes = Array.from(
-    document.querySelectorAll('[data-component=calendar]'),
-  );
-
-  calendarNodes.forEach((node) => render(<Calendar />, node));
-
-  highlightActiveLink();
+  highlightActivePageTocItem();
   fixCodeLinks();
   addNapariFooterItemClass();
   addInPageTocInteractivity();
   addVersionIcons();
+  replaceSidebarIcons();
+  renderCalendars();
+  // Wrap in setTimeout so that it runs after sphinx search JS.
+  setTimeout(fixSearchContainer);
+  setTimeout(fixSearchText);
+  setTimeout(fixSearchResults);
 }
 
 document.addEventListener('DOMContentLoaded', main);
