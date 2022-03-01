@@ -8,7 +8,7 @@
 <meta content="reStructuredText, demonstration, demo, parser" name="keywords" />
 <meta content="A demonstration of the reStructuredText markup language, containing examples of all basic constructs and many advanced constructs." lang="en" name="description" xml:lang="en" />
 
-    <title>Paragraph Level Markup &#8212; napari Sphinx Theme 0.0.2 documentation</title>
+    <title>Paragraph Level Markup &#8212; napari Sphinx Theme 0.0.3 documentation</title>
   <link rel="stylesheet" href="../../_static/fa/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/webfonts/fa-brands-400.woff2">
@@ -16,7 +16,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/napari-sphinx-theme.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -109,7 +110,7 @@
       <div class="navbar-end-item">
         <div class="dropdown" id="version_switcher">
     <button type="button" class="btn btn-primary btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
-        <span>version <span id="version_switcher_button_text">0.0.2</span></span>
+        <span>version <span id="version_switcher_button_text">0.0.3</span></span>
 
         <svg class="version-switcher-chevron" width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.27197 1.5L8.34304 8.57107L15.4141 1.5" stroke="black" stroke-width="2"/>
@@ -122,7 +123,7 @@
 
 <!-- NOTE: this JS must live here (not in our global JS file) because it relies
      on being processed by Jinja before it is run (specifically for replacing
-     variables demo/kitchen-sink/paragraph-markup and {'json_url': '/napari-sphinx-theme/_static/switcher.json', 'url_template': 'http://localhost:3000/?version={version}', 'version_match': '0.0.2'}.
+     variables demo/kitchen-sink/paragraph-markup and {'json_url': '/napari-sphinx-theme/_static/switcher.json', 'url_template': 'http://localhost:3000/?version={version}', 'version_match': '0.0.3'}.
 -->
 
 <script type="text/javascript">
@@ -180,10 +181,10 @@ function checkPageExistsAndRedirect(event) {
             node.onclick = checkPageExistsAndRedirect;
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.0.2 variable.
+            // this version, rather than using sphinx's 0.0.3 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
-            if (entry.version == "0.0.2") {
+            if (entry.version == "0.0.3") {
                 node.classList.add("active");
                 $("#version_switcher_button_text").text(entry.name);
                 // Add extra class to the button for the selected entry
@@ -839,7 +840,7 @@ own it, and what it is too.</p>
 <section id="code-blocks">
 <h3>Code Blocks<a class="headerlink" href="#code-blocks" title="Permalink to this headline">¶</a></h3>
 <pre class="literal-block"># parsed-literal test
-curl -O <a class="reference external" href="http://someurl/release">http://someurl/release</a>-0.0.2.tar-gz</pre>
+curl -O <a class="reference external" href="http://someurl/release">http://someurl/release</a>-0.0.3.tar-gz</pre>
 <div class="literal-block-wrapper docutils container" id="id22">
 <div class="code-block-caption"><span class="caption-text">Code Blocks can have captions.</span><a class="headerlink" href="#id22" title="Permalink to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>

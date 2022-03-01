@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <meta content="Top-level documentation for pydata-sphinx theme, with links to the rest of the site." lang="en" name="description" xml:lang="en" />
 
-    <title>The PyData Sphinx Theme &#8212; napari Sphinx Theme 0.0.2 documentation</title>
+    <title>The napari Sphinx Theme &#8212; napari Sphinx Theme 0.0.3 documentation</title>
   <link rel="stylesheet" href="_static/fa/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/webfonts/fa-brands-400.woff2">
@@ -15,7 +15,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/napari-sphinx-theme.css" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
@@ -106,7 +107,7 @@
       <div class="navbar-end-item">
         <div class="dropdown" id="version_switcher">
     <button type="button" class="btn btn-primary btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
-        <span>version <span id="version_switcher_button_text">0.0.2</span></span>
+        <span>version <span id="version_switcher_button_text">0.0.3</span></span>
 
         <svg class="version-switcher-chevron" width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.27197 1.5L8.34304 8.57107L15.4141 1.5" stroke="black" stroke-width="2"/>
@@ -119,7 +120,7 @@
 
 <!-- NOTE: this JS must live here (not in our global JS file) because it relies
      on being processed by Jinja before it is run (specifically for replacing
-     variables index and {'json_url': '/napari-sphinx-theme/_static/switcher.json', 'url_template': 'http://localhost:3000/?version={version}', 'version_match': '0.0.2'}.
+     variables index and {'json_url': '/napari-sphinx-theme/_static/switcher.json', 'url_template': 'http://localhost:3000/?version={version}', 'version_match': '0.0.3'}.
 -->
 
 <script type="text/javascript">
@@ -177,10 +178,10 @@ function checkPageExistsAndRedirect(event) {
             node.onclick = checkPageExistsAndRedirect;
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.0.2 variable.
+            // this version, rather than using sphinx's 0.0.3 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
-            if (entry.version == "0.0.2") {
+            if (entry.version == "0.0.3") {
                 node.classList.add("active");
                 $("#version_switcher_button_text").text(entry.name);
                 // Add extra class to the button for the selected entry
@@ -300,26 +301,15 @@ function checkPageExistsAndRedirect(event) {
             
             <div>
               
-  <section id="the-pydata-sphinx-theme">
-<h1>The PyData Sphinx Theme<a class="headerlink" href="#the-pydata-sphinx-theme" title="Permalink to this headline">¶</a></h1>
-<p>This is a simple, Bootstrap-based Sphinx theme from the PyData community. This
-site is a guide for using the theme, and a demo for how it looks with various
-elements.</p>
-<p>Other sites that are using this theme:</p>
-<ul class="simple">
-<li><p>Binder: <a class="reference external" href="https://docs.mybinder.org/">https://docs.mybinder.org/</a></p></li>
-<li><p>Bokeh: <a class="reference external" href="https://docs.bokeh.org/en/latest/">https://docs.bokeh.org/en/latest/</a></p></li>
-<li><p>JupyterLab: <a class="reference external" href="https://jupyterlab.readthedocs.io/en/latest/">https://jupyterlab.readthedocs.io/en/latest/</a></p></li>
-<li><p>JupyterHub: <a class="reference external" href="https://jupyterhub.readthedocs.io/en/latest/">https://jupyterhub.readthedocs.io/en/latest/</a></p></li>
-<li><p>Matplotlib: <a class="reference external" href="https://matplotlib.org/stable/">https://matplotlib.org/stable/</a></p></li>
-<li><p>NetworkX: <a class="reference external" href="https://networkx.org/documentation/latest/">https://networkx.org/documentation/latest/</a></p></li>
-<li><p>NumPy: <a class="reference external" href="https://numpy.org/doc/stable/">https://numpy.org/doc/stable/</a></p></li>
-<li><p>Pandas: <a class="reference external" href="https://pandas.pydata.org/docs/">https://pandas.pydata.org/docs/</a></p></li>
-<li><p>SciPy: <a class="reference external" href="https://scipy.github.io/devdocs/">https://scipy.github.io/devdocs/</a></p></li>
-<li><p>JupyterHub and Binder: <a class="reference external" href="https://docs.mybinder.org/">https://docs.mybinder.org/</a>, <a class="reference external" href="http://z2jh.jupyter.org/en/latest/">http://z2jh.jupyter.org/en/latest/</a>, <a class="reference external" href="https://repo2docker.readthedocs.io/en/latest/">https://repo2docker.readthedocs.io/en/latest/</a>, <a class="reference external" href="https://jupyterhub-team-compass.readthedocs.io/en/latest/">https://jupyterhub-team-compass.readthedocs.io/en/latest/</a></p></li>
-<li><p>Jupyter Book beta version uses an extension of this theme: <a class="reference external" href="https://beta.jupyterbook.org">https://beta.jupyterbook.org</a></p></li>
-<li><p>Fairlearn: <a class="reference external" href="https://fairlearn.org/main/about/">https://fairlearn.org/main/about/</a></p></li>
-</ul>
+  <section id="the-napari-sphinx-theme">
+<h1>The napari Sphinx Theme<a class="headerlink" href="#the-napari-sphinx-theme" title="Permalink to this headline">¶</a></h1>
+<p>A Sphinx theme fork of the awesome
+<a class="reference external" href="https://github.com/pydata/pydata-sphinx-theme">pydata-sphinx-theme</a>
+with the look and feel of napari.</p>
+<p>This is currently a work-in-progress, but since it’s a fork of pydata, all the
+existing configurations and affordances are already available. Check out the
+<a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/latest/">PyData Docs</a>
+for more info.</p>
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Theme Documentation</span></p>
 <ul>
