@@ -31,7 +31,7 @@ export function Calendar({ filter }: Props) {
           </CopyCalendarButton>
         </div>
 
-        <div className="tw-flex tw-flex-col tw-flex-1 tw-items-stretch tw-border tw-border-napari-light">
+        <div className="tw-flex tw-flex-col tw-flex-1 tw-items-stretch napari-calendar__container">
           <CalendarNavigation />
 
           <div className="screen-900:tw-hidden">

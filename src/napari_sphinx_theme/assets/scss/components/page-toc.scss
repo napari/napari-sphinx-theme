@@ -50,8 +50,18 @@
   @apply tw-p-0 tw-border-none tw-uppercase tw-text-sm tw-font-semibold;
 
   color: #000 !important;
+  margin: 0 !important;
 }
 
 .bd-toc .nav .nav.visible {
   display: block;
+}
+
+.editthispage {
+  @apply tw-border-none tw-p-0 tw-text-black;
+
+  a {
+    @apply tw-no-underline tw-text-sm tw-font-semibold;
+    @apply tw-flex tw-items-center tw-space-x-2;
+  }
 }

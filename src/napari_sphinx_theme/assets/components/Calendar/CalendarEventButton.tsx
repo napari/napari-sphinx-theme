@@ -27,7 +27,7 @@ export function CalendarEventButton({ date, event, width }: Props) {
   useClickAway(popupRef, onClose);
 
   return (
-    <li className="tw-list-none" style={{ width }}>
+    <li className="tw-list-none tw-p-0" style={{ width }}>
       <CalendarEventPopup
         anchorEl={eventButtonRef.current}
         event={event}
@@ -37,7 +37,7 @@ export function CalendarEventButton({ date, event, width }: Props) {
       />
 
       <button
-        className="tw-flex tw-space-x-1 screen-900:tw-bg-napari-light tw-border-none"
+        className="tw-flex tw-w-full tw-space-x-1 !tw-bg-[transparent] screen-900:tw-bg-napari-light tw-border-none"
         style={{ width }}
         onClick={(clickEvent) => {
           clickEvent.preventDefault();
@@ -49,7 +49,7 @@ export function CalendarEventButton({ date, event, width }: Props) {
         <div className="tw-ml-1 tw-flex tw-space-x-1">
           <span className="tw-font-semibold">{formatEventTime(date)}</span>
 
-          <span className="tw-overflow-ellipsis tw-flex-nowrap">
+          <span className="tw-overflow-ellipsis tw-flex-nowrap tw-text-left">
             {event.title}
           </span>
         </div>
