@@ -37,7 +37,7 @@ export function CalendarEventButton({ date, event, width }: Props) {
       />
 
       <button
-        className="tw-flex tw-w-full tw-space-x-1 !tw-bg-[transparent] screen-900:tw-bg-napari-light tw-border-none"
+        className="tw-flex tw-w-full tw-space-x-1 !tw-bg-[transparent] screen-900:!tw-bg-napari-light tw-border-none"
         style={{ width }}
         onClick={(clickEvent) => {
           clickEvent.preventDefault();
