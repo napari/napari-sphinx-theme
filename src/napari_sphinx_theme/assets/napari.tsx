@@ -1,11 +1,22 @@
 import '@/scss/napari.scss';
 import '@/utils/setupDayjsPlugins';
 
+import StylesProvider from '@material-ui/styles/StylesProvider';
+import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import { ReactNode } from 'react';
 import { render } from 'react-dom';
 
 import { Calendar } from '@/components/Calendar';
 import { Search } from '@/components/icons';
+import { theme } from '@/theme';
+
+function MaterialUIProvider({ children }: { children: ReactNode }) {
+  return (
+    <ThemeProvider theme={theme}>
+      <StylesProvider injectFirst>{children}</StylesProvider>
+    </ThemeProvider>
+  );
+}
 
 function setParentTocVisible(link: Element | null, open: boolean) {
   if (!link) return;
@@ -298,7 +309,12 @@ function renderCalendars() {
   );
 
   calendarNodes.forEach((node) =>
-    render(<Calendar filter={node.classList.contains('show-filters')} />, node),
+    render(
+      <MaterialUIProvider>
+        <Calendar filter={node.classList.contains('show-filters')} />
+      </MaterialUIProvider>,
+      node,
+    ),
   );
 }
 

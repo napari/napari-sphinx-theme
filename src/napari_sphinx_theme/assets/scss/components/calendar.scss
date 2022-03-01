@@ -117,7 +117,11 @@ $breakpoint: theme('screens.screen-495');
 }
 
 .napari-calendar {
-  @apply tw-font-barlow;
+  @apply tw-font-barlow tw-text-black;
+
+  &__container {
+    border: 1px solid theme('colors.napari-primary');
+  }
 
   &__popup {
     @include popup-width(50px);
@@ -133,7 +137,7 @@ $breakpoint: theme('screens.screen-495');
 
   &__day-list {
     ul > li {
-      @apply tw-p-0 tw-pl-3;
+      @apply tw-p-0;
 
       &::before {
         @apply tw-hidden;

@@ -41,7 +41,7 @@ function CalendarDayList({ date, events }: CalendarDayListProps) {
         </span>
       </div>
 
-      <ul className="tw-my-6 tw-space-y-1">
+      <ul className="tw-mt-4 tw-mb-6 tw-space-y-1 tw-p-0">
         {events.map((event) => (
           <CalendarEventButton
             date={event.start}

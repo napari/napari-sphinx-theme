@@ -160,7 +160,7 @@ export const CalendarEventPopup = forwardRef<HTMLDivElement, Props>(
 
             <h2 className="tw-text-2xl tw-font-bold">{event.title}</h2>
 
-            <ul className="tw-space-y-2">
+            <ul className="tw-space-y-2 tw-p-0">
               {metadata
                 .filter(({ label }) => label)
                 .map((metadataProps) => (
