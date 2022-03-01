@@ -200,13 +200,12 @@ function checkPageExistsAndRedirect(event) {
     </nav>
     
 
-    <div class="container-xl">
-      <div class="row">
+    <div class="napari-page">
+        
           
-            
-            <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">
-              <div class="sidebar-start-items"><form
+          <!-- Only show if we have sidebars configured, else just a small margin  -->
+          <div class="bd-sidebar">
+            <div class="sidebar-start-items"><form
   class="search"
   action="../../search.html"
   method="get"
@@ -471,27 +470,27 @@ function checkPageExistsAndRedirect(event) {
 
   </div>
 </nav>
-              </div>
-              <div class="sidebar-end-items">
-              </div>
             </div>
-            
+            <div class="sidebar-end-items">
+            </div>
+          </div>
           
+        
 
+        
+        <div class="bd-toc">
           
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
             
+            <div class="toc-item">
               
-              <div class="toc-item">
-                
 
 <nav id="bd-toc-nav">
     
 </nav>
-              </div>
+            </div>
+            
+            <div class="toc-item">
               
-              <div class="toc-item">
-                
 
 <div class="tocsection editthispage">
     <a href="https://github.com/pandas-dev/pydata-sphinx-theme/edit/master/docs/demo/generated/pandas.Series.array.rst">
@@ -520,20 +519,20 @@ function checkPageExistsAndRedirect(event) {
     </a>
 </div>
 
-              </div>
-              
+            </div>
             
-          </div>
           
+        </div>
+        
 
+        
+        
           
-          
+        
+        <main class="col-md-9 col-xl-7 bd-content" role="main">
             
-          
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+            <div>
               
-              <div>
-                
   <section id="pandas-series-array">
 <h1>pandas.Series.array<a class="headerlink" href="#pandas-series-array" title="Permalink to this headline">¶</a></h1>
 <dl class="py property">
@@ -626,10 +625,10 @@ is returned</p>
 </section>
 
 
-              </div>
-              
-              
-              <!-- Previous / next buttons -->
+            </div>
+            
+            
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="pandas.DataFrame.groupby.html" title="previous page">
         <svg
@@ -671,11 +670,10 @@ is returned</p>
     </svg>
     </a>
 </div>
-              
-          </main>
-          
+            
+        </main>
+        
 
-      </div>
     </div>
 
     <script src="../../_static/scripts/napari-sphinx-theme.js"></script><footer class="napari-footer">

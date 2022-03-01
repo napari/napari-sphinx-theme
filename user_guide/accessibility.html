@@ -201,13 +201,12 @@ function checkPageExistsAndRedirect(event) {
     </nav>
     
 
-    <div class="container-xl">
-      <div class="row">
+    <div class="napari-page">
+        
           
-            
-            <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">
-              <div class="sidebar-start-items"><form
+          <!-- Only show if we have sidebars configured, else just a small margin  -->
+          <div class="bd-sidebar">
+            <div class="sidebar-start-items"><form
   class="search"
   action="../search.html"
   method="get"
@@ -266,19 +265,19 @@ function checkPageExistsAndRedirect(event) {
 
   </div>
 </nav>
-              </div>
-              <div class="sidebar-end-items">
-              </div>
             </div>
-            
+            <div class="sidebar-end-items">
+            </div>
+          </div>
           
+        
 
+        
+        <div class="bd-toc">
           
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
             
+            <div class="toc-item">
               
-              <div class="toc-item">
-                
 <div class="tocsection onthispage mt-5 pt-1 pb-3">
     On this page
 </div>
@@ -349,10 +348,10 @@ function checkPageExistsAndRedirect(event) {
 </ul>
 
 </nav>
-              </div>
+            </div>
+            
+            <div class="toc-item">
               
-              <div class="toc-item">
-                
 
 <div class="tocsection editthispage">
     <a href="https://github.com/pandas-dev/pydata-sphinx-theme/edit/master/docs/user_guide/accessibility.rst">
@@ -381,20 +380,20 @@ function checkPageExistsAndRedirect(event) {
     </a>
 </div>
 
-              </div>
-              
+            </div>
             
-          </div>
           
+        </div>
+        
 
+        
+        
           
-          
+        
+        <main class="col-md-9 col-xl-7 bd-content" role="main">
             
-          
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+            <div>
               
-              <div>
-                
   <span class="target" id="accessibility"></span><section id="id1">
 <h1>Accessibility<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>Creating and publishing content that does not exclude audiences with limited abilities
@@ -515,10 +514,10 @@ custom runners which:</p>
 </section>
 
 
-              </div>
-              
-              
-              <!-- Previous / next buttons -->
+            </div>
+            
+            
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="customizing.html" title="previous page">
         <svg
@@ -560,11 +559,10 @@ custom runners which:</p>
     </svg>
     </a>
 </div>
-              
-          </main>
-          
+            
+        </main>
+        
 
-      </div>
     </div>
 
     <script src="../_static/scripts/napari-sphinx-theme.js"></script><footer class="napari-footer">

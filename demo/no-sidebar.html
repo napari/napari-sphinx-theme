@@ -200,28 +200,27 @@ function checkPageExistsAndRedirect(event) {
     </nav>
     
 
-    <div class="container-xl">
-      <div class="row">
+    <div class="napari-page">
+        
           
-            
-            <div class="col-12 col-md-1 col-xl-2 bd-sidebar no-sidebar"></div>
-            
+          <div class="bd-sidebar no-sidebar"></div>
           
+        
 
+        
+        <div class="bd-toc">
           
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
             
+            <div class="toc-item">
               
-              <div class="toc-item">
-                
 
 <nav id="bd-toc-nav">
     
 </nav>
-              </div>
+            </div>
+            
+            <div class="toc-item">
               
-              <div class="toc-item">
-                
 
 <div class="tocsection editthispage">
     <a href="https://github.com/pandas-dev/pydata-sphinx-theme/edit/master/docs/demo/no-sidebar.md">
@@ -250,20 +249,20 @@ function checkPageExistsAndRedirect(event) {
     </a>
 </div>
 
-              </div>
-              
+            </div>
             
-          </div>
           
+        </div>
+        
 
+        
+        
           
-          
+        
+        <main class="col-md-11 col-xl-8 bd-content" role="main">
             
-          
-          <main class="col-12 col-md-11 col-xl-8 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+            <div>
               
-              <div>
-                
   <section id="test-of-no-sidebar">
 <h1><span class="section-number">1. </span>Test of no sidebar<a class="headerlink" href="#test-of-no-sidebar" title="Permalink to this headline">¶</a></h1>
 <p>This page shows off what the documentation looks like when you explicitly tell Sphinx not to include any sidebars via the following configuration:</p>
@@ -276,10 +275,10 @@ function checkPageExistsAndRedirect(event) {
 </section>
 
 
-              </div>
-              
-              
-              <!-- Previous / next buttons -->
+            </div>
+            
+            
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="example_pandas.html" title="previous page">
         <svg
@@ -321,11 +320,10 @@ function checkPageExistsAndRedirect(event) {
     </svg>
     </a>
 </div>
-              
-          </main>
-          
+            
+        </main>
+        
 
-      </div>
     </div>
 
     <script src="../_static/scripts/napari-sphinx-theme.js"></script><footer class="napari-footer">

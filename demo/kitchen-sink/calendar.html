@@ -200,20 +200,19 @@ function checkPageExistsAndRedirect(event) {
     </nav>
     
 
-    <div class="container-xl">
-      <div class="row">
+    <div class="napari-page">
+        
           
-            
-            <div class="col-12 col-md-1 col-xl-2 bd-sidebar no-sidebar"></div>
-            
+          <div class="bd-sidebar no-sidebar"></div>
           
+        
 
+        
+        <div class="bd-toc">
           
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
             
+            <div class="toc-item">
               
-              <div class="toc-item">
-                
 <div class="tocsection onthispage mt-5 pt-1 pb-3">
     On this page
 </div>
@@ -228,10 +227,10 @@ function checkPageExistsAndRedirect(event) {
 </ul>
 
 </nav>
-              </div>
+            </div>
+            
+            <div class="toc-item">
               
-              <div class="toc-item">
-                
 
 <div class="tocsection editthispage">
     <a href="https://github.com/pandas-dev/pydata-sphinx-theme/edit/master/docs/demo/kitchen-sink/calendar.rst">
@@ -260,20 +259,20 @@ function checkPageExistsAndRedirect(event) {
     </a>
 </div>
 
-              </div>
-              
+            </div>
             
-          </div>
           
+        </div>
+        
 
+        
+        
           
-          
+        
+        <main class="col-md-11 col-xl-8 bd-content" role="main">
             
-          
-          <main class="col-12 col-md-11 col-xl-8 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+            <div>
               
-              <div>
-                
   <section id="calendar">
 <h1>Calendar<a class="headerlink" href="#calendar" title="Permalink to this headline">¶</a></h1>
 <p>The napari calendar is an HTML element you can include anywhere using the
@@ -306,10 +305,10 @@ meetings, but in the future we could make it configurable.</p>
 </section>
 
 
-              </div>
-              
-              
-              <!-- Previous / next buttons -->
+            </div>
+            
+            
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="headings.html" title="previous page">
         <svg
@@ -351,11 +350,10 @@ meetings, but in the future we could make it configurable.</p>
     </svg>
     </a>
 </div>
-              
-          </main>
-          
+            
+        </main>
+        
 
-      </div>
     </div>
 
     <script src="../../_static/scripts/napari-sphinx-theme.js"></script><footer class="napari-footer">
