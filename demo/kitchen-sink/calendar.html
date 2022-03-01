@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Calendar &#8212; napari Sphinx Theme 0.0.3 documentation</title>
+    <title>Calendar &#8212; napari Sphinx Theme 0.0.4 documentation</title>
   <link rel="stylesheet" href="../../_static/fa/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/webfonts/fa-brands-400.woff2">
@@ -107,7 +107,7 @@
       <div class="navbar-end-item">
         <div class="dropdown" id="version_switcher">
     <button type="button" class="btn btn-primary btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
-        <span>version <span id="version_switcher_button_text">0.0.3</span></span>
+        <span>version <span id="version_switcher_button_text">0.0.4</span></span>
 
         <svg class="version-switcher-chevron" width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.27197 1.5L8.34304 8.57107L15.4141 1.5" stroke="black" stroke-width="2"/>
@@ -120,7 +120,7 @@
 
 <!-- NOTE: this JS must live here (not in our global JS file) because it relies
      on being processed by Jinja before it is run (specifically for replacing
-     variables demo/kitchen-sink/calendar and {'json_url': '/napari-sphinx-theme/_static/switcher.json', 'url_template': 'http://localhost:3000/?version={version}', 'version_match': '0.0.3'}.
+     variables demo/kitchen-sink/calendar and {'json_url': '/napari-sphinx-theme/_static/switcher.json', 'url_template': 'http://localhost:3000/?version={version}', 'version_match': '0.0.4'}.
 -->
 
 <script type="text/javascript">
@@ -178,10 +178,10 @@ function checkPageExistsAndRedirect(event) {
             node.onclick = checkPageExistsAndRedirect;
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.0.3 variable.
+            // this version, rather than using sphinx's 0.0.4 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
-            if (entry.version == "0.0.3") {
+            if (entry.version == "0.0.4") {
                 node.classList.add("active");
                 $("#version_switcher_button_text").text(entry.name);
                 // Add extra class to the button for the selected entry
