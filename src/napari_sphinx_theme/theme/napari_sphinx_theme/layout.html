@@ -46,59 +46,57 @@
     </nav>
     {% endblock %}
 
-    <div class="container-xl">
-      <div class="row">
-          {% block docs_sidebar %}
-            {% if sidebars %}
-            <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">
-              <div class="sidebar-start-items">
-                {%- for sidebartemplate in sidebars %}
-                {%- include sidebartemplate %}
-                {%- endfor %}
-              </div>
-              <div class="sidebar-end-items">
-                {%- for leftsidebartemplate in theme_left_sidebar_end %}
-                {%- include leftsidebartemplate %}
-                {%- endfor %}
-              </div>
-            </div>
-            {% else %}
-            <div class="col-12 col-md-1 col-xl-2 bd-sidebar no-sidebar"></div>
-            {% endif %}
-          {% endblock %}
-
-          {% block docs_toc %}
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-            {% if meta is defined and not (meta is not none and 'notoc' in meta) %}
-              {% for toc_item in theme_page_sidebar_items %}
-              <div class="toc-item">
-                {% include toc_item %}
-              </div>
-              {% endfor %}
-            {% endif %}
-          </div>
-          {% endblock %}
-
-          {% block docs_main %}
+    <div class="napari-page">
+        {% block docs_sidebar %}
           {% if sidebars %}
-            {% set content_col_class = "col-md-9 col-xl-7" %}
+          <!-- Only show if we have sidebars configured, else just a small margin  -->
+          <div class="bd-sidebar">
+            <div class="sidebar-start-items">
+              {%- for sidebartemplate in sidebars %}
+              {%- include sidebartemplate %}
+              {%- endfor %}
+            </div>
+            <div class="sidebar-end-items">
+              {%- for leftsidebartemplate in theme_left_sidebar_end %}
+              {%- include leftsidebartemplate %}
+              {%- endfor %}
+            </div>
+          </div>
           {% else %}
-            {% set content_col_class = "col-md-11 col-xl-8" %}
+          <div class="bd-sidebar no-sidebar"></div>
           {% endif %}
-          <main class="col-12 {{ content_col_class }} py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
-              {% block docs_body %}
-              <div>
-                {% block body %} {% endblock %}
-              </div>
-              {% endblock %}
-              {% if theme_show_prev_next %}
-              {% include "prev-next.html" %}
-              {% endif %}
-          </main>
-          {% endblock %}
+        {% endblock %}
 
-      </div>
+        {% block docs_toc %}
+        <div class="bd-toc">
+          {% if meta is defined and not (meta is not none and 'notoc' in meta) %}
+            {% for toc_item in theme_page_sidebar_items %}
+            <div class="toc-item">
+              {% include toc_item %}
+            </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+        {% endblock %}
+
+        {% block docs_main %}
+        {% if sidebars %}
+          {% set content_col_class = "col-md-9 col-xl-7" %}
+        {% else %}
+          {% set content_col_class = "col-md-11 col-xl-8" %}
+        {% endif %}
+        <main class="{{ content_col_class }} bd-content" role="main">
+            {% block docs_body %}
+            <div>
+              {% block body %} {% endblock %}
+            </div>
+            {% endblock %}
+            {% if theme_show_prev_next %}
+            {% include "prev-next.html" %}
+            {% endif %}
+        </main>
+        {% endblock %}
+
     </div>
 
     <script src="{{ pathto('_static/scripts/napari-sphinx-theme.js', 1) }}"></script>

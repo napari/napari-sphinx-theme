@@ -415,6 +415,8 @@ aside.sidebar {
 }
 
 .editthispage {
+  @apply tw-border-none;
+
   a {
     @apply tw-no-underline tw-text-sm tw-font-semibold;
     @apply tw-flex tw-items-center tw-space-x-2;
@@ -520,4 +522,51 @@ ul.search {
 
 span.highlighted {
   @apply tw-bg-napari-light tw-p-px;
+}
+
+.napari-page {
+  @apply tw-grid tw-justify-center tw-gap-6 tw-pt-32;
+
+  grid-template-columns: 1fr;
+
+  @media (min-width: 875px) {
+    grid-template-columns: 775px;
+  }
+
+  @media (min-width: 1150px) {
+    @apply tw-gap-12;
+    grid-template-columns: 225px 775px;
+  }
+
+  @media (min-width: 1425px) {
+    grid-template-columns: 225px 775px 225px;
+  }
+
+  .bd-sidebar,
+  .bd-toc,
+  .bd-content {
+    max-width: unset;
+  }
+
+  .bd-sidebar {
+    @apply tw-border-none tw-pt-24 tw-px-6 tw-static tw-h-max;
+
+    @media (min-width: 1150px) {
+      @apply tw-block tw-sticky tw-pt-12 tw-px-2;
+    }
+  }
+
+  .bd-content {
+    @apply tw-w-full;
+
+    padding: 0 to-rem(25px) !important;
+  }
+
+  .bd-toc {
+    @apply tw-hidden tw-col-start-3;
+
+    @media (min-width: 1425px) {
+      @apply tw-block;
+    }
+  }
 }
