@@ -127,6 +127,7 @@ async function getAllFiles(dir) {
 }
 
 const THEME_SRC_DIR = resolve(__dirname, '../src');
+const THEME_DOCS_DIR = resolve(__dirname, '../docs');
 const THEME_HASH_FILE = resolve(__dirname, '../dist/theme-build-hash');
 
 /**
@@ -135,7 +136,9 @@ const THEME_HASH_FILE = resolve(__dirname, '../dist/theme-build-hash');
  * @returns The theme hash.
  */
 async function getThemeHash() {
-  const files = await getAllFiles(THEME_SRC_DIR);
+  const files = (
+    await Promise.all([getAllFiles(THEME_SRC_DIR), getAllFiles(THEME_DOCS_DIR)])
+  ).flat();
   const filesToHash = files.filter(
     (file) => !file.includes('/assets/') && !file.includes('/static/'),
   );
