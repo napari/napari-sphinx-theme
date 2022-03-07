@@ -28,12 +28,16 @@
 
   .nav-item {
     a {
-      @apply tw-no-underline tw-whitespace-nowrap;
+      @apply tw-no-underline;
 
       color: #000 !important;
       font-size: to-rem(17px);
       padding: to-rem(16px) 0 !important;
       font-weight: 500 !important;
+
+      @media (min-width: 960px) {
+        @apply tw-text-center;
+      }
     }
 
     &.active a {
@@ -63,12 +67,35 @@
 
 #version_switcher {
   button {
-    @apply tw-border-none tw-text-black tw-font-medium tw-text-sm tw-p-0 tw-pt-2;
+    @apply tw-border-none tw-text-black tw-font-medium tw-text-sm tw-p-0 tw-pt-3;
+    @apply tw-flex tw-items-center;
 
     background: none !important;
 
     &::after {
       display: none;
+    }
+
+    @media (min-width: 960px) {
+      @apply tw-pt-0;
+    }
+  }
+
+  .version-switcher-chevron {
+    margin-left: to-rem(10px);
+  }
+
+  &.show .version-switcher-chevron {
+    transform: rotate(180deg);
+  }
+
+  a {
+    @apply tw-no-underline tw-text-black;
+
+    font-size: to-rem(9px);
+
+    @screen screen-495 {
+      font-size: to-rem(14px);
     }
   }
 }
