@@ -13,7 +13,17 @@
   }
 
   .navbar-brand {
-    @apply tw-font-bold tw-text-2xl tw-leading-9 tw-no-underline;
+    @apply tw-font-bold tw-no-underline;
+
+    p.title {
+      font-size: to-rem(16px);
+      line-height: 125%;
+
+      @screen screen-495 {
+        font-size: to-rem(24px);
+        line-height: 150%;
+      }
+    }
   }
 
   .nav-item {
