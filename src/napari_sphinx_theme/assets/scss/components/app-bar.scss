@@ -1,11 +1,11 @@
 @import '@/scss/utils';
 
 .navbar {
-  &.navbar-light {
-    &,
-    &-light {
-      background-color: theme('colors.napari-primary') !important;
-    }
+  &,
+  &-light {
+    @apply tw-shadow-none;
+
+    background-color: theme('colors.napari-primary') !important;
   }
 
   .navbar-toggler {
@@ -28,7 +28,7 @@
 
   .nav-item {
     a {
-      @apply tw-no-underline;
+      @apply tw-no-underline tw-whitespace-nowrap;
 
       color: #000 !important;
       font-size: to-rem(17px);
@@ -63,7 +63,7 @@
 
 #version_switcher {
   button {
-    @apply tw-border-none tw-text-black tw-font-medium tw-text-sm;
+    @apply tw-border-none tw-text-black tw-font-medium tw-text-sm tw-p-0 tw-pt-2;
 
     background: none !important;
 
@@ -82,5 +82,17 @@
     &:first-child {
       @apply tw-border-t;
     }
+  }
+}
+
+.navbar-collapse {
+  padding: 0 to-rem(25px) to-rem(25px);
+
+  @screen screen-495 {
+    padding: 0 to-rem(50px) to-rem(50px);
+  }
+
+  @media (min-width: 960px) {
+    padding: 0 !important;
   }
 }

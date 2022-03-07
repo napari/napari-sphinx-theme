@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 import { render } from 'react-dom';
 
 import { Calendar } from '@/components/Calendar';
-import { Search } from '@/components/icons';
+import { Close, Menu, Search } from '@/components/icons';
 import { theme } from '@/theme';
 
 function MaterialUIProvider({ children }: { children: ReactNode }) {
@@ -427,6 +427,30 @@ function fixSearchResults() {
   }
 }
 
+function renderAppBarMenuButton() {
+  const menuButton = document.querySelector('.navbar-toggler');
+
+  if (menuButton) {
+    render(<Menu />, menuButton);
+
+    const observer = new MutationObserver((mutations) =>
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          if (menuButton.classList.contains('collapsed')) {
+            render(<Menu />, menuButton);
+          } else {
+            render(<Close />, menuButton);
+          }
+        }
+      }),
+    );
+
+    observer.observe(menuButton, {
+      attributes: true,
+    });
+  }
+}
+
 function main() {
   highlightActivePageTocItem();
   fixCodeLinks();
@@ -435,6 +459,7 @@ function main() {
   addVersionIcons();
   replaceSidebarIcons();
   renderCalendars();
+  renderAppBarMenuButton();
   // Wrap in setTimeout so that it runs after sphinx search JS.
   setTimeout(fixSearchContainer);
   setTimeout(fixSearchText);
