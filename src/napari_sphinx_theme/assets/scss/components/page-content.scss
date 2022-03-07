@@ -605,3 +605,30 @@ ul.search {
 span.highlighted {
   @apply tw-bg-napari-light tw-p-px;
 }
+
+.highlight {
+  pre {
+    @apply tw-shadow-none tw-border-none tw-rounded-none tw-p-0;
+
+    padding-top: to-rem(25px);
+    margin-right: to-rem(25px);
+    padding-bottom: to-rem(25px);
+  }
+
+  .linenos {
+    @apply tw-text-napari-gray;
+
+    margin-left: to-rem(13px);
+    margin-right: to-rem(25px);
+  }
+
+  .hll {
+    @apply tw-bg-napari-light tw-pt-1;
+
+    min-height: to-rem(28px);
+  }
+
+  span {
+    font-size: to-rem(16px) !important;
+  }
+}
