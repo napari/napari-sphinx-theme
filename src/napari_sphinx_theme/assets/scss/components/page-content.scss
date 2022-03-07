@@ -400,13 +400,23 @@ dl {
   }
 }
 
-.versionadded,
-.versionchanged,
-.deprecated {
+div.versionadded,
+div.versionchanged,
+div.deprecated {
+  @apply tw-rounded-none;
   border: none !important;
+  padding: to-rem(25px) !important;
 
   p {
-    padding: to-rem(18px) to-rem(25px) !important;
+    @apply tw-font-medium;
+
+    padding: 0;
+    margin: 0 !important;
+    font-size: to-rem(9px);
+
+    @screen screen-495 {
+      font-size: to-rem(14px);
+    }
   }
 }
 
