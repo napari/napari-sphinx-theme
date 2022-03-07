@@ -6,6 +6,9 @@ form.search {
   input {
     @apply tw-border-none tw-flex-grow;
 
+    outline: none;
+    outline-offset: 0;
+
     &:focus {
       @apply tw-outline-napari-primary;
     }

@@ -34,6 +34,34 @@ span.guilabel {
 aside.sidebar {
   @apply tw-border-b tw-border-napari-primary;
   @apply tw-bg-napari-light;
+
+  padding: to-rem(8px) to-rem(12px);
+
+  @screen screen-495 {
+    padding: to-rem(20px) to-rem(25px);
+  }
+
+  p {
+    @apply tw-font-medium;
+
+    font-size: to-rem(9px);
+
+    @screen screen-495 {
+      font-size: to-rem(14px);
+    }
+
+    &.sidebar-title {
+      @apply tw-font-bold;
+
+      font-size: to-rem(11px) !important;
+      line-height: 175%;
+
+      @screen screen-495 {
+        font-size: to-rem(17px) !important;
+        line-height: 141%;
+      }
+    }
+  }
 }
 
 @for $i from 1 through 6 {
@@ -49,7 +77,7 @@ h1 {
   line-height: 130%;
   margin-bottom: to-rem(43px);
 
-  @media (min-width: 875px) {
+  @screen screen-495 {
     font-size: to-rem(35px);
     line-height: 125%;
   }
@@ -59,20 +87,20 @@ h2 {
   font-size: to-rem(16px);
   line-height: 125%;
 
-  @media (min-width: 875px) {
+  @screen screen-495 {
     font-size: to-rem(24px);
     line-height: 150%;
   }
 }
 
 h3,
-p.rubric,
-.topic-title {
-  font-size: to-rem(13px);
+p.rubric {
+  font-weight: 700 !important;
+  font-size: to-rem(13px) !important;
   line-height: 125%;
 
-  @media (min-width: 875px) {
-    font-size: to-rem(20px);
+  @screen screen-495 {
+    font-size: to-rem(20px) !important;
     line-height: 135%;
   }
 }
@@ -81,16 +109,21 @@ p.rubric {
   border-top: 1px solid black;
   border-bottom: none;
   padding-top: to-rem(15px);
+  font-size: to-rem(9px);
+
+  @screen screen-495 {
+    font-size: to-rem(14px);
+  }
 }
 
 h4,
 .sidebar-title,
 .sidebar .rubric {
-  font-size: to-rem(11px);
+  font-size: to-rem(11px) !important;
   line-height: 175%;
 
-  @media (min-width: 875px) {
-    font-size: to-rem(17px);
+  @screen screen-495 {
+    font-size: to-rem(17px) !important;
     line-height: 141%;
   }
 }
@@ -98,21 +131,11 @@ h4,
 h5 {
   font-size: to-rem(14px);
   line-height: 150%;
-
-  // @media (min-width: 875px) {
-  //   font-size: to-rem(14px);
-  //   line-height: 141%;
-  // }
 }
 
 h6 {
   font-size: to-rem(11px);
   line-height: to-rem(16.5px);
-
-  // @media (min-width: 875px) {
-  //   font-size: to-rem(17px);
-  //   line-height: 141%;
-  // }
 }
 
 p,
@@ -122,7 +145,7 @@ p,
   font-size: to-rem(11px);
   color: #000 !important;
 
-  @media (min-width: 875px) {
+  @screen screen-495 {
     font-size: to-rem(17px);
   }
 }
@@ -136,15 +159,23 @@ p.centered {
   @apply tw-text-center;
 }
 
+.prev-next-area {
+  @apply tw-flex tw-flex-auto tw-justify-between;
+
+  margin-bottom: to-rem(75px);
+}
+
 .left-prev,
 .right-next {
   .prev-next-title,
   .prev-next-subtitle {
+    @apply tw-m-0;
+
     line-height: to-rem(25.5px);
   }
 
   .prev-next-subtitle {
-    @apply tw-font-bold;
+    @apply tw-font-bold tw-m-0;
 
     font-size: to-rem(11px);
     text-transform: uppercase !important;
@@ -160,6 +191,28 @@ p.centered {
     .prev-next-title {
       text-decoration: none !important;
     }
+  }
+
+  svg {
+    @apply tw-min-w-min;
+  }
+}
+
+.left-prev {
+  transform: translateX(-45px);
+
+  .prev-next-info {
+    margin: 0 !important;
+    margin-left: to-rem(25px) !important;
+  }
+}
+
+.right-next {
+  transform: translateX(45px);
+
+  .prev-next-info {
+    margin: 0 !important;
+    margin-right: to-rem(25px) !important;
   }
 }
 
@@ -185,6 +238,7 @@ blockquote {
   }
 
   thead th {
+    border-top: none;
     border-bottom: 1px solid #000;
   }
 }
@@ -208,7 +262,7 @@ blockquote {
 
 .option-list {
   kbd {
-    @apply tw-font-normal tw-text-sm;
+    @apply tw-font-semibold tw-text-sm tw-rounded-none;
 
     background-color: #686868;
   }
@@ -220,7 +274,13 @@ blockquote {
 
     p {
       @apply tw-leading-normal;
+
+      font-size: to-rem(9px);
       margin-bottom: to-rem(15px);
+
+      @screen screen-495 {
+        font-size: to-rem(14px);
+      }
     }
   }
 }
@@ -247,10 +307,15 @@ main {
 }
 
 dl {
-  font-size: to-rem(14px) !important;
-
   dt {
-    @apply tw-font-semibold tw-leading-normal;
+    @apply tw-leading-normal;
+
+    font-size: to-rem(9px) !important;
+    font-weight: 600 !important;
+
+    @screen screen-495 {
+      font-size: to-rem(14px) !important;
+    }
   }
 
   dd {
@@ -258,7 +323,12 @@ dl {
     margin-left: to-rem(25px);
 
     p {
+      font-size: to-rem(9px) !important;
       margin-bottom: to-rem(25px);
+
+      @screen screen-495 {
+        font-size: to-rem(14px) !important;
+      }
     }
   }
 }
@@ -266,14 +336,14 @@ dl {
 .contents {
   border: none !important;
   border-left: 1px solid black !important;
-  background: none;
+  background: none !important;
   padding: 0 !important;
 
   ul {
     @apply tw-p-0;
 
     li {
-      @apply tw-list-none tw-m-0;
+      @apply tw-list-none tw-m-0 tw-my-3;
     }
 
     p {
@@ -370,13 +440,23 @@ dl {
   }
 }
 
-.versionadded,
-.versionchanged,
-.deprecated {
+div.versionadded,
+div.versionchanged,
+div.deprecated {
+  @apply tw-rounded-none;
   border: none !important;
+  padding: to-rem(25px) !important;
 
   p {
-    padding: to-rem(18px) to-rem(25px) !important;
+    @apply tw-font-medium;
+
+    padding: 0;
+    margin: 0 !important;
+    font-size: to-rem(9px);
+
+    @screen screen-495 {
+      font-size: to-rem(14px);
+    }
   }
 }
 
@@ -404,7 +484,19 @@ div.topic {
   @apply tw-border-none tw-bg-napari-hover-gray;
 
   p {
+    @apply tw-font-medium;
     font-size: to-rem(14px) !important;
+
+    &.topic-title {
+      font-weight: 700 !important;
+      font-size: to-rem(13px) !important;
+      line-height: 125%;
+
+      @screen screen-495 {
+        font-size: to-rem(20px) !important;
+        line-height: 135%;
+      }
+    }
   }
 }
 
@@ -512,4 +604,31 @@ ul.search {
 
 span.highlighted {
   @apply tw-bg-napari-light tw-p-px;
+}
+
+.highlight {
+  pre {
+    @apply tw-shadow-none tw-border-none tw-rounded-none tw-p-0;
+
+    padding-top: to-rem(25px);
+    margin-right: to-rem(25px);
+    padding-bottom: to-rem(25px);
+  }
+
+  .linenos {
+    @apply tw-text-napari-gray;
+
+    margin-left: to-rem(13px);
+    margin-right: to-rem(25px);
+  }
+
+  .hll {
+    @apply tw-bg-napari-light tw-pt-1;
+
+    min-height: to-rem(28px);
+  }
+
+  span {
+    font-size: to-rem(16px) !important;
+  }
 }
