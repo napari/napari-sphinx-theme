@@ -209,7 +209,7 @@ blockquote {
 
 .option-list {
   kbd {
-    @apply tw-font-normal tw-text-sm;
+    @apply tw-font-semibold tw-text-sm tw-rounded-none;
 
     background-color: #686868;
   }
@@ -221,7 +221,13 @@ blockquote {
 
     p {
       @apply tw-leading-normal;
+
+      font-size: to-rem(9px);
       margin-bottom: to-rem(15px);
+
+      @screen screen-495 {
+        font-size: to-rem(14px);
+      }
     }
   }
 }
