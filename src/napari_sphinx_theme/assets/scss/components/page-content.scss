@@ -159,15 +159,23 @@ p.centered {
   @apply tw-text-center;
 }
 
+.prev-next-area {
+  @apply tw-flex tw-flex-auto tw-justify-between;
+
+  margin-bottom: to-rem(75px);
+}
+
 .left-prev,
 .right-next {
   .prev-next-title,
   .prev-next-subtitle {
+    @apply tw-m-0;
+
     line-height: to-rem(25.5px);
   }
 
   .prev-next-subtitle {
-    @apply tw-font-bold;
+    @apply tw-font-bold tw-m-0;
 
     font-size: to-rem(11px);
     text-transform: uppercase !important;
@@ -183,6 +191,28 @@ p.centered {
     .prev-next-title {
       text-decoration: none !important;
     }
+  }
+
+  svg {
+    @apply tw-min-w-min;
+  }
+}
+
+.left-prev {
+  transform: translateX(-45px);
+
+  .prev-next-info {
+    margin: 0 !important;
+    margin-left: to-rem(25px) !important;
+  }
+}
+
+.right-next {
+  transform: translateX(45px);
+
+  .prev-next-info {
+    margin: 0 !important;
+    margin-right: to-rem(25px) !important;
   }
 }
 
