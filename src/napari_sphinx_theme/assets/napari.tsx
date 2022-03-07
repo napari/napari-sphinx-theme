@@ -318,6 +318,11 @@ function renderCalendars() {
   );
 }
 
+function fixSearchInput() {
+  const searchInput = document.querySelector('input[type=search]');
+  searchInput?.setAttribute('type', 'text');
+}
+
 function fixSearchContainer() {
   const oldSearchButton = document.querySelector<HTMLInputElement>(
     '#search-documentation ~ form > input[type=submit]',
@@ -461,6 +466,7 @@ function main() {
   renderCalendars();
   renderAppBarMenuButton();
   // Wrap in setTimeout so that it runs after sphinx search JS.
+  setTimeout(fixSearchInput);
   setTimeout(fixSearchContainer);
   setTimeout(fixSearchText);
   setTimeout(fixSearchResults);
