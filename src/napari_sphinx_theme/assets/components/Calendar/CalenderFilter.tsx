@@ -32,6 +32,7 @@ function FilterCheckbox({ filterKey }: FilterCheckboxProps) {
 
   return (
     <FormControlLabel
+      className="tw-m-0 tw-flex tw-items-center"
       control={
         <Checkbox
           checkedIcon={<CheckboxIcon checked />}
@@ -57,6 +58,7 @@ const ENABLED_FILTERS: FilterKey[] = ['community', 'workingGroup', 'other'];
  */
 export function CalendarFilter() {
   const [open, setOpen] = useState(false);
+  const [popupWidth, setPopupWidth] = useState<string | number>('100%');
   const anchorElRef = useRef<HTMLDivElement>(null);
   const paperElRef = useRef<HTMLDivElement>(null);
 
@@ -68,11 +70,11 @@ export function CalendarFilter() {
     <div
       className={clsx(
         'tw-flex tw-flex-col tw-col-start-2',
-        'tw-justify-center tw-w-full',
-        'screen-900:tw-flex-row screen-900:tw-space-x-2',
+        'tw-items-start tw-w-full',
+        'screen-900:tw-items-center screen-900:tw-flex-row screen-900:tw-space-x-2',
       )}
     >
-      <span className="tw-font-semibold">show:</span>
+      <span className="tw-font-semibold tw-ml-2 screen-900:tw-m-0">show:</span>
 
       {ENABLED_FILTERS.map((filterKey) => (
         <FilterCheckbox filterKey={filterKey} key={filterKey} />
@@ -99,7 +101,14 @@ export function CalendarFilter() {
             classes={{
               label: 'tw-underline',
             }}
-            onClick={() => setOpen((prev) => !prev)}
+            onClick={() => {
+              setOpen((prev) => !prev);
+              const width = anchorElRef.current?.parentElement?.offsetWidth;
+
+              if (width) {
+                setPopupWidth(width);
+              }
+            }}
             variant="text"
           >
             filter events
@@ -125,6 +134,9 @@ export function CalendarFilter() {
               )}
               ref={paperElRef}
               elevation={0}
+              style={{
+                width: popupWidth,
+              }}
             >
               {filterBody}
             </Paper>
