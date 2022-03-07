@@ -26,16 +26,16 @@ html {
 
   grid-template-columns: 1fr;
 
-  @media (min-width: 875px) {
+  @screen screen-875 {
     grid-template-columns: 775px;
   }
 
-  @media (min-width: 1150px) {
+  @screen screen-1150 {
     @apply tw-gap-12;
     grid-template-columns: 225px 775px;
   }
 
-  @media (min-width: 1425px) {
+  @screen screen-1425 {
     grid-template-columns: 225px 775px 225px;
   }
 
@@ -57,8 +57,11 @@ html {
 
   .bd-content {
     @apply tw-w-screen;
-
     padding: 0 to-rem(25px) !important;
+
+    @screen screen-875 {
+      @apply tw-w-full;
+    }
 
     section {
       max-width: 100%;

@@ -296,14 +296,14 @@ dl {
 .contents {
   border: none !important;
   border-left: 1px solid black !important;
-  background: none;
+  background: none !important;
   padding: 0 !important;
 
   ul {
     @apply tw-p-0;
 
     li {
-      @apply tw-list-none tw-m-0;
+      @apply tw-list-none tw-m-0 tw-my-3;
     }
 
     p {
