@@ -21,11 +21,6 @@ html {
   font-size: 100%;
 }
 
-main section {
-  max-width: 100%;
-  overflow-x: auto;
-}
-
 .napari-page {
   @apply tw-grid tw-justify-center tw-gap-6 tw-pt-32;
 
@@ -61,9 +56,14 @@ main section {
   }
 
   .bd-content {
-    @apply tw-w-full;
+    @apply tw-w-screen;
 
     padding: 0 to-rem(25px) !important;
+
+    section {
+      max-width: 100%;
+      overflow-x: auto;
+    }
   }
 
   .bd-toc {

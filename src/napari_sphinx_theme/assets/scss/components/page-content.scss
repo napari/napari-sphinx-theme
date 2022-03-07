@@ -34,6 +34,34 @@ span.guilabel {
 aside.sidebar {
   @apply tw-border-b tw-border-napari-primary;
   @apply tw-bg-napari-light;
+
+  padding: to-rem(8px) to-rem(12px);
+
+  @screen screen-495 {
+    padding: to-rem(20px) to-rem(25px);
+  }
+
+  p {
+    @apply tw-font-medium;
+
+    font-size: to-rem(9px);
+
+    @screen screen-495 {
+      font-size: to-rem(14px);
+    }
+
+    &.sidebar-title {
+      @apply tw-font-bold;
+
+      font-size: to-rem(11px) !important;
+      line-height: 175%;
+
+      @screen screen-495 {
+        font-size: to-rem(17px) !important;
+        line-height: 141%;
+      }
+    }
+  }
 }
 
 @for $i from 1 through 6 {
@@ -49,7 +77,7 @@ h1 {
   line-height: 130%;
   margin-bottom: to-rem(43px);
 
-  @media (min-width: 875px) {
+  @screen screen-495 {
     font-size: to-rem(35px);
     line-height: 125%;
   }
@@ -59,20 +87,20 @@ h2 {
   font-size: to-rem(16px);
   line-height: 125%;
 
-  @media (min-width: 875px) {
+  @screen screen-495 {
     font-size: to-rem(24px);
     line-height: 150%;
   }
 }
 
 h3,
-p.rubric,
-.topic-title {
-  font-size: to-rem(13px);
+p.rubric {
+  font-weight: 700 !important;
+  font-size: to-rem(13px) !important;
   line-height: 125%;
 
-  @media (min-width: 875px) {
-    font-size: to-rem(20px);
+  @screen screen-495 {
+    font-size: to-rem(20px) !important;
     line-height: 135%;
   }
 }
@@ -81,16 +109,21 @@ p.rubric {
   border-top: 1px solid black;
   border-bottom: none;
   padding-top: to-rem(15px);
+  font-size: to-rem(9px);
+
+  @screen screen-495 {
+    font-size: to-rem(14px);
+  }
 }
 
 h4,
 .sidebar-title,
 .sidebar .rubric {
-  font-size: to-rem(11px);
+  font-size: to-rem(11px) !important;
   line-height: 175%;
 
-  @media (min-width: 875px) {
-    font-size: to-rem(17px);
+  @screen screen-495 {
+    font-size: to-rem(17px) !important;
     line-height: 141%;
   }
 }
@@ -98,21 +131,11 @@ h4,
 h5 {
   font-size: to-rem(14px);
   line-height: 150%;
-
-  // @media (min-width: 875px) {
-  //   font-size: to-rem(14px);
-  //   line-height: 141%;
-  // }
 }
 
 h6 {
   font-size: to-rem(11px);
   line-height: to-rem(16.5px);
-
-  // @media (min-width: 875px) {
-  //   font-size: to-rem(17px);
-  //   line-height: 141%;
-  // }
 }
 
 p,
@@ -122,7 +145,7 @@ p,
   font-size: to-rem(11px);
   color: #000 !important;
 
-  @media (min-width: 875px) {
+  @screen screen-495 {
     font-size: to-rem(17px);
   }
 }
@@ -411,7 +434,19 @@ div.topic {
   @apply tw-border-none tw-bg-napari-hover-gray;
 
   p {
+    @apply tw-font-medium;
     font-size: to-rem(14px) !important;
+
+    &.topic-title {
+      font-weight: 700 !important;
+      font-size: to-rem(13px) !important;
+      line-height: 125%;
+
+      @screen screen-495 {
+        font-size: to-rem(20px) !important;
+        line-height: 135%;
+      }
+    }
   }
 }
 
