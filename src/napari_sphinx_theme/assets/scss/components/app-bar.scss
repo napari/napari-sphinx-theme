@@ -23,6 +23,7 @@
       color: #000 !important;
       font-size: to-rem(17px);
       padding: to-rem(16px) 0 !important;
+      font-weight: 500 !important;
     }
 
     &.active a {
@@ -37,7 +38,7 @@
 
     @media (min-width: 960px) {
       a {
-        padding: 0 to-rem(8px) to-rem(20px) !important;
+        padding: 0 to-rem(17px) to-rem(20px) !important;
         margin-top: to-rem(20px) !important;
         border-bottom: to-rem(3px) solid transparent;
       }
