@@ -277,10 +277,15 @@ main {
 }
 
 dl {
-  font-size: to-rem(14px) !important;
-
   dt {
-    @apply tw-font-semibold tw-leading-normal;
+    @apply tw-leading-normal;
+
+    font-size: to-rem(9px) !important;
+    font-weight: 600 !important;
+
+    @screen screen-495 {
+      font-size: to-rem(14px) !important;
+    }
   }
 
   dd {
@@ -288,7 +293,12 @@ dl {
     margin-left: to-rem(25px);
 
     p {
+      font-size: to-rem(9px) !important;
       margin-bottom: to-rem(25px);
+
+      @screen screen-495 {
+        font-size: to-rem(14px) !important;
+      }
     }
   }
 }
