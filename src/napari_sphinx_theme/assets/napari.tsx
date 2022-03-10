@@ -456,6 +456,12 @@ function renderAppBarMenuButton() {
   }
 }
 
+function addClassToCodeBlocksWithLineNumbers() {
+  Array.from(document.querySelectorAll('.highlight')).forEach(
+    (el) => el.querySelector('.linenos') && el.classList.add('line-numbers'),
+  );
+}
+
 function main() {
   highlightActivePageTocItem();
   fixCodeLinks();
@@ -465,6 +471,7 @@ function main() {
   replaceSidebarIcons();
   renderCalendars();
   renderAppBarMenuButton();
+  addClassToCodeBlocksWithLineNumbers();
   // Wrap in setTimeout so that it runs after sphinx search JS.
   setTimeout(fixSearchInput);
   setTimeout(fixSearchContainer);
