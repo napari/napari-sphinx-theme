@@ -352,7 +352,7 @@ dl {
   }
 
   a {
-    @apply tw-no-underline;
+    @apply tw-no-underline tw-font-normal;
 
     font-size: to-rem(14px) !important;
   }
