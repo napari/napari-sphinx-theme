@@ -443,7 +443,8 @@ dl {
 div.versionadded,
 div.versionchanged,
 div.deprecated {
-  @apply tw-rounded-none;
+  @apply tw-rounded-none tw-shadow-none;
+
   border: none !important;
   padding: to-rem(25px) !important;
 
@@ -473,10 +474,16 @@ div.deprecated {
 }
 
 .versionmodified {
-  @apply tw-flex tw-items-center tw-space-x-2;
+  @apply tw-flex tw-items-center tw-space-x-2 tw-not-italic;
 
   &::before {
     @apply tw-hidden;
+  }
+
+  font-size: to-rem(11px) !important;
+
+  @screen screen-495 {
+    font-size: to-rem(17px) !important;
   }
 }
 
