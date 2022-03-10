@@ -99,7 +99,7 @@ export function CalendarFilter() {
         <div className="screen-900:tw-hidden">
           <Button
             classes={{
-              label: 'tw-underline',
+              label: 'tw-underline tw-font-normal',
             }}
             onClick={() => {
               setOpen((prev) => !prev);
@@ -129,7 +129,7 @@ export function CalendarFilter() {
             <Paper
               className={clsx(
                 'tw-grid tw-grid-cols-[2rem,1fr,min-content]',
-                'tw-items-center tw-px-9',
+                'tw-items-center tw-px-6 tw-py-5',
                 'napari-calendar__popup',
               )}
               ref={paperElRef}

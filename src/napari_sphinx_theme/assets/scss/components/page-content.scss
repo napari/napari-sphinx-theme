@@ -163,6 +163,10 @@ p.centered {
   @apply tw-flex tw-flex-auto tw-justify-between;
 
   margin-bottom: to-rem(75px);
+
+  a {
+    padding: to-rem(25px);
+  }
 }
 
 .left-prev,
@@ -308,7 +312,7 @@ main {
 
 dl {
   dt {
-    @apply tw-leading-normal;
+    @apply tw-leading-normal tw-text-black;
 
     font-size: to-rem(9px) !important;
     font-weight: 600 !important;
@@ -324,10 +328,14 @@ dl {
 
     p {
       font-size: to-rem(9px) !important;
-      margin-bottom: to-rem(25px);
+      margin-bottom: to-rem(15px);
 
       @screen screen-495 {
         font-size: to-rem(14px) !important;
+      }
+
+      &:last-child {
+        margin-bottom: to-rem(25px);
       }
     }
   }
@@ -352,7 +360,7 @@ dl {
   }
 
   a {
-    @apply tw-no-underline;
+    @apply tw-no-underline tw-font-normal;
 
     font-size: to-rem(14px) !important;
   }
@@ -443,7 +451,8 @@ dl {
 div.versionadded,
 div.versionchanged,
 div.deprecated {
-  @apply tw-rounded-none;
+  @apply tw-rounded-none tw-shadow-none;
+
   border: none !important;
   padding: to-rem(25px) !important;
 
@@ -473,15 +482,23 @@ div.deprecated {
 }
 
 .versionmodified {
-  @apply tw-flex tw-items-center tw-space-x-2;
+  @apply tw-flex tw-items-center tw-space-x-2 tw-not-italic;
 
   &::before {
     @apply tw-hidden;
+  }
+
+  font-size: to-rem(11px) !important;
+
+  @screen screen-495 {
+    font-size: to-rem(17px) !important;
   }
 }
 
 div.topic {
   @apply tw-border-none tw-bg-napari-hover-gray;
+
+  padding: to-rem(25px) to-rem(25px) 0;
 
   p {
     @apply tw-font-medium;
@@ -501,7 +518,7 @@ div.topic {
 }
 
 aside.sidebar {
-  @apply tw-border-none;
+  @apply tw-border-none tw-mb-0;
 
   border-left: 3px solid #000;
   font-size: to-rem(14px) !important;
@@ -607,12 +624,26 @@ span.highlighted {
 }
 
 .highlight {
+  pre,
+  span {
+    font-size: to-rem(11px) !important;
+    line-height: 19px;
+
+    @screen screen-495 {
+      font-size: to-rem(16px) !important;
+      line-height: 28px;
+    }
+  }
+
   pre {
     @apply tw-shadow-none tw-border-none tw-rounded-none tw-p-0;
 
-    padding-top: to-rem(25px);
     margin-right: to-rem(25px);
-    padding-bottom: to-rem(25px);
+    padding: to-rem(25px);
+  }
+
+  &.line-numbers pre {
+    padding: to-rem(25px) 0;
   }
 
   .linenos {
@@ -620,6 +651,11 @@ span.highlighted {
 
     margin-left: to-rem(13px);
     margin-right: to-rem(25px);
+    font-size: to-rem(9px) !important;
+
+    @screen screen-495 {
+      font-size: to-rem(13px) !important;
+    }
   }
 
   .hll {
@@ -627,8 +663,17 @@ span.highlighted {
 
     min-height: to-rem(28px);
   }
+}
 
-  span {
+.literal-block {
+  @apply tw-shadow-none tw-border-none tw-rounded-none tw-p-0;
+
+  font-size: to-rem(11px) !important;
+  line-height: 19px;
+  padding: to-rem(25px);
+
+  @screen screen-495 {
     font-size: to-rem(16px) !important;
+    line-height: 28px;
   }
 }
