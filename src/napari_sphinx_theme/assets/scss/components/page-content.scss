@@ -308,7 +308,7 @@ main {
 
 dl {
   dt {
-    @apply tw-leading-normal;
+    @apply tw-leading-normal tw-text-black;
 
     font-size: to-rem(9px) !important;
     font-weight: 600 !important;
@@ -324,10 +324,14 @@ dl {
 
     p {
       font-size: to-rem(9px) !important;
-      margin-bottom: to-rem(25px);
+      margin-bottom: to-rem(15px);
 
       @screen screen-495 {
         font-size: to-rem(14px) !important;
+      }
+
+      &:last-child {
+        margin-bottom: to-rem(25px);
       }
     }
   }
