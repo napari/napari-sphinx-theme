@@ -163,6 +163,10 @@ p.centered {
   @apply tw-flex tw-flex-auto tw-justify-between;
 
   margin-bottom: to-rem(75px);
+
+  a {
+    padding: to-rem(25px);
+  }
 }
 
 .left-prev,
