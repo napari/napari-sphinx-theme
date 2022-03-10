@@ -483,6 +483,8 @@ div.deprecated {
 div.topic {
   @apply tw-border-none tw-bg-napari-hover-gray;
 
+  padding: to-rem(25px) to-rem(25px) 0;
+
   p {
     @apply tw-font-medium;
     font-size: to-rem(14px) !important;
@@ -501,7 +503,7 @@ div.topic {
 }
 
 aside.sidebar {
-  @apply tw-border-none;
+  @apply tw-border-none tw-mb-0;
 
   border-left: 3px solid #000;
   font-size: to-rem(14px) !important;
