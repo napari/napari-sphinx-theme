@@ -24,6 +24,7 @@ html {
 .napari-page {
   @apply tw-grid tw-justify-center tw-gap-6 tw-pt-32;
 
+  min-height: 95vh;
   grid-template-columns: 1fr;
 
   @screen screen-875 {

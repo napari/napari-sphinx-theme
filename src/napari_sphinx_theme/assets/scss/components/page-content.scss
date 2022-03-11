@@ -576,20 +576,20 @@ span.pre {
 }
 
 .search-button {
-  @apply tw-border-none tw-flex tw-items-center tw-justify-center;
+  @apply tw-border-none tw-flex tw-items-center tw-justify-center tw-pr-0;
 
   background: none;
 }
 
 .search-info {
-  @apply tw-flex tw-mt-10 tw-items-center tw-space-x-2;
+  @apply tw-flex tw-mt-10 tw-items-end tw-space-x-2;
 
   h2 {
     @apply tw-m-0;
   }
 
   .search-summary {
-    @apply tw-m-0;
+    @apply tw-m-0 tw-mb-1;
   }
 }
 
@@ -617,6 +617,10 @@ ul.search {
       margin: 0 !important;
     }
   }
+}
+
+#search-progress {
+  padding: 0 !important;
 }
 
 span.highlighted {
