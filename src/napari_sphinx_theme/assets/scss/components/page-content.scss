@@ -699,3 +699,23 @@ span.highlighted {
     line-height: 28px;
   }
 }
+
+figure {
+  text-align: left !important;
+
+  img {
+    @apply tw-w-full;
+  }
+
+  figcaption {
+    .caption-text,
+    .legend table,
+    .legend p {
+      font-size: to-rem(9px);
+
+      @screen screen-495 {
+        font-size: to-rem(14px);
+      }
+    }
+  }
+}

@@ -68,6 +68,10 @@ html {
       max-width: 100%;
       overflow-x: auto;
     }
+
+    img {
+      @apply tw-w-full;
+    }
   }
 
   .bd-toc {
