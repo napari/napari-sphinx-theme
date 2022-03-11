@@ -36,7 +36,11 @@
     & > span {
       @apply tw-font-semibold;
 
-      font-size: 0.875em;
+      font-size: to-rem(9px);
+
+      @screen screen-495 {
+        @apply tw-text-sm;
+      }
     }
   }
 
@@ -45,7 +49,13 @@
 
     &,
     .copyright {
-      @apply tw-text-sm tw-font-semibold;
+      @apply tw-font-semibold;
+
+      font-size: to-rem(9px);
+
+      @screen screen-495 {
+        @apply tw-text-sm;
+      }
     }
 
     .sphinx-link,
