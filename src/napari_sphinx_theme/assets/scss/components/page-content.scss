@@ -384,11 +384,27 @@ dl {
 
 .admonition {
   border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  p:not(.admonition-title) {
+    font-size: to-rem(9px);
+
+    @screen screen-495 {
+      font-size: to-rem(14px);
+    }
+  }
 
   &-title {
     @apply tw-uppercase;
 
     background: #80ffe0 !important;
+    font-weight: 500 !important;
+    font-size: to-rem(11px) !important;
+
+    @screen screen-495 {
+      font-size: to-rem(17px) !important;
+    }
 
     &::before {
       @apply tw-hidden;
