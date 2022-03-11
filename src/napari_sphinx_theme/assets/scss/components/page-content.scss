@@ -302,7 +302,9 @@ main {
   }
 
   ul {
-    @apply tw-pl-4 tw-list-disc;
+    @apply tw-list-disc;
+
+    padding-left: to-rem(20px);
   }
 
   ol {
