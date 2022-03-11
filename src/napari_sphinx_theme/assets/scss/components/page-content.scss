@@ -659,7 +659,7 @@ span.highlighted {
   }
 
   .hll {
-    @apply tw-bg-napari-light tw-pt-1;
+    @apply tw-bg-napari-light;
 
     min-height: to-rem(28px);
   }
