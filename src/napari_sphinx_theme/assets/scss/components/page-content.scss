@@ -388,6 +388,7 @@ dl {
   box-shadow: none !important;
 
   p:not(.admonition-title) {
+    @apply tw-font-medium;
     font-size: to-rem(9px);
 
     @screen screen-495 {
@@ -399,7 +400,6 @@ dl {
     @apply tw-uppercase;
 
     background: #80ffe0 !important;
-    font-weight: 500 !important;
     font-size: to-rem(11px) !important;
 
     @screen screen-495 {
@@ -412,54 +412,72 @@ dl {
   }
 
   &.danger {
+    border: #ff8080 solid 1px !important;
+
     .admonition-title {
       background: #ff8080 !important;
     }
   }
 
   &.warning {
+    border: #ffa680 solid 1px !important;
+
     .admonition-title {
       background: #ffa680 !important;
     }
   }
 
   &.caution {
+    border: #ffc580 solid 1px !important;
+
     .admonition-title {
       background: #ffc580 !important;
     }
   }
 
   &.error {
+    border: #fade7d solid 1px !important;
+
     .admonition-title {
       background: #fade7d !important;
     }
   }
 
   &.important {
+    border: #d8f97d solid 1px !important;
+
     .admonition-title {
       background: #d8f97d !important;
     }
   }
 
   &.attention {
+    border: #80ffe0 solid 1px !important;
+
     .admonition-title {
       background: #80ffe0 !important;
     }
   }
 
   &.note {
+    border: #80d1ff solid 1px !important;
+
     .admonition-title {
       background: #80d1ff !important;
     }
   }
 
   &.hint {
+    border: #8094ff solid 1px !important;
+
     .admonition-title {
       background: #8094ff !important;
     }
   }
 
   &.tip {
+    border: #cf80ff solid 1px !important;
+
     .admonition-title {
       background: #cf80ff !important;
     }
