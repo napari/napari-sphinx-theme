@@ -254,6 +254,10 @@ blockquote {
 
     p {
       @apply tw-leading-normal;
+
+      &:last-child {
+        margin: 0;
+      }
     }
   }
 
