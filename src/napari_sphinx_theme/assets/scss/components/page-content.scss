@@ -719,13 +719,25 @@ span.highlighted {
 }
 
 figure {
+  @apply tw-p-0;
+
   text-align: left !important;
+
+  &.align-center {
+    text-align: center !important;
+  }
 
   img {
     @apply tw-w-full;
   }
 
   figcaption {
+    @apply tw-p-0;
+
+    .caption-text {
+      @apply tw-italic;
+    }
+
     .caption-text,
     .legend table,
     .legend p {
