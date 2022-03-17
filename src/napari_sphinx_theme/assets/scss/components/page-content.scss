@@ -704,7 +704,7 @@ figure {
   }
 
   img {
-    @apply tw-w-full;
+    @apply tw-w-full tw-max-w-max;
   }
 
   figcaption {
