@@ -738,6 +738,8 @@ figure {
   figcaption {
     @apply tw-p-0;
 
+    padding-top: to-rem(15px);
+
     .caption-text {
       @apply tw-italic;
     }
