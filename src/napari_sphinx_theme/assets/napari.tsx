@@ -463,11 +463,13 @@ function addClassToCodeBlocksWithLineNumbers() {
 }
 
 function addAutoLoopAndControlsToVideos() {
-  Array.from(document.getElementsByTagName('video')).forEach((node) => {
-    node.setAttribute('autoplay', '');
-    node.setAttribute('loop', '');
-    node.setAttribute('controls', '');
-    node.setAttribute('muted', '');
+  // Videos can be included with the image or figure directives, but the element
+  // has no attributes, which can make them look like still images.
+  Array.from(document.getElementsByTagName('video')).forEach((e) => {
+    e.setAttribute('controls', '');
+    e.setAttribute('autoplay', '');
+    e.setAttribute('loop', '');
+    e.setAttribute('muted', '');
   });
 }
 
