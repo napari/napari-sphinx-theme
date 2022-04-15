@@ -462,6 +462,12 @@ function addClassToCodeBlocksWithLineNumbers() {
   );
 }
 
+function addControlsToVideos() {
+  Array.from(document.getElementsByTagName('video')).forEach((node) =>
+    node.setAttribute('controls', ''),
+  );
+}
+
 function main() {
   highlightActivePageTocItem();
   fixCodeLinks();
@@ -472,6 +478,7 @@ function main() {
   renderCalendars();
   renderAppBarMenuButton();
   addClassToCodeBlocksWithLineNumbers();
+  addControlsToVideos();
   // Wrap in setTimeout so that it runs after sphinx search JS.
   setTimeout(fixSearchInput);
   setTimeout(fixSearchContainer);
