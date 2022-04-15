@@ -462,10 +462,13 @@ function addClassToCodeBlocksWithLineNumbers() {
   );
 }
 
-function addControlsToVideos() {
-  Array.from(document.getElementsByTagName('video')).forEach((node) =>
-    node.setAttribute('controls', ''),
-  );
+function addAutoLoopAndControlsToVideos() {
+  Array.from(document.getElementsByTagName('video')).forEach((node) => {
+    node.setAttribute('autoplay', '');
+    node.setAttribute('loop', '');
+    node.setAttribute('controls', '');
+    node.setAttribute('muted', '');
+  });
 }
 
 function main() {
@@ -478,7 +481,7 @@ function main() {
   renderCalendars();
   renderAppBarMenuButton();
   addClassToCodeBlocksWithLineNumbers();
-  addControlsToVideos();
+  addAutoLoopAndControlsToVideos();
   // Wrap in setTimeout so that it runs after sphinx search JS.
   setTimeout(fixSearchInput);
   setTimeout(fixSearchContainer);
