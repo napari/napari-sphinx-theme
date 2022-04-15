@@ -100,6 +100,15 @@
     </div>
 
     <script src="{{ pathto('_static/scripts/napari-sphinx-theme.js', 1) }}"></script>
+    <script>
+        // Sphinx  does not let us do that on video directly in the templates, 
+        // Do it after the fact.
+        Array.from(document.getElementsByTagName('video')).forEach(e => {
+                    e.setAttribute('loop', true)
+                    e.setAttribute('controls', true)
+                    e.play()
+        })
+    </script>
 
 {%- endblock %}
 
