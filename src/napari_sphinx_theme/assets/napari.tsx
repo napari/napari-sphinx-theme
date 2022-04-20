@@ -462,6 +462,17 @@ function addClassToCodeBlocksWithLineNumbers() {
   );
 }
 
+function addAutoLoopAndControlsToVideos() {
+  // Videos can be included with the image or figure directives, but the element
+  // has no attributes, which can make them look like still images.
+  Array.from(document.getElementsByTagName('video')).forEach((e) => {
+    e.setAttribute('controls', '');
+    e.setAttribute('autoplay', '');
+    e.setAttribute('loop', '');
+    e.setAttribute('muted', '');
+  });
+}
+
 function main() {
   highlightActivePageTocItem();
   fixCodeLinks();
@@ -472,6 +483,7 @@ function main() {
   renderCalendars();
   renderAppBarMenuButton();
   addClassToCodeBlocksWithLineNumbers();
+  addAutoLoopAndControlsToVideos();
   // Wrap in setTimeout so that it runs after sphinx search JS.
   setTimeout(fixSearchInput);
   setTimeout(fixSearchContainer);
