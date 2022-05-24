@@ -22,7 +22,8 @@
   }
 
   a {
-    @apply tw-text-white tw-whitespace-nowrap tw-no-underline;
+    @apply tw-text-white hover:tw-text-napari-light;
+    @apply tw-whitespace-nowrap tw-no-underline;
     @apply tw-mr-4 last:tw-mr-0 tw-mb-4;
     @apply tw-flex tw-flex-row tw-items-center;
 
@@ -69,6 +70,24 @@
 
     .sphinx-version {
       @apply tw-justify-between;
+    }
+  }
+
+  .footer-icon {
+    &__hover-blue {
+      .footer-icon__light-blue {
+        @apply tw-hidden;
+      }
+
+      &:hover {
+        .footer-icon__regular {
+          @apply tw-hidden;
+        }
+
+        .footer-icon__light-blue {
+          @apply tw-block;
+        }
+      }
     }
   }
 }
