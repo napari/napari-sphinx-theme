@@ -79,6 +79,23 @@ myst_enable_extensions = [
 html_theme = "napari"
 # html_logo = "_static/pandas.svg"  # For testing
 
+# Define the json_url for our version switcher.
+json_url = "https://napari.org/napari-sphinx-theme/_static/switcher.json"
+
+# Define the version we use for matching in the version switcher.
+version_match = os.environ.get("READTHEDOCS_VERSION")
+# If READTHEDOCS_VERSION doesn't exist, we're not on RTD
+# If it is an integer, we're in a PR build and the version isn't correct.
+if not version_match or version_match.isdigit():
+    # For local development, infer the version to match from the package.
+    if "dev" in release:
+        version_match = "latest"
+        # We want to keep the relative reference if we are in dev mode
+        # but we want the whole url if we are effectively in a released version
+        json_url = "_static/switcher.json"
+    else:
+        version_match = release
+
 html_theme_options = {
     "external_links": [
         {
@@ -113,11 +130,8 @@ html_theme_options = {
     # "left_sidebar_end": ["custom-template.html", "sidebar-ethical-ads.html"],
     # "footer_items": ['navbar-version', 'napari-footer-links', 'copyright'],
     "switcher": {
-        "json_url": "/napari-sphinx-theme/_static/switcher.json",
-        # "url_template": "https://napari-sphinx-theme.readthedocs.io/en/v{version}/",
-        # "url_template": "https://napari.org/napari-sphinx-theme/v{version}/",
-        "url_template": "http://localhost:3000/?version={version}",
-        "version_match": version,
+        "json_url": "https://napari.org/napari-sphinx-theme/_static/switcher.json",
+        "version_match": version_match,
     },
 }
 
@@ -134,9 +148,9 @@ html_sidebars = {
 
 
 html_context = {
-    "github_user": "pandas-dev",
-    "github_repo": "pydata-sphinx-theme",
-    "github_version": "master",
+    "github_user": "napari",
+    "github_repo": "napari-sphinx-theme",
+    "github_version": "main",
     "doc_path": "docs",
 }
 
@@ -148,3 +162,6 @@ rediraffe_redirects = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+
+def setup(app):
+    app.add_css_file("custom.css")
