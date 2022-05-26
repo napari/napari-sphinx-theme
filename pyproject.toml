@@ -12,6 +12,8 @@ name = "napari-sphinx-theme"
 description = "Bootstrap-based Sphinx theme from the napari community"
 dynamic = ["version"]
 readme = "README.md"
+author = "napari team"
+author_email = napari-steering-council@googlegroups.com
 
 requires-python = ">=3.7"
 dependencies = [
@@ -22,9 +24,6 @@ dependencies = [
 ]
 
 license = { file = "LICENSE" }
-maintainers = [
-  { name = "Joris Van den Bossche", email = "jorisvandenbossche@gmail.com" },
-]
 
 classifiers = [
   "Development Status :: 4 - Beta",
