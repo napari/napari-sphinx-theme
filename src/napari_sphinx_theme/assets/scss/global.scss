@@ -21,10 +21,13 @@ html {
   font-size: 100%;
 }
 
-.napari-page {
-  @apply tw-grid tw-justify-center tw-gap-6 tw-pt-32;
+body {
+  @apply tw-flex tw-flex-col;
+}
 
-  min-height: 95vh;
+.napari-page {
+  @apply tw-grid tw-justify-center tw-gap-6 tw-pt-32 tw-flex-auto;
+
   grid-template-columns: 1fr;
 
   @screen screen-875 {
@@ -44,6 +47,10 @@ html {
   .bd-toc,
   .bd-content {
     max-width: unset;
+  }
+
+  .bd-sidebar {
+    height: unset;
   }
 
   .bd-sidebar {
