@@ -77,7 +77,14 @@ function highlightActivePageTocItem() {
     setParentTocVisible(activeLink, true);
   }
 
+  let isHighlighting = false;
+  let lastLinkClicked: Element | null = null;
+
   function highlight() {
+    if (!isHighlighting) {
+      return;
+    }
+
     const firstHeaderIndex = headers.findIndex(
       (header) => header.getBoundingClientRect().top > appBarHeight + 16,
     );
@@ -85,7 +92,15 @@ function highlightActivePageTocItem() {
 
     if (!firstHeaderInViewport) return;
 
-    if (
+    if (lastLinkClicked) {
+      activeHeaderIndex =
+        headers.findIndex(
+          (header) =>
+            header.getAttribute('id') ===
+            lastLinkClicked?.getAttribute('href')?.slice(1),
+        ) ?? null;
+      activeHeader = headers.at(activeHeaderIndex) ?? null;
+    } else if (
       firstHeaderInViewport.getBoundingClientRect().top <
       appBarHeight + 16 + 32
     ) {
@@ -94,6 +109,10 @@ function highlightActivePageTocItem() {
     } else {
       activeHeaderIndex = firstHeaderIndex - 1;
       activeHeader = headers[activeHeaderIndex];
+    }
+
+    if (!activeHeader) {
+      return;
     }
 
     if (activeLink?.classList.contains('active')) {
@@ -107,9 +126,22 @@ function highlightActivePageTocItem() {
       activeLink?.classList.add('active');
       setParentTocVisible(activeLink, true);
     }
+
+    lastLinkClicked = null;
   }
 
+  // Add listener after timeout to enable browser to scroll to heading without
+  // firing off event.
   window.addEventListener('scroll', highlight);
+  setTimeout(() => {
+    isHighlighting = true;
+  }, 200);
+
+  headerLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      lastLinkClicked = link;
+    });
+  });
 }
 
 /**
@@ -474,10 +506,10 @@ function addAutoLoopAndControlsToVideos() {
 }
 
 function main() {
+  addInPageTocInteractivity();
   highlightActivePageTocItem();
   fixCodeLinks();
   addNapariFooterItemClass();
-  addInPageTocInteractivity();
   addVersionIcons();
   replaceSidebarIcons();
   renderCalendars();
