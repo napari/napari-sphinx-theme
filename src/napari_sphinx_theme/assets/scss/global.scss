@@ -69,7 +69,8 @@ html {
       overflow-x: auto;
     }
 
-    img {
+    img,
+    video {
       @apply tw-w-full tw-max-w-max;
     }
   }
