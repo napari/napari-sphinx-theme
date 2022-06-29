@@ -23,7 +23,7 @@ copyright = "2021 napari Community"
 author = "napari Community"
 
 
-release = '0.1.5'
+release = '0.1.6'
 version = release.replace("dev0", "")
 
 # -- General configuration ---------------------------------------------------
