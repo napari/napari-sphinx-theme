@@ -171,6 +171,15 @@ p.centered {
 
 .left-prev,
 .right-next {
+  font-size: to-rem(12px);
+  overflow: visible !important;
+  padding: 0 !important;
+  transform: none !important;
+
+  @screen screen-495 {
+    font-size: to-rem(16px);
+  }
+
   .prev-next-title,
   .prev-next-subtitle {
     @apply tw-m-0;

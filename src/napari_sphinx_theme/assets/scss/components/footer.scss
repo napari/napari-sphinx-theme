@@ -1,9 +1,11 @@
 @import '@/scss/utils';
 
 .napari-footer {
-  @apply tw-flex tw-flex-row tw-flex-wrap;
+  @apply tw-flex tw-flex-row tw-flex-wrap tw-flex-shrink-0;
   @apply tw-items-center tw-justify-between tw-w-full;
   @apply tw-pt-6 tw-pb-2 tw-px-6 screen-495:tw-px-12 tw-bg-black;
+
+  margin-top: 75px;
 
   .footer-item {
     @apply tw-flex tw-flex-wrap tw-items-center;
