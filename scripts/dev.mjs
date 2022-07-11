@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-await-in-loop */
 
+import axios from 'axios';
 import * as cheerio from 'cheerio';
 import { createHash } from 'crypto';
 import express from 'express';
@@ -14,6 +15,7 @@ import { $ } from 'zx';
 import webpackConfig from '../webpack.config.js';
 
 const OUT_DIR = resolve(__dirname, '../dist');
+const PROD = process.env.ENV === 'prod';
 
 /**
  * @param {string} file The file to check
@@ -38,33 +40,81 @@ async function startDevServer() {
 
   // Catch all middleware responsible for serving the requested file.
   app.use(async (req, res) => {
-    const url = new URL(req.url, 'http://tmp.com');
-    let file = resolve(OUT_DIR, url.pathname.slice(1));
-    const originalFile = file;
+    console.log(`[${req.method}] ${req.url}`);
 
-    if (!(await exists(file))) {
-      // Try HTML file.
-      file = `${file}.html`;
+    const url = new URL(req.url, 'https://napari.org');
+    let data = '';
+
+    if (PROD) {
+      if (!url.pathname.endsWith('.html') && url.pathname !== '/') {
+        console.log(`  Redirect to ${url.origin} for ${url.pathname}`);
+        res.redirect(url.href);
+        return;
+      }
+
+      try {
+        ({ data } = await axios.get(url.href));
+      } catch (err) {
+        if (axios.isAxiosError(err)) {
+          console.log(`  Error: status=${err.status} message="${err.message}"`);
+
+          res.status(404).send(`
+            <html>
+              <head>
+                <style>
+                  body {
+                    width: 100vw;
+                    height: 100vh;
+                    background: #000;
+                    color: #fff;
+                  }
+
+                  a {
+                    color: #fff;
+                  }
+                </style>
+              </head>
+
+            <body>
+              <p>${url.pathname}" not found on ${url.origin}</p>
+              <a href="/">Go Home</a>
+            </body>
+            </html>
+          `);
+          return;
+        }
+
+        throw err;
+      }
+    } else {
+      let file = resolve(OUT_DIR, url.pathname.slice(1));
+      const originalFile = file;
+
+      if (!(await exists(file))) {
+        // Try HTML file.
+        file = `${file}.html`;
+      }
+
+      if (!(await exists(file))) {
+        // Try index HTML file.
+        file = resolve(originalFile, 'index.html');
+      }
+
+      if (!(await exists(file))) {
+        res.status(404).send(`"${originalFile}" not found`);
+        return;
+      }
+
+      // If file is not an HTML file, then just return it directly.
+      if (!file.endsWith('.html')) {
+        fs.createReadStream(file).pipe(res);
+        return;
+      }
+
+      data = await fs.readFile(file);
     }
 
-    if (!(await exists(file))) {
-      // Try index HTML file.
-      file = resolve(originalFile, 'index.html');
-    }
-
-    if (!(await exists(file))) {
-      res.status(404).send(`"${originalFile}" not found`);
-      return;
-    }
-
-    // If file is not an HTML file, then just return it directly.
-    if (!file.endsWith('.html')) {
-      fs.createReadStream(file).pipe(res);
-      return;
-    }
-
-    const html = await fs.readFile(file, 'utf-8');
-    const $html = cheerio.load(html);
+    const $html = cheerio.load(data);
 
     const $css = $html('link')
       .toArray()
@@ -170,15 +220,17 @@ async function buildDocs() {
 }
 
 async function dev() {
-  const hash = await getThemeHash();
-  const prevHash = await readThemeHash();
+  if (!PROD) {
+    const hash = await getThemeHash();
+    const prevHash = await readThemeHash();
 
-  if (hash === prevHash) {
-    console.log(`Skipping docs build: ${hash}`);
-  } else {
-    await buildDocs();
-    console.log(`Finished docs build: ${hash}`);
-    await fs.writeFile(THEME_HASH_FILE, hash);
+    if (hash === prevHash) {
+      console.log(`Skipping docs build: ${hash}`);
+    } else {
+      await buildDocs();
+      console.log(`Finished docs build: ${hash}`);
+      await fs.writeFile(THEME_HASH_FILE, hash);
+    }
   }
 
   startDevServer();
