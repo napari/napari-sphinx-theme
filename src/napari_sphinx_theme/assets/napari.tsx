@@ -90,8 +90,6 @@ function highlightActivePageTocItem() {
     );
     const firstHeaderInViewport = headers[firstHeaderIndex];
 
-    if (!firstHeaderInViewport) return;
-
     if (lastLinkClicked) {
       activeHeaderIndex =
         headers.findIndex(
@@ -100,6 +98,8 @@ function highlightActivePageTocItem() {
             lastLinkClicked?.getAttribute('href')?.slice(1),
         ) ?? null;
       activeHeader = headers.at(activeHeaderIndex) ?? null;
+    } else if (!firstHeaderInViewport) {
+      return;
     } else if (
       firstHeaderInViewport.getBoundingClientRect().top <
       appBarHeight + 16 + 32
