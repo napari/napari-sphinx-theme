@@ -340,14 +340,27 @@ function renderCalendars() {
     document.querySelectorAll('.napari-calendar'),
   );
 
-  calendarNodes.forEach((node) =>
-    render(
-      <MaterialUIProvider>
-        <Calendar filter={node.classList.contains('show-filters')} />
-      </MaterialUIProvider>,
-      node,
-    ),
-  );
+  calendarNodes.forEach((node) => {
+    const calendarID = Array.from(node.classList)
+      .map((className) =>
+        className.startsWith('calendar-id')
+          ? className.split('calendar-id-')[1]
+          : undefined,
+      )
+      .find(Boolean);
+
+    if (calendarID) {
+      render(
+        <MaterialUIProvider>
+          <Calendar
+            calendarID={calendarID}
+            filter={node.classList.contains('show-filters')}
+          />
+        </MaterialUIProvider>,
+        node,
+      );
+    }
+  });
 }
 
 function fixSearchInput() {

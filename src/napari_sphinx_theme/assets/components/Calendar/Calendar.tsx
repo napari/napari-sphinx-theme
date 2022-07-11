@@ -7,6 +7,7 @@ import { CalendarProvider } from './context';
 import { CopyCalendarButton } from './CopyCalendarButton';
 
 interface Props {
+  calendarID: string;
   filter?: boolean;
 }
 
@@ -17,15 +18,13 @@ interface Props {
  * For screens smaller than 900px, a week view is rendered with events for the
  * current week. Otherwise, a month view is used.
  */
-export function Calendar({ filter }: Props) {
+export function Calendar({ calendarID, filter }: Props) {
   return (
     <div className="tw-flex tw-flex-col tw-flex-1 tw-items-stretch">
-      <CalendarProvider>
+      <CalendarProvider calendarID={calendarID}>
         <div>
           <CopyCalendarButton
-            href={`https://calendar.google.com/calendar/u/0/r?cid=${
-              process.env.GOOGLE_CALENDAR_ID ?? ''
-            }`}
+            href={`https://calendar.google.com/calendar/u/0/r?cid=${calendarID}`}
           >
             Copy to calendar
           </CopyCalendarButton>

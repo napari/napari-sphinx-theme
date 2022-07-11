@@ -17,13 +17,14 @@ interface CalendarContextValue {
 const CalenderContext = createContext<CalendarContextValue | null>(null);
 
 interface Props {
+  calendarID: string;
   children: ReactNode;
 }
 
 /**
  * Provider that shares global state within the Calendar component tree.
  */
-export function CalendarProvider({ children }: Props) {
+export function CalendarProvider({ calendarID, children }: Props) {
   const calendarState = useConstant(() =>
     proxy<CalendarState>({
       activeStartDate: dayjs(),
@@ -68,7 +69,7 @@ export function CalendarProvider({ children }: Props) {
   );
 
   // Fetch calendar events when the active month changes.
-  useFetchCalendarEvents(calendarState);
+  useFetchCalendarEvents(calendarID, calendarState);
 
   const calendarContext = useMemo(
     () => ({
