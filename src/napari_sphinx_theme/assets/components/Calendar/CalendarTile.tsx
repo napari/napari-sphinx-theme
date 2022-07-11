@@ -51,7 +51,7 @@ export function CalendarTile({ date }: Props) {
       <ul className="tw-flex tw-flex-col tw-space-y-1 tw-m-0 tw-p-0">
         {eventList.map((event) => (
           <CalendarEventButton
-            key={event.title + event.start.toString()}
+            key={event.id}
             date={dayjs(event.start)}
             event={event}
             width={tileWidth}
