@@ -432,6 +432,33 @@ dl {
     }
   }
 
+  &.toggle-hidden {
+    height: 40px;
+  }
+
+  .toggle-button {
+    @apply tw-z-10 tw-top-0 tw-right-0;
+    @apply tw-flex tw-items-center tw-justify-center;
+
+    width: 40px;
+    height: 40px;
+    float: unset;
+
+    &::before {
+      display: none;
+    }
+
+    svg {
+      @apply tw-transition-transform;
+
+      transform: rotate(45deg);
+    }
+
+    &.toggle-button-hidden svg {
+      transform: rotate(0);
+    }
+  }
+
   &.danger {
     --color: #ff8080;
   }
