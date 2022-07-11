@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 import { render } from 'react-dom';
 
 import { Calendar } from '@/components/Calendar';
-import { Close, Menu, Search } from '@/components/icons';
+import { Close, Menu, PlusIcon, Search } from '@/components/icons';
 import { theme } from '@/theme';
 
 function MaterialUIProvider({ children }: { children: ReactNode }) {
@@ -505,6 +505,20 @@ function addAutoLoopAndControlsToVideos() {
   });
 }
 
+/**
+ * Fixes issue with admonition dropdowns showing empty white space when hidden:
+ * https://github.com/napari/napari-sphinx-theme/issues/99
+ */
+function renderDropdownButtonIcons() {
+  const buttons = Array.from(
+    document.querySelectorAll('.dropdown.admonition .toggle-button'),
+  );
+
+  for (const button of buttons) {
+    render(<PlusIcon />, button);
+  }
+}
+
 function main() {
   addInPageTocInteractivity();
   highlightActivePageTocItem();
@@ -516,6 +530,7 @@ function main() {
   renderAppBarMenuButton();
   addClassToCodeBlocksWithLineNumbers();
   addAutoLoopAndControlsToVideos();
+  renderDropdownButtonIcons();
   // Wrap in setTimeout so that it runs after sphinx search JS.
   setTimeout(fixSearchInput);
   setTimeout(fixSearchContainer);
