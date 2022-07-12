@@ -507,7 +507,6 @@ def setup_edit_url(app, pagename, templatename, context, doctree):
 
 # -----------------------------------------------------------------------------
 
-GOOGLE_CALENDAR_ID = os.environ.get('GOOGLE_CALENDAR_ID', '')
 GOOGLE_CALENDAR_API_KEY = os.environ.get('GOOGLE_CALENDAR_API_KEY', '')
 
 def add_google_calendar_secrets(app, exception):
@@ -523,7 +522,6 @@ def add_google_calendar_secrets(app, exception):
 
     with open(script_path, 'r') as f:
         source = f.read()
-        source = source.replace('{google_calendar_id}', GOOGLE_CALENDAR_ID)
         source = source.replace('{google_calendar_api_key}', GOOGLE_CALENDAR_API_KEY)
 
     with open(script_path, 'w') as f:
@@ -548,7 +546,7 @@ def setup(app):
     app.connect("html-page-context", update_templates)
     app.connect("build-finished", add_google_calendar_secrets)
 
-    app.add_directive('napari-calendar', CalendarDirective)
+    app.add_directive('calendar', CalendarDirective)
 
     # Include templates for sidebar
     app.config.templates_path.append(str(theme_path / "_templates"))

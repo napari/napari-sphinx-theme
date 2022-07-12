@@ -45,7 +45,6 @@ jobs:
       # Build the documentation.
       - name: Build docs
         env:
-          GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
           GOOGLE_CALENDAR_API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
         run: sphinx-build -b=html docs/ build/
 

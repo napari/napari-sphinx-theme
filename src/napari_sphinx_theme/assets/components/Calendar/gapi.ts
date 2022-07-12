@@ -93,6 +93,7 @@ export async function fetchEvents(
         start,
         title,
         type,
+        id: event.id,
         description: event.description,
         htmlLink: event.htmlLink,
         location: event.location ?? '',

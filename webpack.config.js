@@ -67,7 +67,6 @@ const config = {
     new webpack.EnvironmentPlugin({
       ENV: process.env.ENV || 'local',
       GOOGLE_CALENDAR_API_KEY: '{google_calendar_api_key}',
-      GOOGLE_CALENDAR_ID: '{google_calendar_id}',
       NODE_ENV: env,
     }),
   ],
