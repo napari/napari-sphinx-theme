@@ -268,30 +268,30 @@ function checkPageExistsAndRedirect(event) {
   <section id="calendar">
 <h1>Calendar<a class="headerlink" href="#calendar" title="Permalink to this headline">¶</a></h1>
 <p>The napari calendar is an HTML element you can include anywhere using the
-<code class="docutils literal notranslate"><span class="pre">napari-calendar</span></code> directive:</p>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">napari-calendar</span><span class="p">::</span>
+<code class="docutils literal notranslate"><span class="pre">calendar</span></code> directive:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">calendar</span><span class="p">::</span>
+   <span class="nc">:calendar-id:</span> c_35r93ec6vtp8smhm7dv5uot0v4@group.calendar.google.com
 </pre></div>
 </div>
 <p>To use the calendar, you’ll need to find out the calendar ID of the calendar you
 want to use, and create a Google Calendar API token:
 <a class="reference external" href="https://console.developers.google.com/flows/enableapi?apiid=calendar">https://console.developers.google.com/flows/enableapi?apiid=calendar</a></p>
-<p>Next, you’ll need to pass the calendar ID and API key to the Sphinx build
-process as environment variables:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">GOOGLE_CALENDAR_ID</span><span class="o">=</span>calendar-id <span class="nv">GOOGLE_CALENDAR_API_KEY</span><span class="o">=</span>api-key sphinx-build -b<span class="o">=</span>html docs/ dist/
+<p>Next, you’ll need to pass the API key to the Sphinx build process as environment
+variables:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">GOOGLE_CALENDAR_API_KEY</span><span class="o">=</span>api-key sphinx-build -b<span class="o">=</span>html docs/ dist/
 </pre></div>
 </div>
-<div class="napari-calendar docutils container">
+<div class="napari-calendar calendar-id-c_35r93ec6vtp8smhm7dv5uot0v4&#64;group.calendar.google.com docutils container">
 </div>
 <section id="filters">
 <h2>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h2>
 <p>The calendar also includes filters for specific meetings. This can be enabled
 using the <code class="docutils literal notranslate"><span class="pre">show-filters</span></code> option. Right now, this is hardcoded for napari
 meetings, but in the future we could make it configurable.</p>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">napari-calendar</span><span class="p">::</span>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">calendar</span><span class="p">::</span>
+   <span class="nc">:calendar-id:</span> c_35r93ec6vtp8smhm7dv5uot0v4@group.calendar.google.com
    <span class="nc">:show-filters:</span>
 </pre></div>
-</div>
-<div class="napari-calendar show-filters docutils container">
 </div>
 </section>
 </section>
