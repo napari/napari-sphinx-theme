@@ -16,6 +16,7 @@ import webpackConfig from '../webpack.config.js';
 
 const OUT_DIR = resolve(__dirname, '../dist');
 const PROD = process.env.ENV === 'prod';
+const PROD_URL = process.env.PROD_URL || 'https://napari.org';
 
 /**
  * @param {string} file The file to check
@@ -42,7 +43,7 @@ async function startDevServer() {
   app.use(async (req, res) => {
     console.log(`[${req.method}] ${req.url}`);
 
-    const url = new URL(req.url, 'https://napari.org');
+    const url = new URL(req.url, PROD_URL);
     let data = '';
 
     if (PROD) {
