@@ -520,11 +520,11 @@ def add_google_calendar_secrets(app, exception):
         'napari-sphinx-theme.js'
     )
 
-    with open(script_path, 'r') as f:
+    with open(script_path, 'r', encoding="utf8") as f:
         source = f.read()
         source = source.replace('{google_calendar_api_key}', GOOGLE_CALENDAR_API_KEY)
 
-    with open(script_path, 'w') as f:
+    with open(script_path, 'w', encoding="utf8") as f:
         f.write(source)
 
 def setup(app):
