@@ -26,7 +26,7 @@ body {
 }
 
 .napari-page {
-  @apply tw-grid tw-justify-center tw-gap-6 tw-pt-32 tw-flex-auto;
+  @apply tw-grid tw-justify-center tw-gap-6 tw-pt-12 tw-flex-auto;
 
   grid-template-columns: 1fr;
 
