@@ -50,6 +50,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .nt { color: #000080 } /* Name.Tag */
 .highlight .nv { color: #7518a1 } /* Name.Variable */
 .highlight .ow { color: #956441 } /* Operator.Word */
+.highlight .pm { color: #000000 } /* Punctuation.Marker */
 .highlight .mb { color: #227b81 } /* Literal.Number.Bin */
 .highlight .mf { color: #227b81 } /* Literal.Number.Float */
 .highlight .mh { color: #227b81 } /* Literal.Number.Hex */

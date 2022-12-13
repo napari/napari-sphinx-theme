@@ -26,7 +26,7 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <link rel="canonical" href="http://127.0.0.1:8000/demo/generated/pandas.DataFrame.groupby.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -40,9 +40,6 @@
     
   </head>
   <body>
-    
-    <div class="container-fluid" id="banner"></div>
-
     
     <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
 
@@ -534,7 +531,7 @@ function checkPageExistsAndRedirect(event) {
 <h1>pandas.DataFrame.groupby<a class="headerlink" href="#pandas-dataframe-groupby" title="Permalink to this headline">¶</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pandas.DataFrame.groupby">
-<span class="sig-prename descclassname"><span class="pre">DataFrame.</span></span><span class="sig-name descname"><span class="pre">groupby</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axis</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Level</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">squeeze</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">lib.NoDefault</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">NoDefault.no_default</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropna</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrameGroupBy</span></span></span><a class="headerlink" href="#pandas.DataFrame.groupby" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">DataFrame.</span></span><span class="sig-name descname"><span class="pre">groupby</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axis</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">IndexLabel</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">lib.NoDefault</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">_NoDefault.no_default</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">squeeze</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">lib.NoDefault</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">_NoDefault.no_default</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropna</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrameGroupBy</span></span></span><a class="headerlink" href="#pandas.DataFrame.groupby" title="Permalink to this definition">¶</a></dt>
 <dd><p>Group DataFrame using a mapper or by a Series of columns.</p>
 <p>A groupby operation involves some combination of splitting the
 object, applying a function, and combining the results. This can be
@@ -553,10 +550,11 @@ the values are used as-is to determine the groups. A label or list
 of labels may be passed to group by the columns in <code class="docutils literal notranslate"><span class="pre">self</span></code>.
 Notice that a tuple is interpreted as a (single) key.</p>
 </dd>
-<dt><strong>axis</strong><span class="classifier">{0 or ‘index’, 1 or ‘columns’}, default 0</span></dt><dd><p>Split along rows (0) or columns (1).</p>
+<dt><strong>axis</strong><span class="classifier">{0 or ‘index’, 1 or ‘columns’}, default 0</span></dt><dd><p>Split along rows (0) or columns (1). For <cite>Series</cite> this parameter
+is unused and defaults to 0.</p>
 </dd>
 <dt><strong>level</strong><span class="classifier">int, level name, or sequence of such, default None</span></dt><dd><p>If the axis is a MultiIndex (hierarchical), group by a particular
-level or levels.</p>
+level or levels. Do not specify both <code class="docutils literal notranslate"><span class="pre">by</span></code> and <code class="docutils literal notranslate"><span class="pre">level</span></code>.</p>
 </dd>
 <dt><strong>as_index</strong><span class="classifier">bool, default True</span></dt><dd><p>For aggregated output, return object with group labels as the
 index. Only relevant for DataFrame input. as_index=False is
@@ -566,7 +564,18 @@ effectively “SQL-style” grouped output.</p>
 Note this does not influence the order of observations within each
 group. Groupby preserves the order of rows within each group.</p>
 </dd>
-<dt><strong>group_keys</strong><span class="classifier">bool, default True</span></dt><dd><p>When calling apply, add group keys to index to identify pieces.</p>
+<dt><strong>group_keys</strong><span class="classifier">bool, optional</span></dt><dd><p>When calling apply and the <code class="docutils literal notranslate"><span class="pre">by</span></code> argument produces a like-indexed
+(i.e. <span class="xref std std-ref">a transform</span>) result, add group keys to
+index to identify pieces. By default group keys are not included
+when the result’s index (and column) labels match the inputs, and
+are included otherwise. This argument has no effect if the result produced
+is not like-indexed with respect to the input.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 1.5.0: </span>Warns that <cite>group_keys</cite> will no longer be ignored when the
+result from <code class="docutils literal notranslate"><span class="pre">apply</span></code> is a like-indexed Series or DataFrame.
+Specify <code class="docutils literal notranslate"><span class="pre">group_keys</span></code> explicitly to include the group keys or
+not.</p>
+</div>
 </dd>
 <dt><strong>squeeze</strong><span class="classifier">bool, default False</span></dt><dd><p>Reduce the dimensionality of the return type if possible,
 otherwise return a consistent type.</p>
@@ -687,6 +696,28 @@ using the <cite>level</cite> parameter:</p>
 <span class="go">a   13.0   13.0</span>
 <span class="go">b   12.3  123.0</span>
 <span class="go">NaN 12.3   33.0</span>
+</pre></div>
+</div>
+<p>When using <code class="docutils literal notranslate"><span class="pre">.apply()</span></code>, use <code class="docutils literal notranslate"><span class="pre">group_keys</span></code> to include or exclude the group keys.
+The <code class="docutils literal notranslate"><span class="pre">group_keys</span></code> argument defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code> (include).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Animal&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Falcon&#39;</span><span class="p">,</span> <span class="s1">&#39;Falcon&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                              <span class="s1">&#39;Parrot&#39;</span><span class="p">,</span> <span class="s1">&#39;Parrot&#39;</span><span class="p">],</span>
+<span class="gp">... </span>                   <span class="s1">&#39;Max Speed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">380.</span><span class="p">,</span> <span class="mf">370.</span><span class="p">,</span> <span class="mf">24.</span><span class="p">,</span> <span class="mf">26.</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Animal&quot;</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span>
+<span class="go">          Animal  Max Speed</span>
+<span class="go">Animal</span>
+<span class="go">Falcon 0  Falcon      380.0</span>
+<span class="go">       1  Falcon      370.0</span>
+<span class="go">Parrot 2  Parrot       24.0</span>
+<span class="go">       3  Parrot       26.0</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Animal&quot;</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span>
+<span class="go">   Animal  Max Speed</span>
+<span class="go">0  Falcon      380.0</span>
+<span class="go">1  Falcon      370.0</span>
+<span class="go">2  Parrot       24.0</span>
+<span class="go">3  Parrot       26.0</span>
 </pre></div>
 </div>
 </dd></dl>
