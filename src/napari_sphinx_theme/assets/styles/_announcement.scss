@@ -1,0 +1,17 @@
+.bd-header-announcement {
+  align-items: center;
+  background: theme('colors.hub-primary.200')  !important;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  margin-top: 64px;
+  padding: 16px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+  font-size: 11px;
+  @screen screen-495 {
+    font-size: 14px;
+  }
+}

@@ -1,6 +1,8 @@
 @import '@/scss/utils';
 
 .navbar {
+  height: 64px;
+
   &,
   &-light {
     @apply tw-shadow-none;
@@ -52,7 +54,7 @@
 
     @media (min-width: 960px) {
       a {
-        padding: 0 to-rem(17px) to-rem(20px) !important;
+        padding: 0 to-rem(17px) to-rem(10px) !important;
         margin-top: to-rem(20px) !important;
         border-bottom: to-rem(3px) solid transparent;
       }
