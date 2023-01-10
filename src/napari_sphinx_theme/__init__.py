@@ -15,7 +15,7 @@ from .bootstrap_html_translator import BootstrapHTML5Translator
 from .napari_code_theme import *
 from .calendar import CalendarDirective
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 logger = logging.getLogger(__name__)
 
