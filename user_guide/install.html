@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <meta content="Detailed instructions for installing pydata-sphinx-theme." lang="en" name="description" xml:lang="en" />
 
-    <title>Installation &#8212; napari Sphinx Theme 0.1.7 documentation</title>
+    <title>Installation &#8212; napari Sphinx Theme 0.2.0 documentation</title>
   <link rel="stylesheet" href="../_static/fa/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/webfonts/fa-brands-400.woff2">
@@ -105,7 +105,7 @@
       <div class="navbar-end-item">
         <div class="dropdown" id="version_switcher">
     <button type="button" class="btn btn-primary btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
-        <span>version <span id="version_switcher_button_text">0.1.7</span></span>
+        <span>version <span id="version_switcher_button_text">0.2.0</span></span>
 
         <svg class="version-switcher-chevron" width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.27197 1.5L8.34304 8.57107L15.4141 1.5" stroke="black" stroke-width="2"/>
@@ -118,7 +118,7 @@
 
 <!-- NOTE: this JS must live here (not in our global JS file) because it relies
      on being processed by Jinja before it is run (specifically for replacing
-     variables user_guide/install and {'json_url': 'https://napari.org/napari-sphinx-theme/_static/switcher.json', 'version_match': '0.1.7'}.
+     variables user_guide/install and {'json_url': 'https://napari.org/napari-sphinx-theme/_static/switcher.json', 'version_match': '0.2.0'}.
 -->
 
 <script type="text/javascript">
@@ -169,10 +169,10 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.1.7 variable.
+            // this version, rather than using sphinx's 0.2.0 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
-            if (entry.version == "0.1.7") {
+            if (entry.version == "0.2.0") {
                 node.classList.add("active");
                 let btn = document.getElementById("version_switcher_button");
                 btn.innerText = btn.dataset["activeVersionName"] = entry.name;
@@ -320,10 +320,10 @@ function checkPageExistsAndRedirect(event) {
   <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p>The theme is available on PyPI and conda-forge, and can thus be installed with:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install pydata-sphinx-theme
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>pydata-sphinx-theme
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda install pydata-sphinx-theme --channel conda-forge
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda<span class="w"> </span>install<span class="w"> </span>pydata-sphinx-theme<span class="w"> </span>--channel<span class="w"> </span>conda-forge
 </pre></div>
 </div>
 <p>Then, in the <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> of your sphinx docs, you update the <code class="docutils literal notranslate"><span class="pre">html_theme</span></code>
@@ -333,7 +333,7 @@ configuration option:</p>
 </div>
 <p>If you want to track the development version of the theme, you can
 install it from the git repo:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install git+https://github.com/pydata/pydata-sphinx-theme.git@master
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/pydata/pydata-sphinx-theme.git@master
 </pre></div>
 </div>
 <p>or in a conda environment yml file, you can add:</p>

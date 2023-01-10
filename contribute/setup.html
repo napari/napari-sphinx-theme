@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Get started with development &#8212; napari Sphinx Theme 0.1.7 documentation</title>
+    <title>Get started with development &#8212; napari Sphinx Theme 0.2.0 documentation</title>
   <link rel="stylesheet" href="../_static/fa/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/webfonts/fa-brands-400.woff2">
@@ -104,7 +104,7 @@
       <div class="navbar-end-item">
         <div class="dropdown" id="version_switcher">
     <button type="button" class="btn btn-primary btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
-        <span>version <span id="version_switcher_button_text">0.1.7</span></span>
+        <span>version <span id="version_switcher_button_text">0.2.0</span></span>
 
         <svg class="version-switcher-chevron" width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.27197 1.5L8.34304 8.57107L15.4141 1.5" stroke="black" stroke-width="2"/>
@@ -117,7 +117,7 @@
 
 <!-- NOTE: this JS must live here (not in our global JS file) because it relies
      on being processed by Jinja before it is run (specifically for replacing
-     variables contribute/setup and {'json_url': 'https://napari.org/napari-sphinx-theme/_static/switcher.json', 'version_match': '0.1.7'}.
+     variables contribute/setup and {'json_url': 'https://napari.org/napari-sphinx-theme/_static/switcher.json', 'version_match': '0.2.0'}.
 -->
 
 <script type="text/javascript">
@@ -168,10 +168,10 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.1.7 variable.
+            // this version, rather than using sphinx's 0.2.0 variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
-            if (entry.version == "0.1.7") {
+            if (entry.version == "0.2.0") {
                 node.classList.add("active");
                 let btn = document.getElementById("version_switcher_button");
                 btn.innerText = btn.dataset["activeVersionName"] = entry.name;
@@ -383,8 +383,8 @@ You can clone it for local development like so:</p>
 <li><p><strong>Fork the repository</strong> so you have your own copy on GitHub.
 See <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">the GitHub forking guide</a> for more information.</p></li>
 <li><p><strong>Clone the repository locally</strong> so that you have a local copy to work from:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git clone https://github.com/<span class="o">{{</span> YOUR USERNAME <span class="o">}}</span>/pydata-sphinx-theme
-<span class="gp">$ </span><span class="nb">cd</span> pydata-sphinx-theme
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/<span class="o">{{</span><span class="w"> </span>YOUR<span class="w"> </span>USERNAME<span class="w"> </span><span class="o">}}</span>/pydata-sphinx-theme
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>pydata-sphinx-theme
 </pre></div>
 </div>
 </li>
@@ -408,7 +408,7 @@ The rest of this guide focuses on using <code class="docutils literal notranslat
 <section id="setup-nox">
 <h3>Setup <code class="docutils literal notranslate"><span class="pre">nox</span></code><a class="headerlink" href="#setup-nox" title="Permalink to this headline">¶</a></h3>
 <p>To start, install <code class="docutils literal notranslate"><span class="pre">nox</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install nox
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>nox
 </pre></div>
 </div>
 <p>You can call <code class="docutils literal notranslate"><span class="pre">nox</span></code> from the command line in order to perform common actions that are needed in building the theme.
@@ -420,11 +420,11 @@ For common development actions, you’ll simply need to use <code class="docutil
 <p><code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> allows us to run several checks on the codebase every time a new Git commit is made.
 This ensures standards and basic quality control for our code.</p>
 <p>Install <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> with the following command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install pre-commit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>pre-commit
 </pre></div>
 </div>
 <p>then navigate to this repository’s folder and activate it like so:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pre-commit install
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pre-commit<span class="w"> </span>install
 </pre></div>
 </div>
 <p>This will install the necessary dependencies to run <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> every time you make a commit with Git.</p>
@@ -439,7 +439,7 @@ They will not be installed in the isolated environments used by <code class="doc
 <h2>Build the documentation<a class="headerlink" href="#build-the-documentation" title="Permalink to this headline">¶</a></h2>
 <p>Now that you have <code class="docutils literal notranslate"><span class="pre">nox</span></code> installed and cloned the repository, you should be able to build the documentation locally.</p>
 <p>To build the documentation with <code class="docutils literal notranslate"><span class="pre">nox</span></code>, run the following command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nox -s docs
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nox<span class="w"> </span>-s<span class="w"> </span>docs
 </pre></div>
 </div>
 <p>This will install the necessary dependencies and build the documentation located in the <code class="docutils literal notranslate"><span class="pre">docs/</span></code> folder.
@@ -447,7 +447,7 @@ They will be placed in a <code class="docutils literal notranslate"><span class=
 If the docs have already been built, it will only build new pages that have been updated.
 You can open one of the HTML files there to preview the documentation locally.</p>
 <p>Alternatively, you can invoke the built-in Python <a class="reference external" href="https://docs.python.org/3/library/http.server.html#module-http.server">http.server</a> with:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m http.server -d docs/_build/html/
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span>-d<span class="w"> </span>docs/_build/html/
 </pre></div>
 </div>
 <p>This will print a local URL that you can open in a browser to explore the HTML files.</p>
@@ -466,7 +466,7 @@ You can open one of the HTML files there to preview the documentation locally.</
 <p>The source files for CSS and JS assets are in <code class="docutils literal notranslate"><span class="pre">src/pydata_sphinx_theme/assets</span></code>.
 These are then built and bundled with the theme (e.g., <code class="docutils literal notranslate"><span class="pre">scss</span></code> is turned into <code class="docutils literal notranslate"><span class="pre">css</span></code>).</p>
 <p>To compile the CSS/JS assets with <code class="docutils literal notranslate"><span class="pre">nox</span></code>, run the following command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nox -s compile
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nox<span class="w"> </span>-s<span class="w"> </span>compile
 </pre></div>
 </div>
 <p>This will compile all assets and place them in the appropriate folder to be used with documentation builds.</p>
@@ -480,7 +480,7 @@ The <code class="docutils literal notranslate"><span class="pre">sphinx-theme-bu
 <h2>Run a development server<a class="headerlink" href="#run-a-development-server" title="Permalink to this headline">¶</a></h2>
 <p>You can combine the above two actions and run a development server so that changes to <code class="docutils literal notranslate"><span class="pre">src/</span></code> are automatically bundled with the package, and the documentation is immediately reloaded in a live preview window.</p>
 <p>To run the development server with <code class="docutils literal notranslate"><span class="pre">nox</span></code>, run the following command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nox -s docs-live
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nox<span class="w"> </span>-s<span class="w"> </span>docs-live
 </pre></div>
 </div>
 <p>When working on the theme, saving changes to any of these directories:</p>
@@ -509,7 +509,7 @@ against a reference file on disk. If the structure of the two differs, then the
 test will fail. If we <em>expect</em> the structure to differ, then delete the file on
 disk and run the test. A new file will be created, and subsequent tests will pass.</p>
 <p>To run the tests with <code class="docutils literal notranslate"><span class="pre">nox</span></code>, run the following command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nox -s <span class="nb">test</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nox<span class="w"> </span>-s<span class="w"> </span><span class="nb">test</span>
 </pre></div>
 </div>
 </section>
