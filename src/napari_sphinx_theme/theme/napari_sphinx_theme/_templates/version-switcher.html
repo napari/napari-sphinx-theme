@@ -62,16 +62,43 @@ function checkPageExistsAndRedirect(event) {
             node.dataset["versionName"] = entry.name;
             node.dataset["version"] = entry.version;
 
+            // The version of the current documentation page
+            let currentVersion = "{{ theme_switcher.get('version_match') }}";
+
+            // Grab entry for the current version so we use it later
+            let currentVersionEntry = data.filter(entry => entry.version == currentVersion)[0];
+
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
             // this version, rather than using sphinx's {{ version }} variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
-            if (entry.version == "{{ theme_switcher.get('version_match') }}") {
+            if (entry.version == currentVersion) {
                 node.classList.add("active");
                 let btn = document.getElementById("version_switcher_button");
                 btn.innerText = btn.dataset["activeVersionName"] = entry.name;
                 btn.dataset["activeVersion"] = entry.version;
+            }
+
+            // If this entry is the one we wish to direct to
+            // And this entry is not currently active
+            // then add a banner to direct people there
+            if ((entry.preferred == "true") && (entry.version != currentVersion)) {
+                if (currentVersionEntry.description) {
+                    var currentVersionDescription = currentVersionEntry.description;
+                } else {
+                    var currentVersionDescription = "a previous release";
+                };
+                placeholder = document.getElementById("header-version-warning-placeholder");
+                placeholder.insertAdjacentHTML("afterend", `
+                <div class="bd-header-version-warning container-fluid" id="header-version-warning">
+                    <div class="bd-header-version-warning__content">
+                        <span>This page is for <strong>${currentVersionDescription}</strong>.</span>
+                        <a href="${entry.url}${currentFilePath}"><button class="btn">Switch to: ${entry.name}</button></a>
+                    </div>
+                </div>
+                `);
+                console.log("[PST]: Inserted version warning banner...");
             }
         });
     });

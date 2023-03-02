@@ -26,6 +26,7 @@ $grid-breakpoints: (
 @import "./markdown";
 @import "./versionmodified";
 @import "./announcement";
+@import "./header-version-warning";
 
 // Custom css, TODO: to be refactored in different partials
 // GitHub blockquote style

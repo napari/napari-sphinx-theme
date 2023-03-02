@@ -46,6 +46,8 @@
     {# Added to support a banner with an alert #}
     {%- include "announcement.html" -%}
 
+    {% include "version-warning.html" %}
+
     <div class="napari-page">
         {% block docs_sidebar %}
           {% if sidebars %}
