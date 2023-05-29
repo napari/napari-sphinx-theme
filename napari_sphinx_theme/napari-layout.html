@@ -1,0 +1,24 @@
+{%- extends "pydata_sphinx_theme/layout.html" %}
+
+{%- block extrahead %}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="{{ language }}">
+    {% for favicon in theme_favicons %}
+      {% if favicon.href[:4] == 'http'%}
+      <link rel="{{ favicon.rel }}" sizes="{{ favicon.sizes }}" href="{{ favicon.href }}">
+      {% else %}
+      <link rel="{{ favicon.rel }}" sizes="{{ favicon.sizes }}" href="{{ pathto('_static/' + favicon.href, 1) }}">
+      {% endif %}
+    {% endfor %}
+{%- endblock %}
+
+{% block content %}
+
+  {{ super() }}
+  <script src="{{ pathto('_static/scripts/napari-sphinx-theme.js', 1) }}"></script>
+
+{%- endblock %}
+
+{%- block footer %}
+{%- include "footer.html" %}
+{%- endblock %}

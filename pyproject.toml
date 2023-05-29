@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "napari_sphinx_theme"
+description = "Bootstrap-based Sphinx theme from the napari community"
+dynamic = ["version"]
+readme = "README.md"
+authors = [ {name = "napari team" }]
+
+requires-python = ">=3.7"
+dependencies = [
+  "pydata-sphinx-theme>0.13.1",
+  "napari",
+  "packaging",
+  "sphinx<6",
+]
+
+license = { file = "LICENSE" }
+
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python :: 3",
+  "Framework :: Sphinx",
+  "Framework :: Sphinx :: Theme",
+  "License :: OSI Approved :: BSD License",
+  "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+doc = [
+  "numpydoc",
+]
+
+dev = [
+  "pyyaml",
+  "pre-commit",
+  "nox",
+  "napari-sphinx-theme[coverage]",
+]
+
+[project.entry-points."sphinx.html_themes"]
+napari_sphinx_theme = "napari_sphinx_theme"
+
+[project.urls]
+homepage = "https://napari.org/napari-sphinx-theme/"
+repository = "https://github.com/napari/napari-sphinx-theme"
+
+[tool.setuptools]
+packages = ["napari_sphinx_theme"]
+zip-safe = false
+
+[tool.setuptools.dynamic]
+version = {attr = "napari_sphinx_theme.__version__"}
+
+[tool.setuptools.package-data]
+napari_sphinx_theme = [
+    "theme.conf",
+    "*.html",
+    "static/css/*.css",
+    "components/*.html",
+    "partials/*.html",
+    "scripts/*.js",
+]
