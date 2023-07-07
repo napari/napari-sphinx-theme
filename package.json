@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@fullcalendar/google-calendar": "^6.1.9"
+  }
+}
