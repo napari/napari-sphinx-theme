@@ -63,3 +63,6 @@ napari_sphinx_theme = [
     "partials/*.html",
     "scripts/*.js",
 ]
+
+[project.entry-points."pygments.styles"]
+napari = "napari_sphinx_theme:NapariCodeTheme"
