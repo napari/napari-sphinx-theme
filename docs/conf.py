@@ -2,23 +2,19 @@ import os
 import time
 import datetime
 from napari_sphinx_theme import __version__
-# Configuration file for the Sphinx documentation builder for
-# matplotlib projects.
 
 version = __version__
 
 # Parse year using SOURCE_DATE_EPOCH, falling back to current time.
 # https://reproducible-builds.org/specs/source-date-epoch/
 build_date = datetime.datetime.utcfromtimestamp(
-    int(os.environ.get('SOURCE_DATE_EPOCH', time.time()))
+    int(os.environ.get("SOURCE_DATE_EPOCH", time.time()))
 )
 
 # -- Project information -----------------------------------------------------
 
 project = "napari Sphinx Theme"
-copyright = (
-    f"2023 - {build_date.year} napari Community"
-)
+copyright = f"2023 - {build_date.year} napari Community"
 author = "napari Community"
 
 
@@ -47,6 +43,8 @@ else:
     version_match = version
 
 html_theme_options = {
+    # comment from mpl-sphinx-theme, left here for reference;
+    # could be useful when adopting dark/light logos
     # logo is installed by mpl-sphinx-theme as:
     # "logo": {"link": "https://matplotlib.org/stable/",
     #         "image_light": "_static/logo_light.svg",
@@ -76,4 +74,3 @@ html_sidebars = {
         "sidebar-nav-bs",
     ],
 }
-
