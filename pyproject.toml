@@ -1,25 +1,19 @@
 [build-system]
-requires = ["sphinx-theme-builder >= 0.2.0a7"]
-build-backend = "sphinx_theme_builder"
-
-[tool.sphinx-theme-builder]
-node-version = "16.13.2"
-theme-name = "napari_sphinx_theme"
-additional-compiled-static-assets = ["dist/"]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
 [project]
-name = "napari-sphinx-theme"
+name = "napari_sphinx_theme"
 description = "Bootstrap-based Sphinx theme from the napari community"
 dynamic = ["version"]
 readme = "README.md"
-author = "napari team"
+authors = [ {name = "napari team" }]
 
 requires-python = ">=3.7"
 dependencies = [
-  "sphinx>=3.5.4,<6",
-  "beautifulsoup4",
-  "docutils!=0.17.0",
-  "packaging"
+  "pydata-sphinx-theme==0.14.4",
+  "packaging",
+  "sphinx<6",
 ]
 
 license = { file = "LICENSE" }
@@ -36,27 +30,8 @@ classifiers = [
 [project.optional-dependencies]
 doc = [
   "numpydoc",
-  "myst-parser",
-  "pandas",
-  "pytest",
-  "pytest-regressions",
-  "sphinxext-rediraffe",
-  "sphinx-sitemap",
-  # For demo examples
-  "jupyter_sphinx",
-  "plotly",
-  "numpy",
-  "xarray",
 ]
-test = [
-  "pytest",
-  "napari-sphinx-theme[doc]",
-]
-coverage = [
-  "pytest-cov",
-  "codecov",
-  "napari-sphinx-theme[test]",
-]
+
 dev = [
   "pyyaml",
   "pre-commit",
@@ -64,5 +39,29 @@ dev = [
   "napari-sphinx-theme[coverage]",
 ]
 
-[project.entry-points]
-"sphinx.html_themes" = { napari = "napari_sphinx_theme" }
+[project.entry-points."sphinx.html_themes"]
+napari_sphinx_theme = "napari_sphinx_theme"
+
+[project.urls]
+homepage = "https://napari.org/napari-sphinx-theme/"
+repository = "https://github.com/napari/napari-sphinx-theme"
+
+[tool.setuptools]
+packages = ["napari_sphinx_theme"]
+zip-safe = false
+
+[tool.setuptools.dynamic]
+version = {attr = "napari_sphinx_theme.__version__"}
+
+[tool.setuptools.package-data]
+napari_sphinx_theme = [
+    "theme.conf",
+    "*.html",
+    "static/css/*.css",
+    "components/*.html",
+    "partials/*.html",
+    "scripts/*.js",
+]
+
+[project.entry-points."pygments.styles"]
+napari = "napari_sphinx_theme:NapariCodeTheme"

@@ -1,60 +1,24 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
-
-# -- Path setup --------------------------------------------------------------
-
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
 import os
+import time
+import datetime
+from napari_sphinx_theme import __version__
 
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+version = __version__
 
+# Parse year using SOURCE_DATE_EPOCH, falling back to current time.
+# https://reproducible-builds.org/specs/source-date-epoch/
+build_date = datetime.datetime.utcfromtimestamp(
+    int(os.environ.get("SOURCE_DATE_EPOCH", time.time()))
+)
 
 # -- Project information -----------------------------------------------------
 
 project = "napari Sphinx Theme"
-copyright = "2021 napari Community"
+copyright = f"2023 - {build_date.year} napari Community"
 author = "napari Community"
 
 
-release = '0.2.1'
-version = release.replace("dev0", "")
-
 # -- General configuration ---------------------------------------------------
-
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
-
-extensions = [
-    "jupyter_sphinx",
-    "myst_parser",
-    "numpydoc",
-    "sphinx.ext.autodoc",
-    "sphinx.ext.autosummary",
-    "sphinxext.rediraffe",
-]
-
-# -- Internationalization ------------------------------------------------
-# specifying the natural language populates some key tags
-language = "en"
-
-# ReadTheDocs has its own way of generating sitemaps, etc.
-if not os.environ.get("READTHEDOCS"):
-    extensions += ["sphinx_sitemap"]
-
-    # -- Sitemap -------------------------------------------------------------
-    html_baseurl = os.environ.get("SITEMAP_URL_BASE", "http://127.0.0.1:8000/")
-    sitemap_locales = [None]
-    sitemap_url_scheme = "{link}"
-
-autosummary_generate = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -64,69 +28,33 @@ templates_path = ["_templates"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
-# -- Extension options -------------------------------------------------------
-
-myst_enable_extensions = [
-    # This allows us to use ::: to denote directives, useful for admonitions
-    "colon_fence",
-]
-
 # -- Options for HTML output -------------------------------------------------
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-html_theme = "napari"
-# html_logo = "_static/pandas.svg"  # For testing
+html_theme = "napari_sphinx_theme"
 
 # Define the json_url for our version switcher.
 json_url = "https://napari.org/napari-sphinx-theme/_static/switcher.json"
-
-# Define the version we use for matching in the version switcher.
-version_match = os.environ.get("READTHEDOCS_VERSION")
-# If READTHEDOCS_VERSION doesn't exist, we're not on RTD
-# If it is an integer, we're in a PR build and the version isn't correct.
-if not version_match or version_match.isdigit():
-    # For local development, infer the version to match from the package.
-    if "dev" in release:
-        version_match = "latest"
-        # We want to keep the relative reference if we are in dev mode
-        # but we want the whole url if we are effectively in a released version
-        json_url = "_static/switcher.json"
-    else:
-        version_match = release
+if "dev" in version:
+    version_match = "latest"
+    # We want to keep the relative reference if we are in dev mode
+    # but we want the whole url if we are effectively in a released version
+    json_url = "_static/switcher.json"
+else:
+    version_match = version
 
 html_theme_options = {
-    "external_links": [
-        {
-            "url": "https://github.com/pydata/pydata-sphinx-theme/releases",
-            "name": "Changelog",
-        },
-        {"url": "https://pandas.pydata.org/pandas-docs/stable/", "name": "Pandas Docs"},
-    ],
-    "github_url": "https://github.com/pydata/pydata-sphinx-theme",
-    "twitter_url": "https://twitter.com/pandas_dev",
-    "icon_links": [
-        {
-            "name": "PyPI",
-            "url": "https://pypi.org/project/pydata-sphinx-theme",
-            "icon": "fas fa-box",
-        },
-        {
-            "name": "Pandas",
-            "url": "https://pandas.pydata.org",
-            "icon": "_static/pandas-square.svg",
-            "type": "local",
-        },
-    ],
-    "use_edit_page_button": True,
+    # comment from mpl-sphinx-theme, left here for reference;
+    # could be useful when adopting dark/light logos
+    # logo is installed by mpl-sphinx-theme as:
+    # "logo": {"link": "https://matplotlib.org/stable/",
+    #         "image_light": "_static/logo_light.svg",
+    #         "image_dark": "_static/logo_dark.svg"},
+    # if this default is OK, then no need to modify "logo"
+    # collapse_navigation in pydata-sphinx-theme is slow, so skipped for local
+    # and CI builds https://github.com/pydata/pydata-sphinx-theme/pull/386
     "show_toc_level": 1,
-    # "show_nav_level": 2,
-    # "search_bar_position": "navbar",  # TODO: Deprecated - remove in future version
-    # "navbar_align": "left",  # [left, content, right] For testing that the navbar items align properly
-    # "navbar_start": ["navbar-logo", "navbar-version"],
-    # "navbar_center": ["navbar-nav", "navbar-version"],  # Just for testing
-    "navbar_end": ["version-switcher"],
+    "show_prev_next": False,
+    "navbar_end": ["version-switcher", "navbar-icon-links"],
     # "left_sidebar_end": ["custom-template.html", "sidebar-ethical-ads.html"],
     # "footer_items": ['navbar-version', 'napari-footer-links', 'copyright'],
     "switcher": {
@@ -135,33 +63,14 @@ html_theme_options = {
     },
 }
 
-html_sidebars = {
-    "contribute/index": [
-        "search-field",
-        "sidebar-nav-bs",
-        "custom-template",
-    ],  # This ensures we test for custom sidebars
-    "demo/no-sidebar": [],  # Test what page looks like with no sidebar items
-    "search": [],
-    "demo/kitchen-sink/calendar": [],
-}
-
-
-html_context = {
-    "github_user": "napari",
-    "github_repo": "napari-sphinx-theme",
-    "github_version": "main",
-    "doc_path": "docs",
-}
-
-rediraffe_redirects = {
-    "contributing.rst": "contribute/index.rst",
-}
-
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ["_static"]
+# html_static_path = ["_static"]
 
-def setup(app):
-    app.add_css_file("custom.css")
+html_sidebars = {
+    "**": [
+        "search-field",
+        "sidebar-nav-bs",
+    ],
+}
