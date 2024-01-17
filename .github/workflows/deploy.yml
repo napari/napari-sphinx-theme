@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: |
           # Install Python dependencies
-          pip install --upgrade pip build .[doc]
+          pip install --upgrade pip build ".[doc]"
 
       # Build and install the theme package.
       - name: Build and install theme
