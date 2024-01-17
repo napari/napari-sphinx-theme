@@ -15,6 +15,9 @@ concurrency:
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   build-and-deploy-book:
+    permissions:
+      contents: write
+      id-token: write
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
