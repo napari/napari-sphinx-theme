@@ -1025,7 +1025,6 @@ div.admonition.note>.admonition-title::after {
 
 /* The Modal (background) */
 .modal {
-    display: none;
     /* Hidden by default */
     position: fixed;
     /* Stay in place */
@@ -1047,18 +1046,18 @@ div.admonition.note>.admonition-title::after {
     /* Black w/ opacity */
 }
 
+
 /* Modal Content */
 .modal-content {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);;
     background-color: #fefefe;
     margin: auto;
-    padding: 0;
+    padding: 0px;
     border: 1px solid #888;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
 }
 
 /* Modal Content */
