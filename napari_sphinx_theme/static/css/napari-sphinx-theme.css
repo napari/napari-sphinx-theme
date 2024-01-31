@@ -49,6 +49,7 @@ html[data-theme="dark"] {
     --pst-color-text-muted: var(--napari-dark-gray);
     --pst-color-border: var(--napari-gray);
     --pst-color-target: var(--napari-gray);
+    --pst-color-secondary-bg: #e0c7ff;
 }
 
 body {
