@@ -3,7 +3,7 @@ from pathlib import Path
 
 from .napari_code_theme import *
 
-__version__ = "0.3.2.dev0"
+__version__ = "0.3.2"
 
 
 def update_templates(app, pagename, templatename, context, doctree):
