@@ -682,6 +682,10 @@ div.admonition *:last-child,
     margin-bottom: 0;
 }
 
+div.admonition::after {
+    padding-bottom: 10px;
+}
+
 div.admonition p.admonition-title~*,
 .admonition p.admonition-title~* {
     margin-left: 1.4rem;
