@@ -84,7 +84,7 @@ jobs:
           linux-teardown: "echo 'skip teardown'"
     
       - name: remove .doctrees folder (400Mb)
-        run: rm -rf napari-docs/.doctrees
+        run: rm -rf napari-docs/docs/_build/.doctrees
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
