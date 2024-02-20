@@ -1,0 +1,93 @@
+name: Build napari Docs on PR
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-upload:
+    name: Build & Upload Artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone napari-sphinx-theme
+        uses: actions/checkout@v4
+
+      - name: Clone napari docs repo
+        uses: actions/checkout@v4
+        with:
+          repository: napari/docs
+          path: napari-docs  # place in a named directory
+
+      - name: Clone napari repo
+        uses: actions/checkout@v4
+        with:
+          path: napari  # place in a named directory
+          repository: napari/napari
+          # ensure version metadata is proper
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache-dependency-path: |
+            napari/setup.cfg
+            docs/requirements.txt
+
+      - uses: tlambert03/setup-qt-libs@v1
+
+      - name: Install napari Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "napari/[all]"
+        env:
+          PIP_CONSTRAINT: ${{ github.workspace }}/napari/resources/constraints/constraints_py3.10_docs.txt
+
+      - name: Testing
+        run: |
+          python -c 'import napari; print(napari.__version__)'
+          python -c 'import napari.layers; print(napari.layers.__doc__)'
+
+      - name: Install napari-docs Dependencies
+        run: |
+          python -m pip install -qr ${{ github.workspace }}/napari-docs/requirements.txt
+        env:
+          PIP_CONSTRAINT: ${{ github.workspace }}/napari/resources/constraints/constraints_py3.10_docs.txt
+
+      # Build and install the theme package.
+      - name: Build and install theme
+        env:
+          ENV: prod
+        run: |
+          pip install --upgrade build ".[doc]"
+          python -m build
+          pip install dist/napari_sphinx_theme*.whl
+
+      - name: Build Docs
+        uses: aganders3/headless-gui@v2
+        env:
+          GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
+          GOOGLE_CALENDAR_API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
+          PIP_CONSTRAINT: ${{ github.workspace }}/napari/resources/constraints/constraints_py3.10_docs.txt
+        with:
+          # using html instead of docs will skip installing requirements
+          run:  make -C napari-docs html
+          # skipping setup stops the action from running the default (tiling) window manager
+          # the window manager is not necessary for docs builds at this time and it was causing
+          # problems with screenshots (https://github.com/napari/docs/issues/285)
+          linux-setup: "echo 'skip setup'"
+          linux-teardown: "echo 'skip teardown'"
+    
+      - name: remove .doctrees folder (400Mb)
+        run: rm -rf napari-docs/docs/_build/.doctrees
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: napari-docs
+          path: napari-docs/docs/_build
