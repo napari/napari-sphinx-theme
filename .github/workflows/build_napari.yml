@@ -17,6 +17,9 @@ jobs:
     steps:
       - name: Clone napari-sphinx-theme
         uses: actions/checkout@v4
+        with:
+          # ensure version metadata is proper
+          fetch-depth: 0
 
       - name: Clone napari docs repo
         uses: actions/checkout@v4
