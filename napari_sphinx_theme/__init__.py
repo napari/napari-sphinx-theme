@@ -3,8 +3,10 @@ from pathlib import Path
 
 from .napari_code_theme import *
 
-__version__ = "0.3.3.dev0"
-
+try:
+    from ._version import version as __version__
+except ImportError:
+    __version__ = 'not-installed'
 
 def update_templates(app, pagename, templatename, context, doctree):
     """Update template names for page build."""

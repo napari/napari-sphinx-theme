@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -49,8 +49,8 @@ repository = "https://github.com/napari/napari-sphinx-theme"
 packages = ["napari_sphinx_theme"]
 zip-safe = false
 
-[tool.setuptools.dynamic]
-version = {attr = "napari_sphinx_theme.__version__"}
+[tool.setuptools_scm]
+version_file = "napari_sphinx_theme/_version.py"
 
 [tool.setuptools.package-data]
 napari_sphinx_theme = [
