@@ -49,9 +49,6 @@ repository = "https://github.com/napari/napari-sphinx-theme"
 packages = ["napari_sphinx_theme"]
 zip-safe = false
 
-[tool.setuptools.dynamic]
-version = {attr = "napari_sphinx_theme.__version__"}
-
 [tool.setuptools_scm]
 version_file = "napari_sphinx_theme/_version.py"
 
