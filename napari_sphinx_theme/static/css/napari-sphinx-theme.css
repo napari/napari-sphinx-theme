@@ -308,14 +308,21 @@ button.version-switcher__button {
  sidebar
 ***************************/
 
-.bd-sidebar label {
-    left: 0px;
+.bd-search {
+    border: 1px solid transparent;
 }
 
-.bd-sidebar-primary label.toctree-toggle:hover {
-    background: none;
+/* Remove "Section Navigation" caption */
+.bd-links__title {
+    display: none;
 }
 
+/* Move chevron to the left */
+.bd-sidebar-primary li.has-children>details>summary .toctree-toggle {
+    right: unset;
+}
+
+/* Fonts and styles */
 .bd-sidebar a.reference,
 .bd-sidebar .caption-text {
     font-size: 0.875rem;
@@ -325,10 +332,6 @@ button.version-switcher__button {
 .bd-sidebar-primary .sidebar-primary-items__end {
     margin-bottom: 0;
     margin-top: 0;
-}
-
-.bd-search {
-    border: 1px solid transparent;
 }
 
 .bd-sidebar .toctree-l1 a {
@@ -437,10 +440,6 @@ button.version-switcher__button {
 .navbar-nav li a:hover,
 .navbar-nav li.current>a {
     color: var(--napari-color-text-base);
-}
-
-.navbar-nav .toctree-checkbox:checked~label i {
-    transform: rotate(90deg);
 }
 
 nav.bd-links li>a {

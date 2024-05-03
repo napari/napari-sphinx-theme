@@ -11,7 +11,7 @@ authors = [ {name = "napari team" }]
 
 requires-python = ">=3.7"
 dependencies = [
-  "pydata-sphinx-theme==0.14.4",
+  "pydata-sphinx-theme>=0.14.4",
   "packaging",
 ]
 
