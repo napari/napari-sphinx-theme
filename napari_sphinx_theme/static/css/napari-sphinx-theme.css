@@ -247,7 +247,6 @@ h1 {
     color: var(--napari-color-text-base) !important;
     font-size: 1.0625rem;
     padding: 15px 1.0625rem 15px !important;
-    border-bottom: .1875rem solid transparent;
     font-weight: 500 !important;
 }
 
@@ -257,10 +256,6 @@ h1 {
 
 .bd-header .navbar-nav li a.nav-link:hover {
     text-decoration: none !important;
-    border-bottom: .1875rem solid var(--napari-color-text-base);
-}
-
-.bd-header .navbar-nav>.current>.nav-link {
     border-bottom: .1875rem solid var(--napari-color-text-base);
 }
 
