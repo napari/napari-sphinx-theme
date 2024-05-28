@@ -212,7 +212,6 @@ h1 {
 
 .navbar {
     background-color: var(--napari-primary-blue) !important;
-    height: 64px;
     box-shadow: none;
 }
 
