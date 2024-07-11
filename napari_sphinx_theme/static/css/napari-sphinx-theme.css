@@ -228,36 +228,62 @@ h1 {
     color: var(--napari-color-text-base) !important;
 }
 
-.bd-header .navbar-nav li.pst-header-nav-item {
+/* Navbar text */
+.bd-header ul.navbar-nav > li.nav-item > .nav-link {
+    color: var(--napari-color-text-base);
     font-size: 1.0625rem;
     font-weight: 500 !important;
-}
-
-.navbar-icon-links li.nav-item a.nav-link {
-    color: var(--napari-color-text-base) !important;
-}
-
-.bd-header .navbar-nav li.pst-header-nav-item>.nav-link {
-    color: var(--napari-color-text-base) !important;
     border-bottom: 3px solid transparent;
+    padding: 16px 1.0625rem 16px !important;
 }
 
-.bd-header .navbar-nav li.pst-header-nav-item>.nav-link:hover {
-    color: var(--napari-color-text-base) !important;
-    border-bottom: 3px solid var(--pst-color-primary);
+.bd-header ul.navbar-nav > li.nav-item > .nav-link:hover {
+    color: var(--napari-color-text-base);
+    font-size: 1.0625rem;
+    font-weight: 500 !important;
+    border-bottom: 3px solid var(--napari-color-text-base);
 }
 
-.bd-header .navbar-nav li.pst-header-nav-item.current>.nav-link::before {
-    border-bottom: 0px solid var(--pst-color-primary);
+.bd-header ul.navbar-nav > li.nav-item.current>.nav-link::before {
+    border-bottom: 0px solid var(--napari-color-text-base);
 }
 
-.bd-header .navbar-nav li.pst-header-nav-item.current>.nav-link {
-    border-bottom: 3px solid var(--pst-color-primary);
+.bd-header ul.navbar-nav > li.nav-item.current > .nav-link {
+    border-bottom: 3px solid var(--napari-color-text-base);
     font-weight: 700 !important;
 }
 
-.bd-header .navbar-nav li.pst-header-nav-item>.nav-link {
-    padding: 15px 1.0625rem 15px !important;
+.bd-header ul.navbar-nav {
+    height: var(--pst-header-height);
+}
+
+.bd-header ul.navbar-nav > li.nav-item {
+    margin-inline: 0px;
+}
+
+.bd-header ul.navbar-nav > li.nav-item.dropdown > .dropdown-toggle {
+    color: var(--napari-color-text-base);
+    font-size: 1.0625rem;
+    font-weight: 500 !important;
+    border-bottom: 3px solid transparent;
+    padding: 16px 1.0625rem 16px !important;
+    height: var(--pst-header-height);
+}
+
+.bd-header ul.navbar-nav > li.nav-item.dropdown > .dropdown-toggle:hover {
+    box-shadow: none;
+    text-decoration: none;
+    border-bottom: 3px solid var(--napari-color-text-base);
+}
+
+.bd-header ul.navbar-nav li a.nav-link.dropdown-item {
+    color: var(--napari-color-text-base);
+    font-weight: 500;
+}
+
+html .pst-navbar-icon,
+html .pst-navbar-icon:hover {
+    color: var(--napari-color-text-base);
 }
 
 /***************************
