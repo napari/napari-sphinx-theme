@@ -83,8 +83,6 @@ h1 {
     align-items: center;
     justify-content: space-between;
     background-color: black;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
     padding-top: 1.5rem;
     padding-bottom: 0.5rem;
     margin-top: 75px;
@@ -204,6 +202,23 @@ h1 {
 
 .napari-footer .footer-icon__hover-blue:hover .footer-icon__light-blue {
     display: block;
+}
+
+/* Recommended by PST */
+.footer-items__start, .footer-items__end {
+  flex-direction: row;
+}
+
+.bd-footer__inner {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
 }
 
 /****************************
