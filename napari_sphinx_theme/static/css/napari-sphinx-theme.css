@@ -50,6 +50,7 @@ html[data-theme="dark"] {
     --pst-color-border: var(--napari-gray);
     --pst-color-target: var(--napari-gray);
     --pst-color-secondary-bg: #e0c7ff;
+    --pst-color-primary-text: white;
 }
 
 body {
