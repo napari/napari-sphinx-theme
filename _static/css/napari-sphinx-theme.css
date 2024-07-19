@@ -50,6 +50,7 @@ html[data-theme="dark"] {
     --pst-color-border: var(--napari-gray);
     --pst-color-target: var(--napari-gray);
     --pst-color-secondary-bg: #e0c7ff;
+    --pst-color-primary-text: white;
 }
 
 body {
@@ -83,8 +84,6 @@ h1 {
     align-items: center;
     justify-content: space-between;
     background-color: black;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
     padding-top: 1.5rem;
     padding-bottom: 0.5rem;
     margin-top: 75px;
@@ -204,6 +203,23 @@ h1 {
 
 .napari-footer .footer-icon__hover-blue:hover .footer-icon__light-blue {
     display: block;
+}
+
+/* Recommended by PST */
+.footer-items__start, .footer-items__end {
+  flex-direction: row;
+}
+
+.bd-footer__inner {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
 }
 
 /****************************
@@ -680,291 +696,46 @@ a.headerlink {
 
 .admonition,
 div.admonition {
-    box-shadow: none !important;
-}
-
-div.admonition,
-.admonition {
-    margin: 1.5625em auto;
-    padding: 0 0.6rem 0.8rem 0.6rem;
-    overflow: hidden;
-    page-break-inside: avoid;
-    border-left: 0.2rem solid;
-    border-color: rgba(var(--pst-color-admonition-default), 1);
-    border-radius: 0.2rem;
-    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.05), 0 0 0.0625rem rgba(0, 0, 0, 0.1);
-    transition: color 250ms, background-color 250ms, border-color 250ms;
-}
-
-div.admonition *:last-child,
-.admonition *:last-child {
-    margin-bottom: 0;
-}
-
-div.admonition::after {
-    padding-bottom: 10px;
-}
-
-div.admonition p.admonition-title~*,
-.admonition p.admonition-title~* {
-    margin-left: 1.4rem;
-    margin-right: 1.4rem;
-}
-
-div.admonition>ol,
-div.admonition>ul,
-.admonition>ol,
-.admonition>ul {
-    margin-left: 1em;
-}
-
-div.admonition>.admonition-title,
-.admonition>.admonition-title {
-    position: relative;
-    margin: 0 -0.6rem;
-    padding: 0.4rem 0.6rem 0.4rem 2rem;
-    font-weight: 700;
-    background-color: rgba(var(--pst-color-admonition-default), 0.1);
-}
-
-div.admonition>.admonition-title:after,
-.admonition>.admonition-title:after {
-    content: "";
-}
-
-div.admonition>.admonition-title+*,
-.admonition>.admonition-title+* {
-    margin-top: 0.4em;
-}
-
-/* Attention */
-
-div.admonition.attention,
-.admonition.attention {
-    border-color: rgba(var(--pst-color-admonition-attention), 1);
-}
-
-div.admonition.attention>.admonition-title,
-.admonition.attention>.admonition-title {
-    background-color: rgba(var(--pst-color-admonition-attention), 0.1);
-}
-
-div.admonition.attention>.admonition-title:before,
-.admonition.attention>.admonition-title:before {
-    color: rgba(var(--pst-color-admonition-attention), 1);
-}
-
-.admonition.attention>.admonition-title::after,
-div.admonition.attention>.admonition-title::after {
-    color: var(--pst-color-admonition-attention);
-    content: "";
-}
-
-/* Caution */
-
-div.admonition.caution,
-.admonition.caution {
-    border-color: rgba(var(--pst-color-admonition-caution), 1);
-}
-
-div.admonition.caution>.admonition-title,
-.admonition.caution>.admonition-title {
-    background-color: rgba(var(--pst-color-admonition-caution), 0.1);
-}
-
-div.admonition.caution>.admonition-title:before,
-.admonition.caution>.admonition-title:before {
-    color: rgba(var(--pst-color-admonition-caution), 1);
-}
-
-.admonition.caution>.admonition-title::after,
-div.admonition.caution>.admonition-title::after {
-    color: var(--pst-color-admonition-caution);
-    content: "";
-}
-
-/* Warning */
-
-div.admonition.warning,
-.admonition.warning {
-    border-color: rgba(var(--pst-color-admonition-warning), 1);
-}
-
-div.admonition.warning>.admonition-title,
-.admonition.warning>.admonition-title {
-    background-color: rgba(var(--pst-color-admonition-warning), 0.1);
-}
-
-div.admonition.warning>.admonition-title:before,
-.admonition.warning>.admonition-title:before {
-    color: rgba(var(--pst-color-admonition-warning), 1);
-}
-
-.admonition.warning>.admonition-title::after,
-div.admonition.warning>.admonition-title::after {
-    color: var(--pst-color-admonition-warning);
-    content: "";
-}
-
-/* Danger */
-
-div.admonition.danger,
-.admonition.danger {
-    border-color: rgba(var(--pst-color-admonition-danger), 1);
-}
-
-div.admonition.danger>.admonition-title,
-.admonition.danger>.admonition-title {
-    background-color: rgba(var(--pst-color-admonition-danger), 0.1);
-}
-
-div.admonition.danger>.admonition-title:before,
-.admonition.danger>.admonition-title:before {
-    color: rgba(var(--pst-color-admonition-danger), 1);
-}
-
-.admonition.danger>.admonition-title::after,
-div.admonition.danger>.admonition-title::after {
-    color: var(--pst-color-admonition-danger);
-    content: "";
-}
-
-/* Error */
-
-div.admonition.error,
-.admonition.error {
-    border-color: rgba(var(--pst-color-admonition-error), 1);
-}
-
-div.admonition.error>.admonition-title,
-.admonition.error>.admonition-title {
-    background-color: rgba(var(--pst-color-admonition-error), 0.1);
-}
-
-div.admonition.error>.admonition-title:before,
-.admonition.error>.admonition-title:before {
-    color: rgba(var(--pst-color-admonition-error), 1);
-}
-
-.admonition.error>.admonition-title::after,
-div.admonition.error>.admonition-title::after {
-    color: var(--pst-color-admonition-error);
-    content: "";
-}
-
-/* Hint */
-
-div.admonition.hint,
-.admonition.hint {
-    border-color: rgba(var(--pst-color-admonition-hint), 1);
-}
-
-div.admonition.hint>.admonition-title,
-.admonition.hint>.admonition-title {
-    background-color: rgba(var(--pst-color-admonition-hint), 0.1);
-}
-
-div.admonition.hint>.admonition-title:before,
-.admonition.hint>.admonition-title:before {
-    color: rgba(var(--pst-color-admonition-hint), 1);
-}
-
-.admonition.hint>.admonition-title::after,
-div.admonition.hint>.admonition-title::after {
-    color: var(--pst-color-admonition-hint);
-    content: "";
-}
-
-/* Tip */
-
-div.admonition.tip,
-.admonition.tip {
-    border-color: rgba(var(--pst-color-admonition-tip), 1);
-}
-
-div.admonition.tip>.admonition-title,
-.admonition.tip>.admonition-title {
-    background-color: rgba(var(--pst-color-admonition-tip), 0.1);
-}
-
-div.admonition.tip>.admonition-title:before,
-.admonition.tip>.admonition-title:before {
-    color: rgba(var(--pst-color-admonition-tip), 1);
-}
-
-.admonition.tip>.admonition-title::after,
-div.admonition.tip>.admonition-title::after {
-    color: var(--pst-color-admonition-tip);
-    content: "";
-}
-
-/* Important */
-
-div.admonition.important>.admonition-title,
-.admonition.important>.admonition-title {
-    background-color: rgba(var(--pst-color-admonition-important), 0.1);
-}
-
-div.admonition.important>.admonition-title:before,
-.admonition.important>.admonition-title:before {
-    color: rgba(var(--pst-color-admonition-important), 1);
-}
-
-.admonition.important>.admonition-title::after,
-div.admonition.important>.admonition-title::after {
-    color: var(--pst-color-attention);
-    content: "";
-}
-
-/* Note */
-
-div.admonition.note,
-.admonition.note {
-    border-color: rgba(var(--pst-color-admonition-note), 1);
-}
-
-div.admonition.note>.admonition-title,
-.admonition.note>.admonition-title {
-    background-color: rgba(var(--pst-color-admonition-note), 0.1);
-}
-
-div.admonition.note>.admonition-title:before,
-.admonition.note>.admonition-title:before {
-    color: rgba(var(--pst-color-admonition-note), 1);
-}
-
-.admonition.note>.admonition-title::after,
-div.admonition.note>.admonition-title::after {
-    color: var(--pst-color-admonition-note);
-    content: "";
-}
-
-.admonition {
     --color: #80d1ff;
     border: var(--color) solid 1px !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    padding: 0 !important;
-}
-
-.admonition>p:not(.admonition-title) {
-    font-weight: 500;
-    margin: 0 !important;
-    padding: 1.5625rem !important;
+    border-color: rgba(var(--pst-color-admonition-default), 1);
+    padding-left: 0 !important;
     font-size: 0.938rem;
+    font-weight: 500;
 }
 
-.admonition-title {
+.admonition>.admonition-title,
+div.admonition>.admonition-title {
     text-transform: uppercase;
     background: var(--color) !important;
     font-size: 0.938rem !important;
-    padding: 0.25rem 1.5625rem;
+    font-weight: 700;
 }
 
-.admonition-title::before {
+/* Remove admonition title icon */
+div.admonition>.admonition-title:after,
+.admonition>.admonition-title:after {
     display: none;
 }
 
+/* Padding and spacing */
+div.admonition.warning>ul.simple {
+    padding: 1.1rem !important;
+}
+
+div.admonition>p,
+div.admonition>ul.simple p {
+    font-size: 0.938rem;
+}
+
+div.admonition>p {
+    padding-top: 0.5rem;
+    padding-bottom: 0.4rem;
+}
+
+/* Toggle button */
 .admonition.toggle-hidden {
     height: 40px;
 }
@@ -996,40 +767,58 @@ div.admonition.note>.admonition-title::after {
     transform: rotate(0);
 }
 
-.admonition.danger {
-    --color: #ff8080;
-}
-
-.admonition.warning {
-    --color: #ffa680;
-}
-
-.admonition.caution {
-    --color: #ffc580;
-}
-
-.admonition.error {
-    --color: #fade7d;
-}
-
-.admonition.important {
-    --color: #f1f379;
-}
+/* Attention */
 
 .admonition.attention {
     --color: #d8f97d;
 }
 
-.admonition.note {
-    --color: #80ffe0;
+/* Caution */
+
+.admonition.caution {
+    --color: #ffc580;
 }
+
+/* Warning */
+
+.admonition.warning {
+    --color: #ffa680;
+}
+
+/* Danger */
+
+.admonition.danger {
+    --color: #ff8080;
+}
+
+/* Error */
+
+.admonition.error {
+    --color: #fade7d;
+}
+
+/* Hint */
 
 .admonition.hint {
     --color: #8094ff;
 }
 
+/* Tip */
+
 .admonition.tip {
     --color: #cf80ff;
+}
+
+/* Important */
+
+.admonition.important {
+    --color: #f1f379;
+}
+
+/* Note */
+
+.admonition.note {
+    --color: #80ffe0;
 }
 
 /***************************
