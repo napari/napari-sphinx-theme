@@ -341,10 +341,6 @@ button.version-switcher__button {
  sidebar
 ***************************/
 
-.bd-search {
-    border: 1px solid transparent;
-}
-
 /* Remove "Section Navigation" caption */
 .bd-links__title {
     display: none;
@@ -498,6 +494,14 @@ nav.bd-links .current>a {
 search
 ***************************/
 
+.bd-search {
+    border: 1px solid transparent;
+}
+
+.bd-search:focus-within {
+    box-shadow: 0 0 0 .1875rem var(--napari-primary-blue);
+}
+
 .form-control {
     border: 1px transparent;
 }
@@ -508,7 +512,7 @@ search
     border: none;
     box-shadow: none;
     color: var(--pst-color-text-muted);
-    outline: 3px solid var(--napari-primary-blue);
+    outline: none;
 }
 
 /***************************
