@@ -1,7 +1,6 @@
 /***************************
  napari custom colors
 ***************************/
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap');
 
 html {
     --napari-primary-blue: #80d1ff;
@@ -10,7 +9,7 @@ html {
     --napari-dark-gray: #686868;
     --napari-gray: #f7f7f7;
     --pst-font-family-base: var(--pst-font-family-base-system);
-    --pst-font-family-heading: "Barlow", var(--pst-font-family-base-system);
+    --pst-font-family-heading: var(--pst-font-family-base-system);
     --pst-font-family-monospace: "JetBrains Mono", var(--pst-font-family-monospace-system);
     --pst-font-size-base: 16px;
     --pst-color-headerlink: var(--napari-dark-gray);
