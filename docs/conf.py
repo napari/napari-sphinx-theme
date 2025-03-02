@@ -61,6 +61,8 @@ html_theme_options = {
         "json_url": "https://napari.org/napari-sphinx-theme/_static/switcher.json",
         "version_match": version_match,
     },
+   "pygments_light_style": "napari",
+   "pygments_dark_style": "napari"
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
