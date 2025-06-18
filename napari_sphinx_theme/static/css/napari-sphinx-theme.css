@@ -623,9 +623,6 @@ nav.page-toc {
     --fc-button-active-border-color: var(--napari-deep-blue);
     --fc-button-hover-bg-color: var(--napari-deep-blue);
     --fc-button-hover-border-color: var(--napari-deep-blue);
-    --fc-event-bg-color: var(--napari-light-blue);
-    --fc-event-border-color: var(--napari-light-blue);
-    --fc-event-text-color: var(--napari-color-text-base);
 }
 
 .fc .fc-button:focus {
