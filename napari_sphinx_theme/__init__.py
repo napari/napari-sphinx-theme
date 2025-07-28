@@ -5,6 +5,8 @@ from typing import TYPE_CHECKING, Any
 
 from docutils.nodes import Node
 
+from .napari_code_theme import NapariCodeTheme
+
 if TYPE_CHECKING:
     from sphinx.application import Sphinx
 
@@ -12,6 +14,8 @@ try:
     from ._version import version as __version__  # type: ignore
 except ImportError:
     __version__ = "not-installed"
+
+__all__ = ["NapariCodeTheme", "__version__", "get_html_theme_path", "setup"]
 
 TEMPLATE_SECTIONS: list[str] = [
     "theme_navbar_start",

@@ -15,6 +15,7 @@ dependencies = [
   "packaging",
   "docutils-stubs==0.0.22",
   "types-docutils==0.21.0.20250728",
+  "types-pygments"
 ]
 license = "BSD-3-Clause"
 license-files = ["LICENSE"]
