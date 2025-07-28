@@ -1,32 +1,68 @@
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] Automatic linting and formatting fixes
+  autofix_prs: true
+  autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate hooks'
+  autoupdate_schedule: monthly
+
 # Exclude the encrypted file.
 exclude: github_deploy_key_pandas_dev_pandas_sphinx_theme\.enc
 
 repos:
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v2.4.1
+  - repo: https://github.com/rbubley/mirrors-prettier
+    rev: 'v3.6.2'
     hooks:
       - id: prettier
+        types_or: [yaml, markdown, html, css, scss, javascript, json]
         # Exclude the HTML, since it doesn't understand Jinja2
         exclude: .+((\.html)|index\.(.+)\.css)$
 
-  - repo: https://github.com/psf/black
-    rev: 20.8b1
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: 'v0.12.3'
     hooks:
-      - id: black
-        language_version: python3
+      - id: ruff-check
+        args: ['--fix', '--show-fixes']
+      - id: ruff-format
 
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.3
+  - repo: https://github.com/abravalheri/validate-pyproject
+    rev: 'v0.24.1'
     hooks:
-      - id: flake8
+      - id: validate-pyproject
+        additional_dependencies: ['validate-pyproject-schema-store[all]']
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v1.11.2'
+    hooks:
+      - id: mypy
+        additional_dependencies: ['types-docutils']
+        args: ['--config-file=pyproject.toml']
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: 'v2.4.1'
+    hooks:
+      - id: codespell
+
+  - repo: https://github.com/adamchainz/blacken-docs
+    rev: '1.19.1' # replace with latest tag on GitHub
+    hooks:
+      - id: blacken-docs
+        additional_dependencies:
+          - black==22.12.0
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: 'v5.0.0'
     hooks:
+      - id: check-added-large-files
       - id: check-builtin-literals
       - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-symlinks
       - id: check-toml
       - id: check-yaml
       - id: debug-statements
       - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: name-tests-test
+        args: ['--pytest-test-first']
+      - id: requirements-txt-fixer
       - id: trailing-whitespace
