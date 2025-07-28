@@ -3,7 +3,7 @@ requires = ["setuptools>=64", "setuptools_scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "napari_sphinx_theme"
+name = "napari-sphinx-theme"
 description = "Bootstrap-based Sphinx theme from the napari community"
 dynamic = ["version"]
 readme = "README.md"
