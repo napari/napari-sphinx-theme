@@ -9,7 +9,7 @@ dynamic = ["version"]
 readme = "README.md"
 authors = [ {name = "napari team" }]
 
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = [
   "pydata-sphinx-theme>=0.16.1",
   "packaging",
