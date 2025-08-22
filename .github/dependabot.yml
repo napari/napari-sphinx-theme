@@ -1,12 +1,11 @@
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: "monthly"
-    commit-message:
-      prefix: "ci(dependabot):"
+      interval: 'weekly'
     groups:
-      github-actions:
+      actions:
         patterns:
-          - "*"
+          - '*'
