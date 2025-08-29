@@ -706,6 +706,10 @@ div.admonition>.admonition-title {
     font-size: 0.938rem !important;
     font-weight: 700;
 }
+html[data-theme="dark"] .admonition > .admonition-title,
+html[data-theme="dark"] div.admonition > .admonition-title {
+    color: #22272e !important; /* or another dark color */
+}
 
 /* Remove admonition title icon */
 div.admonition>.admonition-title:after,
