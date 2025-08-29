@@ -46,7 +46,7 @@ html[data-theme="dark"] {
     --pst-color-inline-code: white !important;
     --pst-color-inline-code-links: white !important;
     --pst-color-on-background: #191e25;
-    --pst-color-text-muted: var(--napari-gray);
+    --pst-color-text-muted: var(--napari-dark-gray);
     --pst-color-border: var(--napari-dark-gray);
     --pst-color-target: var(--napari-dark-gray);
 }
