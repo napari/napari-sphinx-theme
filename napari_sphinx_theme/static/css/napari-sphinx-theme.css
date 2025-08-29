@@ -33,23 +33,15 @@ html[data-theme="light"] {
     --pst-color-target: var(--napari-gray);
 }
 
-/* Dark theme is currently unset - design/accessibility assessment is needed here */
 html[data-theme="dark"] {
-    --pst-color-primary: black;
+    --pst-color-primary: white;
     --pst-color-secondary: var(--napari-primary-blue);
-    --pst-color-background: white;
-    --napari-color-text-base: black;
-    --pst-color-text-base: var(--napari-color-text-base);
-    --pst-color-link: black;
-    --pst-color-link-hover: black !important;
-    --pst-color-inline-code: black !important;
-    --pst-color-inline-code-links: black !important;
-    --pst-color-on-background: white;
-    --pst-color-text-muted: var(--napari-dark-gray);
-    --pst-color-border: var(--napari-gray);
-    --pst-color-target: var(--napari-gray);
-    --pst-color-secondary-bg: #e0c7ff;
-    --pst-color-primary-text: white;
+}
+
+html[data-theme="dark"] .highlight, 
+html[data-theme="dark"] pre,
+html[data-theme="dark"] code {
+    background-color: #22272e !important; /* or use the background from your dark Pygments style */
 }
 
 body {

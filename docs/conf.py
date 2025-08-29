@@ -60,13 +60,13 @@ html_theme_options = {
     "show_prev_next": False,
     "navbar_end": ["version-switcher", "navbar-icon-links", "theme-switcher"],
     # "left_sidebar_end": ["custom-template.html", "sidebar-ethical-ads.html"],
-    # "footer_items": ['navbar-version', 'napari-footer-links', 'copyright'],
+    # "footer_items": ['navbar-version', '  napari-footer-links', 'copyright'],
     "switcher": {
         "json_url": "https://napari.org/napari-sphinx-theme/_static/switcher.json",
         "version_match": version_match,
     },
-   "pygments_light_style": "napari",
-   "pygments_dark_style": "napari"
+   "pygments_light_style": "github-light-colorblind",
+   "pygments_dark_style": "github-dark-colorblind",
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
