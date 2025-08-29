@@ -22,6 +22,7 @@ html[data-theme="light"] {
     --pst-color-secondary: var(--napari-primary-blue);
     --pst-color-background: white;
     --napari-color-text-base: black;
+    --napari-color-text-title: black;
     --pst-color-text-base: var(--napari-color-text-base);
     --pst-color-link: black;
     --pst-color-link-hover: black !important;
@@ -34,7 +35,8 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-    --napari-primary-blue: var(--napari-deep-blue);
+    --napari-color-text-title: black;
+    --pst-color-background: #191e25;
 }
 
 html[data-theme="dark"] .highlight, 
@@ -223,19 +225,19 @@ h1 {
 .navbar-brand {
     vertical-align: middle;
     font-size: 1.25rem;
-    color: black !important;
+    color: var(--napari-color-text-title) !important;
     position: relative;
     font-weight: bolder;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
     text-decoration: none !important;
-    color: var(--napari-color-text-base) !important;
+    color: var(--napari-color-text-title) !important;
 }
 
 /* Navbar text */
 .bd-header ul.navbar-nav > li.nav-item > .nav-link {
-    color: var(--napari-color-text-base);
+    color: var(--napari-color-text-title) !important;
     font-size: 1.0625rem;
     font-weight: 500 !important;
     border-bottom: 3px solid transparent;
@@ -243,18 +245,18 @@ h1 {
 }
 
 .bd-header ul.navbar-nav > li.nav-item > .nav-link:hover {
-    color: var(--napari-color-text-base);
+    color: var(--napari-color-text-title) !important;
     font-size: 1.0625rem;
     font-weight: 500 !important;
-    border-bottom: 3px solid var(--napari-color-text-base);
+    border-bottom: 3px solid var(--napari-color-text-title);
 }
 
 .bd-header ul.navbar-nav > li.nav-item.current>.nav-link::before {
-    border-bottom: 0px solid var(--napari-color-text-base);
+    border-bottom: 0px solid var(--napari-color-text-title);
 }
 
 .bd-header ul.navbar-nav > li.nav-item.current > .nav-link {
-    border-bottom: 3px solid var(--napari-color-text-base);
+    border-bottom: 3px solid var(--napari-color-text-title);
     font-weight: 700 !important;
 }
 
@@ -267,7 +269,7 @@ h1 {
 }
 
 .bd-header ul.navbar-nav > li.nav-item.dropdown > .dropdown-toggle {
-    color: var(--napari-color-text-base);
+    color: var(--napari-color-text-title);
     font-size: 1.0625rem;
     font-weight: 500 !important;
     border-bottom: 3px solid transparent;
@@ -278,17 +280,17 @@ h1 {
 .bd-header ul.navbar-nav > li.nav-item.dropdown > .dropdown-toggle:hover {
     box-shadow: none;
     text-decoration: none;
-    border-bottom: 3px solid var(--napari-color-text-base);
+    border-bottom: 3px solid var(--napari-color-text-title);
 }
 
 .bd-header ul.navbar-nav li a.nav-link.dropdown-item {
-    color: var(--napari-color-text-base);
+    color: var(--napari-color-text-title);
     font-weight: 500;
 }
 
 html .pst-navbar-icon,
 html .pst-navbar-icon:hover {
-    color: var(--napari-color-text-base);
+    color: var(--napari-color-text-title);
 }
 
 /***************************
@@ -300,7 +302,7 @@ button.btn.version-switcher__button {
     font-size: 0.875rem;
     font-weight: 600;
     border-style: none;
-    color: var(--napari-color-text-base);
+    color: var(--napari-color-text-title) !important;
 }
 
 button.btn.version-switcher__button:hover {
