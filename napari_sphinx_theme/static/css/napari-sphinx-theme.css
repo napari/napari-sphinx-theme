@@ -35,8 +35,20 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-    --napari-color-text-title: black;
+    --pst-color-primary: white;
+    --pst-color-secondary: var(--napari-primary-blue);
     --pst-color-background: #191e25;
+    --napari-color-text-base: white;
+    --napari-color-text-title: black;
+    --pst-color-text-base: var(--napari-color-text-base);
+    --pst-color-link: white;
+    --pst-color-link-hover: white !important;
+    --pst-color-inline-code: white !important;
+    --pst-color-inline-code-links: white !important;
+    --pst-color-on-background: #191e25;
+    --pst-color-text-muted: var(--napari-gray);
+    --pst-color-border: var(--napari-dark-gray);
+    --pst-color-target: var(--napari-dark-gray);
 }
 
 html[data-theme="dark"] .highlight, 
