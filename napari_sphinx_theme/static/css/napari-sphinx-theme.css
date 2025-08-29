@@ -34,8 +34,7 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-    --pst-color-primary: white;
-    --pst-color-secondary: var(--napari-primary-blue);
+    --napari-primary-blue: var(--napari-deep-blue);
 }
 
 html[data-theme="dark"] .highlight, 
