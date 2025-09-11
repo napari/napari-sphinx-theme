@@ -42,6 +42,10 @@ if "dev" in version:
 else:
     version_match = version
 
+html_context = {
+    "default_mode": "auto",
+}
+
 html_theme_options = {
     # comment from mpl-sphinx-theme, left here for reference;
     # could be useful when adopting dark/light logos
@@ -54,15 +58,15 @@ html_theme_options = {
     # and CI builds https://github.com/pydata/pydata-sphinx-theme/pull/386
     "show_toc_level": 1,
     "show_prev_next": False,
-    "navbar_end": ["version-switcher", "navbar-icon-links"],
+    "navbar_end": ["version-switcher", "navbar-icon-links", "theme-switcher"],
     # "left_sidebar_end": ["custom-template.html", "sidebar-ethical-ads.html"],
-    # "footer_items": ['navbar-version', 'napari-footer-links', 'copyright'],
+    # "footer_items": ['navbar-version', '  napari-footer-links', 'copyright'],
     "switcher": {
         "json_url": "https://napari.org/napari-sphinx-theme/_static/switcher.json",
         "version_match": version_match,
     },
    "pygments_light_style": "napari",
-   "pygments_dark_style": "napari"
+   "pygments_dark_style": "github-dark-colorblind",
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,

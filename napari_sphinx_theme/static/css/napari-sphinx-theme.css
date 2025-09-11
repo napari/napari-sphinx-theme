@@ -22,6 +22,7 @@ html[data-theme="light"] {
     --pst-color-secondary: var(--napari-primary-blue);
     --pst-color-background: white;
     --napari-color-text-base: black;
+    --napari-color-text-title: black;
     --pst-color-text-base: var(--napari-color-text-base);
     --pst-color-link: black;
     --pst-color-link-hover: black !important;
@@ -33,23 +34,27 @@ html[data-theme="light"] {
     --pst-color-target: var(--napari-gray);
 }
 
-/* Dark theme is currently unset - design/accessibility assessment is needed here */
 html[data-theme="dark"] {
-    --pst-color-primary: black;
+    --pst-color-primary: white;
     --pst-color-secondary: var(--napari-primary-blue);
-    --pst-color-background: white;
-    --napari-color-text-base: black;
+    --pst-color-background: #191e25;
+    --napari-color-text-base: white;
+    --napari-color-text-title: black;
     --pst-color-text-base: var(--napari-color-text-base);
-    --pst-color-link: black;
-    --pst-color-link-hover: black !important;
-    --pst-color-inline-code: black !important;
-    --pst-color-inline-code-links: black !important;
-    --pst-color-on-background: white;
+    --pst-color-link: white;
+    --pst-color-link-hover: white !important;
+    --pst-color-inline-code: white !important;
+    --pst-color-inline-code-links: white !important;
+    --pst-color-on-background: #191e25;
     --pst-color-text-muted: var(--napari-dark-gray);
-    --pst-color-border: var(--napari-gray);
-    --pst-color-target: var(--napari-gray);
-    --pst-color-secondary-bg: #e0c7ff;
-    --pst-color-primary-text: white;
+    --pst-color-border: var(--napari-dark-gray);
+    --pst-color-target: var(--napari-dark-gray);
+}
+
+html[data-theme="dark"] .highlight, 
+html[data-theme="dark"] pre,
+html[data-theme="dark"] code {
+    background-color: #22272e !important; /* or use the background from your dark Pygments style */
 }
 
 body {
@@ -232,19 +237,19 @@ h1 {
 .navbar-brand {
     vertical-align: middle;
     font-size: 1.25rem;
-    color: black !important;
+    color: var(--napari-color-text-title) !important;
     position: relative;
     font-weight: bolder;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
     text-decoration: none !important;
-    color: var(--napari-color-text-base) !important;
+    color: var(--napari-color-text-title) !important;
 }
 
 /* Navbar text */
 .bd-header ul.navbar-nav > li.nav-item > .nav-link {
-    color: var(--napari-color-text-base);
+    color: var(--napari-color-text-title) !important;
     font-size: 1.0625rem;
     font-weight: 500 !important;
     border-bottom: 3px solid transparent;
@@ -252,18 +257,18 @@ h1 {
 }
 
 .bd-header ul.navbar-nav > li.nav-item > .nav-link:hover {
-    color: var(--napari-color-text-base);
+    color: var(--napari-color-text-title) !important;
     font-size: 1.0625rem;
     font-weight: 500 !important;
-    border-bottom: 3px solid var(--napari-color-text-base);
+    border-bottom: 3px solid var(--napari-color-text-title);
 }
 
 .bd-header ul.navbar-nav > li.nav-item.current>.nav-link::before {
-    border-bottom: 0px solid var(--napari-color-text-base);
+    border-bottom: 0px solid var(--napari-color-text-title);
 }
 
 .bd-header ul.navbar-nav > li.nav-item.current > .nav-link {
-    border-bottom: 3px solid var(--napari-color-text-base);
+    border-bottom: 3px solid var(--napari-color-text-title);
     font-weight: 700 !important;
 }
 
@@ -276,7 +281,7 @@ h1 {
 }
 
 .bd-header ul.navbar-nav > li.nav-item.dropdown > .dropdown-toggle {
-    color: var(--napari-color-text-base);
+    color: var(--napari-color-text-title);
     font-size: 1.0625rem;
     font-weight: 500 !important;
     border-bottom: 3px solid transparent;
@@ -287,17 +292,17 @@ h1 {
 .bd-header ul.navbar-nav > li.nav-item.dropdown > .dropdown-toggle:hover {
     box-shadow: none;
     text-decoration: none;
-    border-bottom: 3px solid var(--napari-color-text-base);
+    border-bottom: 3px solid var(--napari-color-text-title);
 }
 
 .bd-header ul.navbar-nav li a.nav-link.dropdown-item {
-    color: var(--napari-color-text-base);
+    color: var(--napari-color-text-title);
     font-weight: 500;
 }
 
 html .pst-navbar-icon,
 html .pst-navbar-icon:hover {
-    color: var(--napari-color-text-base);
+    color: var(--napari-color-text-title);
 }
 
 /***************************
@@ -309,7 +314,7 @@ button.btn.version-switcher__button {
     font-size: 0.875rem;
     font-weight: 600;
     border-style: none;
-    color: var(--napari-color-text-base);
+    color: var(--napari-color-text-title) !important;
 }
 
 button.btn.version-switcher__button:hover {
@@ -714,6 +719,10 @@ div.admonition>.admonition-title {
     background: var(--color) !important;
     font-size: 0.938rem !important;
     font-weight: 700;
+}
+html[data-theme="dark"] .admonition > .admonition-title,
+html[data-theme="dark"] div.admonition > .admonition-title {
+    color: #22272e !important; /* or another dark color */
 }
 
 /* Remove admonition title icon */
