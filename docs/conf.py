@@ -47,20 +47,9 @@ html_context = {
 }
 
 html_theme_options = {
-    # comment from mpl-sphinx-theme, left here for reference;
-    # could be useful when adopting dark/light logos
-    # logo is installed by mpl-sphinx-theme as:
-    # "logo": {"link": "https://matplotlib.org/stable/",
-    #         "image_light": "_static/logo_light.svg",
-    #         "image_dark": "_static/logo_dark.svg"},
-    # if this default is OK, then no need to modify "logo"
-    # collapse_navigation in pydata-sphinx-theme is slow, so skipped for local
-    # and CI builds https://github.com/pydata/pydata-sphinx-theme/pull/386
     "show_toc_level": 1,
     "show_prev_next": False,
     "navbar_end": ["version-switcher", "navbar-icon-links", "theme-switcher"],
-    # "left_sidebar_end": ["custom-template.html", "sidebar-ethical-ads.html"],
-    # "footer_items": ['navbar-version', '  napari-footer-links', 'copyright'],
     "switcher": {
         "json_url": "https://napari.org/napari-sphinx-theme/_static/switcher.json",
         "version_match": version_match,
