@@ -19,6 +19,7 @@ from pygments.token import (  # type: ignore[import-untyped]
 # Pygments style class based on GitHub code style:
 # https://git.io/Jz85x
 class NapariCodeTheme(Style):  # type: ignore[misc]
+
     background_color = "#f7f7f7"
 
     styles: ClassVar[dict[object, str]] = {

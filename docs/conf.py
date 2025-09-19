@@ -66,7 +66,7 @@ html_theme_options = {
         "version_match": version_match,
     },
    "pygments_light_style": "napari",
-   "pygments_dark_style": "github-dark-colorblind",
+   "pygments_dark_style": "dracula",
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
