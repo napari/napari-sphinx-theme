@@ -23,5 +23,7 @@ The full ``conf.py`` is
 
 .. toctree::
 
-   test1
-   test2
+   colors
+   admonitions
+   sphinx_design
+   test_a_very_long_page_name

@@ -1,7 +1,7 @@
-Test 1
-======
+Admonitions
+===========
 
-A bunch of words.
+Admonitions are a great way to highlight important information in your documentation. Make sure to check :doc:`colors` for the color scheme used in admonitions in both light and dark mode.
 
 .. note::
 
@@ -30,8 +30,10 @@ And this is how an admonition with a title looks like:
 
     Sometimes they are helpful.
 
-Admonition colors
------------------
+All admonitions
+---------------
+
+The following admonition types are supported.
 
 .. attention::
 
