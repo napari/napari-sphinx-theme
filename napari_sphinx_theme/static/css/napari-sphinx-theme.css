@@ -230,7 +230,7 @@ h1 {
 }
 
 /* Workaround for wonky navbar: https: //github.com/napari/napari-sphinx-theme/issues/178 */
-@media (max-width: 1110px) {
+@media (max-width: 1140px) {
     .bd-header .navbar-header-items {
         display: none !important;
     }
