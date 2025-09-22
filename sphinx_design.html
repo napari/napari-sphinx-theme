@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Test 1 &#8212; napari Sphinx Theme  documentation</title>
+    <title>Sphinx-design &#8212; napari Sphinx Theme  documentation</title>
   
   
   
@@ -32,6 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/css/napari-sphinx-theme.css?v=fdbe0e28" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -42,7 +43,8 @@
     <script src="_static/documentation_options.js?v=8a448e45"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'test1';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sphinx_design';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/napari-sphinx-theme/_static/switcher.json';
@@ -52,11 +54,11 @@
         </script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Test 2" href="test2.html" />
-    <link rel="prev" title="Welcome to napari Sphinx Theme’s documentation!" href="index.html" />
+    <link rel="next" title="Testing a very long page name" href="test_a_very_long_page_name.html" />
+    <link rel="prev" title="Admonitions" href="admonitions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.7.1.dev9+g0b4e644de" />
+  <meta name="docsearch:version" content="0.7.1.dev10+gc92bdcad8" />
   </head>
   
   
@@ -132,16 +134,30 @@
 <nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
-    Test 1
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="colors.html">
+    Colors
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="test2.html">
-    Test 2
+  <a class="nav-link nav-internal" href="admonitions.html">
+    Admonitions
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Sphinx-design
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="test_a_very_long_page_name.html">
+    Testing a very long page name
   </a>
 </li>
 
@@ -238,16 +254,30 @@
 <nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
-    Test 1
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="colors.html">
+    Colors
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="test2.html">
-    Test 2
+  <a class="nav-link nav-internal" href="admonitions.html">
+    Admonitions
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Sphinx-design
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="test_a_very_long_page_name.html">
+    Testing a very long page name
   </a>
 </li>
 
@@ -353,7 +383,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Test 1</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Sphinx-design</span></li>
   </ul>
 </nav>
 </div>
@@ -370,75 +400,37 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="test-1">
-<h1>Test 1<a class="headerlink" href="#test-1" title="Link to this heading">#</a></h1>
-<p>A bunch of words.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is how an admonition with multiple paragraphs looks like.</p>
-<p>It can include many words.</p>
+  <section id="sphinx-design">
+<h1>Sphinx-design<a class="headerlink" href="#sphinx-design" title="Link to this heading">#</a></h1>
+<p>This is how sphinx-design elements look like with the napari Sphinx theme.</p>
+<section id="tabs">
+<h2>Tabs<a class="headerlink" href="#tabs" title="Link to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Tab 1</label><div class="sd-tab-content docutils">
+<p>This is the content of Tab 1.</p>
 </div>
-<p>There is also some text between admonitions.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<ul class="simple">
-<li><p>How is the padding in this list?</p></li>
-<li><p>Is it consistent?</p></li>
-<li><p>Does it look good with other elements?</p></li>
-</ul>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Tab 2</label><div class="sd-tab-content docutils">
+<p>This is the content of Tab 2.</p>
 </div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>Keep track of spacing and margins in admonitions.</p>
-<ul class="simple">
-<li><p>This is how they look like;</p></li>
-<li><p>Rely on upstream as much as possible.</p></li>
-</ul>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Tab 3</label><div class="sd-tab-content docutils">
+<p>This is the content of Tab 3.</p>
 </div>
-<p>And this is how an admonition with a title looks like:</p>
-<div class="admonition-you-can-use-titles admonition">
-<p class="admonition-title">You can use titles!</p>
-<p>Sometimes they are helpful.</p>
-</div>
-<section id="admonition-colors">
-<h2>Admonition colors<a class="headerlink" href="#admonition-colors" title="Link to this heading">#</a></h2>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>This is an attention admonition.</p>
-</div>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>This is a caution admonition.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This is a warning admonition.</p>
-</div>
-<div class="admonition danger">
-<p class="admonition-title">Danger</p>
-<p>This is a danger admonition.</p>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>This is an error admonition.</p>
-</div>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>This is a hint admonition.</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>This is a tip admonition.</p>
-</div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>This is an important admonition.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is a note admonition.</p>
 </div>
 </section>
+<section id="dropdowns">
+<h2>Dropdowns<a class="headerlink" href="#dropdowns" title="Link to this heading">#</a></h2>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Click to expand</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">This is the content inside the dropdown.</p>
+</div>
+</details></section>
 </section>
 
 
@@ -464,7 +456,8 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#admonition-colors">Admonition colors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabs">Tabs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropdowns">Dropdowns</a></li>
 </ul>
   </nav></div>
 
@@ -472,7 +465,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/test1.rst.txt"
+      <li><a href="_sources/sphinx_design.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>
