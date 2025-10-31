@@ -40,7 +40,8 @@ The following table shows the custom colors used in the napari theme:
 Color Name                    Hex Value         Usage
 ============================  ================  ==================
 napari-primary-blue           #80d1ff          Navbar, calendar
-napari-purple                 #564C69          Navbar, calendar
+napari-purple                 #4d485c          Navbar, calendar
+napari-dark-blue              #526a77          Calendar (dark mode)
 napari-deep-blue              #009bf2          Links and accents
 napari-light-blue             #d2efff          Back-to-top button
 napari-dark-gray              #686868          Text, borders
@@ -71,9 +72,10 @@ To see more details, please see the `CSS source file <https://github.com/napari/
         --napari-primary-blue: #80d1ff;
         --napari-deep-blue: #009bf2;
         --napari-light-blue: #d2efff;
+        --napari-dark-blue: #526a77;
         --napari-dark-gray: #686868;
         --napari-gray: #f7f7f7;
-        --napari-purple: #564C69;
+        --napari-purple: #4d485c;
         --napari-color-text-title: black;
         --pst-color-headerlink: var(--napari-dark-gray);
         --pst-color-headerlink-hover: var(--napari-deep-blue);
@@ -96,6 +98,7 @@ To see more details, please see the `CSS source file <https://github.com/napari/
         --pst-color-target: var(--napari-gray);
         --napari-navbar: var(--napari-primary-blue);
         --napari-calendar-dark: var(--napari-deep-blue);
+        --napari-calendar-light: var(--napari-light-blue);
     }
 
     /* Dark mode specific colors */
@@ -111,6 +114,7 @@ To see more details, please see the `CSS source file <https://github.com/napari/
         --pst-color-target: var(--napari-dark-gray);
         --napari-navbar: var(--napari-purple);
         --napari-calendar-dark: #26283d;
+        --napari-calendar-light: var(--napari-dark-blue);
     }
 
 .. _admonition-colors:
