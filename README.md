@@ -20,6 +20,12 @@ After creating a virtual environment, install the theme in editable mode:
 python -m pip install -e .
 ```
 
+For local development with uv, the shortest path is:
+
+```bash
+uv sync
+```
+
 ## Theme development
 
 ### Configuration options
@@ -40,11 +46,27 @@ and `napari_sphinx_theme/partials` directories.
 
 ### Build and test
 
-To build the demo site found in this repo, run:
+To build the demo site found in this repo from the repository root, run:
 
 ```bash
-cd docs/
-make html
+uv run make docs
+```
+
+To start a live preview that rebuilds when you edit the docs or theme files,
+run:
+
+```bash
+uv run make docs-live
+```
+
+The live server opens a browser automatically and watches both `docs/` and
+`napari_sphinx_theme/`, so CSS, templates, and theme configuration changes are
+picked up without restarting the command.
+
+To build a wheel locally, run:
+
+```bash
+uv run make build
 ```
 
 Use the demo site to manually test changes to styles and page layouts.
