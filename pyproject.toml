@@ -28,19 +28,19 @@ classifiers = [
   "Operating System :: OS Independent",
 ]
 
-[project.optional-dependencies]
-doc = [
+[dependency-groups]
+docs = [
+  "build",
   "numpydoc",
+  "sphinx-autobuild",
   "sphinx-design",
 ]
-
 dev = [
   "pyyaml",
   "pre-commit",
   "nox",
   "mypy",
-  "types-docutils",
-  "napari-sphinx-theme[coverage]",
+  { include-group = "docs" },
 ]
 
 [project.entry-points."sphinx.html_themes"]
