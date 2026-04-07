@@ -60,9 +60,10 @@ jobs:
         env:
           ENV: prod
         run: |
-          pip install --upgrade build ".[doc]"
+          python -m pip install --upgrade pip
+          python -m pip install . --group docs
           python -m build
-          pip install dist/napari_sphinx_theme*.whl
+          python -m pip install dist/napari_sphinx_theme*.whl
 
       - name: Build Docs
         uses: aganders3/headless-gui@f85dd6316993505dfc5f21839d520ae440c84816 # v2.2
