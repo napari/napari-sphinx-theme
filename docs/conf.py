@@ -69,7 +69,6 @@ html_theme_options = {
 
 html_sidebars = {
     "**": [
-        "search-field",
         "sidebar-nav-bs",
     ],
 }
