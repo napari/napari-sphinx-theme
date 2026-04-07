@@ -17,7 +17,7 @@ can be used within the [napari docs](https://github.com/napari/docs).
 After creating a virtual environment, install the theme in editable mode:
 
 ```bash
-python -m pip install -e .
+python -m pip install -e . --group dev
 ```
 
 For local development with uv, the shortest path is:
