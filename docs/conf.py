@@ -1,6 +1,9 @@
+from __future__ import annotations
+
+import datetime
 import os
 import time
-import datetime
+
 from napari_sphinx_theme import __version__
 
 version = __version__
@@ -58,8 +61,8 @@ html_theme_options = {
         "json_url": "https://napari.org/napari-sphinx-theme/_static/switcher.json",
         "version_match": version_match,
     },
-   "pygments_light_style": "napari",
-   "pygments_dark_style": "dracula",
+    "pygments_light_style": "napari",
+    "pygments_dark_style": "dracula",
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,

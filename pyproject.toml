@@ -11,11 +11,7 @@ authors = [ {name = "napari team" }]
 
 requires-python = ">=3.10"
 dependencies = [
-  "pydata-sphinx-theme>=0.16.1",
-  "packaging",
-  "docutils-stubs==0.0.22",
-  "types-docutils==0.21.0.20250728",
-  "types-pygments"
+  "pydata-sphinx-theme>=0.16.1"
 ]
 license = "BSD-3-Clause"
 license-files = ["LICENSE"]
@@ -36,9 +32,10 @@ docs = [
   "sphinx-design",
 ]
 dev = [
-  "pyyaml",
   "mypy",
+  "pyyaml",
   "pre-commit",
+  "types-docutils",
   { include-group = "docs" },
 ]
 
