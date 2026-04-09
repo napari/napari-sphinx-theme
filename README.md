@@ -17,7 +17,13 @@ can be used within the [napari docs](https://github.com/napari/docs).
 After creating a virtual environment, install the theme in editable mode:
 
 ```bash
-python -m pip install -e .
+python -m pip install -e . --group dev
+```
+
+For local development with uv, the shortest path is:
+
+```bash
+uv sync
 ```
 
 ## Theme development
@@ -38,13 +44,31 @@ The styling of code snippets is configured in `napari_sphinx_theme/napari_code_t
 To modify page layouts, modify the html template files in the `napari_sphinx_theme`
 and `napari_sphinx_theme/partials` directories.
 
-### Build and test
+### Build demo docs and theme changes
 
-To build the demo site found in this repo, run:
+To build the demo site found in this repo, run from the repository root:
 
 ```bash
-cd docs/
-make html
+uv run make docs
+```
+
+To start a live preview that rebuilds when you edit the docs or theme files,
+run:
+
+```bash
+uv run make docs-live
+```
+
+The live server opens a browser automatically and watches both `docs/` and
+`napari_sphinx_theme/`. CSS, templates, and theme configuration changes are
+displayed automatically without having to restart the live server.
+
+## Build a distribution wheel for local testing
+
+To build a wheel locally, run:
+
+```bash
+uv run make build
 ```
 
 Use the demo site to manually test changes to styles and page layouts.

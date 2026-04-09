@@ -36,17 +36,17 @@ Base colors
 
 The following table shows the custom colors used in the napari theme:
 
-============================  ================  ==================
-Color Name                    Hex Value         Usage
-============================  ================  ==================
-napari-primary-blue           #80d1ff          Navbar, calendar
-napari-purple                 #4d485c          Navbar, calendar
-napari-dark-blue              #526a77          Calendar (dark mode)
-napari-deep-blue              #009bf2          Links and accents
-napari-light-blue             #d2efff          Back-to-top button
-napari-dark-gray              #686868          Text, borders
-napari-gray                   #f7f7f7          Text, borders
-============================  ================  ==================
+.. csv-table::
+    :header: "Color Name", "Hex Value", "Usage"
+    :widths: 35, 20, 45
+
+    "napari-primary-blue", "#80d1ff", "Navbar, calendar"
+    "napari-purple", "#4d485c", "Navbar, calendar"
+    "napari-dark-blue", "#526a77", "Calendar (dark mode)"
+    "napari-deep-blue", "#009bf2", "Links and accents"
+    "napari-light-blue", "#d2efff", "Back-to-top button"
+    "napari-dark-gray", "#686868", "Text, borders"
+    "napari-gray", "#f7f7f7", "Text, borders"
 
 Accessibility
 ~~~~~~~~~~~~~
@@ -122,20 +122,20 @@ To see more details, please see the `CSS source file <https://github.com/napari/
 Admonition colors
 -----------------
 
-====================  =========================  =======================
-Admonition type         Hex Value (light mode)    Hex Value (dark mode)
-====================  =========================  =======================
-Default admonition     #80d1ff                  #564C69
-Attention              #d8f97d                  #5fb488 (`--pst-color-success`)
-Caution                #ffc580                  #675c04 (`--pst-color-target`)
-Warning                #ffa680                  #ff9245 (`--pst-color-warning`)
-Danger                 #ff8080                  #e78894 (`--pst-color-danger`)
-Error                  #fade7d                  #FF55559C
-Hint                   #8094ff                  #8094ff
-Tip                    #cf80ff                  #cf80ff
-Important              #f1f379                  #f1f379
-Note                   #80ffe0                  #239076
-============================  ================  ==================
+.. csv-table::
+    :header: "Admonition type", "Hex Value (light mode)", "Hex Value (dark mode)"
+    :widths: 25, 30, 45
+
+    "Default admonition", "#80d1ff", "#564C69"
+    "Attention", "#d8f97d", "#5fb488 (--pst-color-success)"
+    "Caution", "#ffc580", "#675c04 (--pst-color-target)"
+    "Warning", "#ffa680", "#ff9245 (--pst-color-warning)"
+    "Danger", "#ff8080", "#e78894 (--pst-color-danger)"
+    "Error", "#fade7d", "#FF55559C"
+    "Hint", "#8094ff", "#8094ff"
+    "Tip", "#cf80ff", "#cf80ff"
+    "Important", "#f1f379", "#f1f379"
+    "Note", "#80ffe0", "#239076"
 
 CSS Variables
 ~~~~~~~~~~~~~
