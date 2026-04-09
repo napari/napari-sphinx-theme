@@ -51,11 +51,17 @@ else:
 
 html_context = {
     "default_mode": "auto",
+    "github_user": "napari",
+    "github_repo": "napari-sphinx-theme",
+    "github_version": "main",
+    "doc_path": "docs",
 }
 
 html_theme_options = {
     "show_toc_level": 1,
     "show_prev_next": False,
+    "use_edit_page_button": True,
+    "secondary_sidebar_items": ["page-toc", "edit-this-page"],
     "navbar_end": ["version-switcher", "navbar-icon-links", "theme-switcher"],
     "switcher": {
         "json_url": "https://napari.org/napari-sphinx-theme/_static/switcher.json",
@@ -72,7 +78,6 @@ html_theme_options = {
 
 html_sidebars = {
     "**": [
-        "search-field",
         "sidebar-nav-bs",
     ],
 }
