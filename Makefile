@@ -23,7 +23,10 @@ docs-clean: ## Removes built demo docs.
 	$(MAKE) -C docs clean
 
 docs: ## Builds the demo docs HTML from the repo root.
+	@echo "Building HTML files for demo docs."
 	$(MAKE) -C docs html
+	@echo "\n==> Completed build. Demo docs are found in docs/_build/html."
 
 docs-live: ## Starts a live-reloading demo docs server and opens it in a browser.
+	@echo "Starting a demo docs server which will live-reload changes."
 	$(MAKE) -C docs livehtml
