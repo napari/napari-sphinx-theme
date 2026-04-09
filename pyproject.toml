@@ -38,8 +38,6 @@ docs = [
 dev = [
   "pyyaml",
   "pre-commit",
-  "nox",
-  "mypy",
   { include-group = "docs" },
 ]
 

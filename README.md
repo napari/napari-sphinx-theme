@@ -44,7 +44,7 @@ The styling of code snippets is configured in `napari_sphinx_theme/napari_code_t
 To modify page layouts, modify the html template files in the `napari_sphinx_theme`
 and `napari_sphinx_theme/partials` directories.
 
-### Build and test
+### Build demo docs and theme changes
 
 To build the demo site found in this repo from the repository root, run:
 
