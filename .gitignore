@@ -113,6 +113,3 @@ node_modules/
 # Editors
 .vscode
 .idea
-
-# lock files
-*.lock

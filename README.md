@@ -46,7 +46,7 @@ and `napari_sphinx_theme/partials` directories.
 
 ### Build and test
 
-To build the demo site found in this repo from the repository root, run:
+To build the demo site found in this repo, run from the repository root:
 
 ```bash
 uv run make docs
@@ -60,8 +60,10 @@ uv run make docs-live
 ```
 
 The live server opens a browser automatically and watches both `docs/` and
-`napari_sphinx_theme/`, so CSS, templates, and theme configuration changes are
-picked up without restarting the command.
+`napari_sphinx_theme/`. CSS, templates, and theme configuration changes are
+displayed automatically without having to restart the live server.
+
+## Build a distribution wheel for local testing
 
 To build a wheel locally, run:
 
