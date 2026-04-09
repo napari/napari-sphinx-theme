@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from sphinx.application import Sphinx
 
 try:
-    from ._version import version as __version__  # type: ignore
+    from ._version import version as __version__
 except ImportError:
     __version__ = "not-installed"
 
