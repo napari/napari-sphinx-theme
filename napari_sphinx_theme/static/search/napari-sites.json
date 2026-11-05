@@ -1,13 +1,35 @@
 {
   "ownSiteBoost": 1.5,
   "sites": [
-    { "name": "docs", "bundlePath": "/stable/pagefind/", "ownSiteBoost": 0.8 },
-    { "name": "workshops", "bundlePath": "/workshops/pagefind/" },
-    { "name": "island-dispatch", "bundlePath": "/island-dispatch/pagefind/" },
-    { "name": "napari-animation", "bundlePath": "/napari-animation/pagefind/" },
-    { "name": "napari-metadata", "bundlePath": "/napari-metadata/pagefind/" },
+    {
+      "name": "docs",
+      "label": "Docs",
+      "bundlePath": "/stable/pagefind/",
+      "ownSiteBoost": 0.8
+    },
+    {
+      "name": "workshops",
+      "label": "Workshops",
+      "bundlePath": "/workshops/pagefind/"
+    },
+    {
+      "name": "island-dispatch",
+      "label": "Island Dispatch",
+      "bundlePath": "/island-dispatch/pagefind/"
+    },
+    {
+      "name": "napari-animation",
+      "label": "Animation",
+      "bundlePath": "/napari-animation/pagefind/"
+    },
+    {
+      "name": "napari-metadata",
+      "label": "Metadata",
+      "bundlePath": "/napari-metadata/pagefind/"
+    },
     {
       "name": "napari-plugin-manager",
+      "label": "Plugin Manager",
       "bundlePath": "/napari-plugin-manager/pagefind/"
     }
   ]
