@@ -5,6 +5,8 @@ const { test } = require('node:test');
 const {
   instanceOptions,
   isSearchShortcut,
+  labelRules,
+  modalContents,
   reachableSites,
   siblingsOf,
 } = require('../napari_sphinx_theme/static/search/napari-search-installer.js');
@@ -84,13 +86,54 @@ test('siblings reach Pagefind as merged indexes', () => {
     'docs',
     [workshops],
   );
-  assert.deepEqual(options.mergeIndex, [{ bundlePath: '/workshops/pagefind/' }]);
+  assert.deepEqual(options.mergeIndex, [
+    {
+      bundlePath: '/workshops/pagefind/',
+      mergeFilter: { site: 'workshops' },
+    },
+  ]);
 });
 
 test('the current site gets the own-site boost', () => {
   const boosted = { ownSiteBoost: 1.5, sites: [docs] };
   assert.equal(instanceOptions('', boosted, 'docs', []).indexWeight, 1.5);
   assert.equal(instanceOptions('', { sites: [docs] }, 'docs', []).indexWeight, 1);
+});
+
+test('each site reaches Pagefind with a filter value', () => {
+  const labelled = [
+    { ...docs, label: 'Docs' },
+    { ...workshops, label: 'Workshops' },
+  ];
+  const options = instanceOptions('', { sites: labelled }, 'docs', [labelled[1]]);
+  assert.deepEqual(options.mergeFilter, { site: 'Docs' });
+  assert.deepEqual(options.mergeIndex[0].mergeFilter, { site: 'Workshops' });
+});
+
+test('labels default to this site, with siblings matched by path', () => {
+  const rules = labelRules(
+    [
+      { ...docs, label: 'Docs' },
+      { ...workshops, label: 'Workshops' },
+    ],
+    'docs',
+  ).split('\n');
+  assert.equal(rules.length, 2);
+  assert.match(rules[0], /\.pf-result-link::before \{ content: "Docs"; \}/);
+  assert.match(
+    rules[1],
+    /\[href\^="\/workshops\/"\]::before \{ content: "Workshops"; \}/,
+  );
+});
+
+test('the filter is only offered when there are siblings', () => {
+  assert.match(modalContents(true), /pagefind-filter-dropdown filter="site"/);
+  assert.doesNotMatch(modalContents(false), /pagefind-filter-dropdown/);
+  assert.match(modalContents(false), /pagefind-results/);
+});
+
+test('every listed site has a label', () => {
+  for (const site of sites) assert.ok(site.label, site.name);
 });
 
 test("a site's own boost overrides the shared one", () => {
