@@ -1,0 +1,63 @@
+/* Pagefind's Component UI isolates itself, so only its --pf-* properties
+   reach the modal. They point at pydata's --pst-* tokens, then napari's, then
+   a hex fallback, so the modal follows the host's light and dark modes. */
+
+:root {
+  --pf-text: var(--napari-color-text-base, #23252f);
+  --pf-text-secondary: var(
+    --pst-color-text-muted,
+    var(--napari-dark-gray, #686868)
+  );
+  --pf-text-muted: var(--napari-light-gray, #9ca4af);
+  --pf-background: #ffffff;
+  --pf-border: var(--napari-light-gray, #d9dbe1);
+  --pf-border-focus: var(--napari-deep-blue, #009bf2);
+  --pf-outline-focus: var(--napari-deep-blue, #009bf2);
+  --pf-outline-width: 2px;
+  --pf-outline-offset: 2px;
+  --pf-hover: var(--napari-search-bg, #f3f4f5);
+  --pf-mark: var(--napari-deep-blue, #009bf2);
+  --pf-skeleton: #e9ebf1;
+  --pf-skeleton-shine: #f3f4f5;
+  --pf-error-bg: #fdf2f2;
+  --pf-error-border: #fecaca;
+  --pf-error-text: #b91c1c;
+  --pf-error-text-secondary: #dc2626;
+
+  --pf-border-radius: 6px;
+  --pf-font: var(--pst-font-family-base, inherit);
+  --pf-input-height: 36px;
+
+  --pf-modal-max-width: 640px;
+  --pf-modal-max-height: min(80dvh, 800px);
+  --pf-modal-top: 10dvh;
+}
+
+/* pydata-sphinx-theme marks dark mode with data-theme="dark", and MyST with a
+   dark class. */
+html[data-theme='dark'],
+html.dark {
+  --pf-text: var(--napari-color-text-base, #f1f1f1);
+  --pf-text-secondary: var(
+    --pst-color-text-muted,
+    var(--napari-light-gray, #a0a0a0)
+  );
+  --pf-text-muted: var(--napari-dark-gray, #949494);
+  --pf-background: #1e1e21;
+  --pf-border: var(--napari-dark-gray, #3c3e46);
+  --pf-border-focus: var(--napari-deep-blue, #009bf2);
+  --pf-outline-focus: var(--napari-deep-blue, #009bf2);
+  --pf-hover: #2c2e36;
+  --pf-mark: var(--napari-primary-blue, #80d1ff);
+  --pf-skeleton: #2c2e36;
+  --pf-skeleton-shine: #3c3e46;
+  --pf-error-bg: #2a1a1a;
+  --pf-error-border: #5c2828;
+  --pf-error-text: #f87171;
+  --pf-error-text-secondary: #ef4444;
+}
+
+/* Bootstrap pads <mark>, which spreads out highlighted words in excerpts. */
+pagefind-modal mark {
+  padding: 0;
+}

@@ -9,7 +9,7 @@ Use it by changing this line in your conf.py file
 
 .. code-block:: python
 
-   html_theme = 'napari_sphinx_theme'
+   html_theme = "napari_sphinx_theme"
 
 And by including ``napari_sphinx_theme`` as a requirement in your documentation
 installation.
@@ -27,3 +27,4 @@ The full ``conf.py`` is
    admonitions
    sphinx_design
    test_a_very_long_page_name
+   search

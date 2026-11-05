@@ -24,6 +24,12 @@ classifiers = [
   "Operating System :: OS Independent",
 ]
 
+[project.optional-dependencies]
+# Merged indexes are searched with the main site's WASM, so every site should
+# build with the same version. Bumps ride theme releases. `[bin]` brings the
+# platform binary, which the plain package does not include.
+search = ["pagefind[bin]==1.6.0"]
+
 [dependency-groups]
 docs = [
   "build",
@@ -35,6 +41,7 @@ dev = [
   "mypy",
   "pyyaml",
   "pre-commit",
+  "pytest",
   "types-docutils",
   { include-group = "docs" },
 ]
@@ -58,6 +65,7 @@ napari_sphinx_theme = [
     "theme.conf",
     "*.html",
     "static/css/*.css",
+    "static/search/*",
     "components/*.html",
     "partials/*.html",
     "scripts/*.js",
