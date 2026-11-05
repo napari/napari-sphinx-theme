@@ -123,6 +123,18 @@ A page takes the weight of the first pattern it matches. Patterns use
 Lowered pages stay searchable but rank below other matches. This suits release
 notes, which mention nearly every feature.
 
+Site labels and filter
+----------------------
+
+Each result shows the ``label`` of the site it comes from, and a dropdown in the
+search narrows results to one site. The dropdown is left out when no siblings are
+reachable, such as on a local build.
+
+Pagefind's result templates can't read which merged index a result came from, so
+labels are matched from each result's URL against the ``bundlePath`` values in
+``napari-sites.json``. Results that match no sibling are labelled as the current
+site, which covers every version folder of a versioned site.
+
 What gets indexed
 -----------------
 
