@@ -1,4 +1,5 @@
 {
+  "ownSiteBoost": 1.5,
   "sites": [
     { "name": "docs", "bundlePath": "/stable/pagefind/" },
     { "name": "workshops", "bundlePath": "/workshops/pagefind/" },

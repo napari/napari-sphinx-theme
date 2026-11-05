@@ -50,9 +50,12 @@
     return sites.filter((_, index) => reachable[index]);
   }
 
-  function instanceOptions(bundleUrl, siblings) {
+  // The current site's results count for ownSiteBoost (napari-sites.json),
+  // so they tend to rank first there. Siblings keep Pagefind's default of 1.
+  function instanceOptions(bundleUrl, config, siblings) {
     return {
       bundlePath: bundleUrl,
+      indexWeight: config.ownSiteBoost ?? 1,
       mergeIndex: siblings.map((site) => ({ bundlePath: site.bundlePath })),
       excerptLength: 15,
     };
@@ -95,9 +98,9 @@
     if (!own) throw new Error(`No search index at ${bundleUrl}`);
 
     const response = await fetch(`${assetsUrl}napari-sites.json`);
-    const { sites } = await response.json();
+    const config = await response.json();
     const siblings = await reachableSites(
-      siblingsOf(sites, siteName),
+      siblingsOf(config.sites, siteName),
       window.location.href,
     );
 
@@ -109,7 +112,7 @@
 
     window.PagefindComponents.configureInstance(
       'default',
-      instanceOptions(bundleUrl, siblings),
+      instanceOptions(bundleUrl, config, siblings),
     );
     const modal = document.createElement('pagefind-modal');
     document.body.appendChild(modal);
