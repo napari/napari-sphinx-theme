@@ -14,12 +14,14 @@ import json
 import shutil
 import subprocess
 import sys
+from fnmatch import fnmatch
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
 from sphinx.errors import ExtensionError
 
 if TYPE_CHECKING:
+    from docutils.nodes import Node
     from sphinx.application import Sphinx
 
 ASSET_DIR = Path(__file__).parent / "static" / "search"
@@ -127,9 +129,42 @@ def setup_search(app: Sphinx) -> None:
         )
         raise ExtensionError(msg)
 
+    for pattern, weight in _page_weights(app).items():
+        is_number = isinstance(weight, int | float) and not isinstance(weight, bool)
+        if not is_number or not 0 <= weight <= 10:
+            msg = (
+                "napari-sphinx-theme: search_page_weights values must be "
+                f"numbers from 0 to 10, got {weight!r} for {pattern!r}."
+            )
+            raise ExtensionError(msg)
+
     app.add_js_file(
         "search/napari-search-installer.js",
         **{"data-site": site, "data-hook-button": ".search-button__button"},
+    )
+
+
+def _page_weights(app: Sphinx) -> dict[str, float]:
+    """Return the page weights, ignoring theme.conf's empty default."""
+    weights = _search_options(app).get("search_page_weights")
+    return weights if isinstance(weights, dict) else {}
+
+
+def set_search_weight(
+    app: Sphinx,
+    pagename: str,
+    templatename: str,
+    context: dict[str, Any],
+    doctree: Node,
+) -> None:
+    """Give the page the weight of the first pattern it matches, if any."""
+    context["napari_search_weight"] = next(
+        (
+            weight
+            for pattern, weight in _page_weights(app).items()
+            if fnmatch(pagename, pattern)
+        ),
+        None,
     )
 
 
@@ -153,4 +188,5 @@ def build_search_index(app: Sphinx, exception: BaseException | None) -> None:
 def setup(app: Sphinx) -> None:
     """Register the search hooks, which do nothing unless a site opts in."""
     app.connect("builder-inited", setup_search)
+    app.connect("html-page-context", set_search_weight)
     app.connect("build-finished", build_search_index)
