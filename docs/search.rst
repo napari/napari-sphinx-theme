@@ -33,6 +33,26 @@ end of each HTML build.
 it doesn't. To add a site, add it to that list in a theme PR. Every site picks it
 up the next time it builds with that theme release.
 
+Non-Sphinx sites
+~~~~~~~~~~~~~~~~
+
+Sites that don't use Sphinx depend on the same extra and run the theme's command
+after their own build:
+
+.. code-block:: text
+
+   python -m napari_sphinx_theme.search prepare --site docs/_build/html --site-name workshops --hook-button .myst-search-bar --root-selector article --base-url /workshops/
+
+This builds the index, copies the search assets into ``_static/search/`` and adds
+the script to each page.
+
+- ``--hook-button`` is the site's existing search button.
+- ``--root-selector`` limits the index to the page's main content.
+- ``--base-url`` is the path the site is deployed under, and defaults to
+  ``$BASE_URL``.
+
+The command exits with an error if the index can't be built.
+
 How it works
 ------------
 
@@ -97,6 +117,9 @@ and serve the output:
 
 Siblings won't be reachable from a local server, so only the current site's
 results appear.
+
+MyST's dev server deletes ``_build/html`` on rebuild, so it can't show the unified
+search at all. Preview it from the output of a full build.
 
 Pagefind versions
 -----------------
