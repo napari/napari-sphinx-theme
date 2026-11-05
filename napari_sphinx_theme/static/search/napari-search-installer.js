@@ -58,9 +58,31 @@
     return {
       bundlePath: bundleUrl,
       indexWeight: self?.ownSiteBoost ?? config.ownSiteBoost ?? 1,
-      mergeIndex: siblings.map((site) => ({ bundlePath: site.bundlePath })),
+      mergeFilter: { site: self?.label ?? siteName },
+      mergeIndex: siblings.map((site) => ({
+        bundlePath: site.bundlePath,
+        mergeFilter: { site: site.label ?? site.name },
+      })),
       excerptLength: 15,
     };
+  }
+
+  function modalContents(hasSiblings) {
+    const filter = hasSiblings
+      ? '<pagefind-filter-dropdown filter="site" label="Site"></pagefind-filter-dropdown>'
+      : '';
+    return `
+      <pagefind-modal-header>
+        <pagefind-input></pagefind-input>
+        ${filter}
+      </pagefind-modal-header>
+      <pagefind-modal-body>
+        <pagefind-summary></pagefind-summary>
+        <pagefind-results></pagefind-results>
+      </pagefind-modal-body>
+      <pagefind-modal-footer>
+        <pagefind-keyboard-hints></pagefind-keyboard-hints>
+      </pagefind-modal-footer>`;
   }
 
   function isSearchShortcut(event) {
@@ -117,6 +139,7 @@
       instanceOptions(bundleUrl, config, siteName, siblings),
     );
     const modal = document.createElement('pagefind-modal');
+    modal.innerHTML = modalContents(siblings.length > 0);
     document.body.appendChild(modal);
     return modal;
   }
@@ -175,6 +198,7 @@
     module.exports = {
       instanceOptions,
       isSearchShortcut,
+      modalContents,
       reachableSites,
       siblingsOf,
     };
