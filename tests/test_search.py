@@ -41,8 +41,10 @@ def build(
     (templates / "about-word.html").write_text(f"<p>{SIDEBAR_ONLY_WORD}</p>")
     (src / "index.rst").write_text(
         "Fixture\n=======\n\nHome page text.\n\n"
-        ".. toctree::\n\n   api\n\n.. index:: indexedterm\n"
+        ".. toctree::\n\n   api\n   release/notes\n\n.. index:: indexedterm\n"
     )
+    (src / "release").mkdir()
+    (src / "release" / "notes.rst").write_text("Notes\n=====\n\nOld changes.\n")
     (src / "api.rst").write_text(
         "API\n===\n\n.. py:function:: napari.layers.Image()\n\n"
         "   Docstring for the image layer.\n\n"
@@ -258,3 +260,29 @@ def test_cli_builds_a_real_index(tmp_path: Path) -> None:
     pages = indexed_pages(tmp_path)
     assert "Express workshop" in " ".join(pages.values())
     assert "skipme" not in " ".join(pages.values())
+
+
+def test_page_weights_mark_matching_pages(tmp_path: Path) -> None:
+    options = {
+        "search": "pagefind",
+        "search_site": "docs",
+        "search_page_weights": {"release/*": 0.3},
+    }
+    with patch("napari_sphinx_theme._search.build_index"):
+        html = build(tmp_path, options)
+    notes = (html / "release" / "notes.html").read_text(encoding="utf-8")
+    assert 'data-pagefind-weight="0.3"' in notes
+    api = (html / "api.html").read_text(encoding="utf-8")
+    assert "data-pagefind-body" in api
+    assert "data-pagefind-weight" not in api
+
+
+@pytest.mark.parametrize("weight", [20, -1, True, "0.3"])
+def test_page_weights_must_be_numbers_in_range(tmp_path: Path, weight: Any) -> None:
+    options = {
+        "search": "pagefind",
+        "search_site": "docs",
+        "search_page_weights": {"release/*": weight},
+    }
+    with pytest.raises(ExtensionError, match="0 to 10"):
+        build(tmp_path, options)

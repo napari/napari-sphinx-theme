@@ -8,7 +8,8 @@ const {
   reachableSites,
   siblingsOf,
 } = require('../napari_sphinx_theme/static/search/napari-search-installer.js');
-const { sites } = require('../napari_sphinx_theme/static/search/napari-sites.json');
+const config = require('../napari_sphinx_theme/static/search/napari-sites.json');
+const { sites } = config;
 
 const BASE_URL = 'https://napari.org/0.11.0/index.html';
 const docs = { name: 'docs', bundlePath: '/stable/pagefind/' };
@@ -77,10 +78,32 @@ test('a bundle that never responds is dropped after the timeout', async () => {
 });
 
 test('siblings reach Pagefind as merged indexes', () => {
-  assert.deepEqual(
-    instanceOptions('https://napari.org/dev/pagefind/', [workshops]).mergeIndex,
-    [{ bundlePath: '/workshops/pagefind/' }],
+  const options = instanceOptions(
+    'https://napari.org/dev/pagefind/',
+    { sites: [docs, workshops] },
+    'docs',
+    [workshops],
   );
+  assert.deepEqual(options.mergeIndex, [{ bundlePath: '/workshops/pagefind/' }]);
+});
+
+test('the current site gets the own-site boost', () => {
+  const boosted = { ownSiteBoost: 1.5, sites: [docs] };
+  assert.equal(instanceOptions('', boosted, 'docs', []).indexWeight, 1.5);
+  assert.equal(instanceOptions('', { sites: [docs] }, 'docs', []).indexWeight, 1);
+});
+
+test("a site's own boost overrides the shared one", () => {
+  const lowered = {
+    ownSiteBoost: 1.5,
+    sites: [{ ...docs, ownSiteBoost: 0.8 }, workshops],
+  };
+  assert.equal(instanceOptions('', lowered, 'docs', []).indexWeight, 0.8);
+  assert.equal(instanceOptions('', lowered, 'workshops', []).indexWeight, 1.5);
+});
+
+test('the shared own-site boost never lowers the current site', () => {
+  assert.ok(config.ownSiteBoost >= 1);
 });
 
 test('Ctrl+K and Cmd+K open search, other combinations do not', () => {
