@@ -79,6 +79,21 @@ button and from :kbd:`Ctrl+K` or :kbd:`Cmd+K`. It doesn't add or remove any page
 elements, which would break sites hydrated by React. If Pagefind can't load, the
 host's own search opens instead.
 
+Ranking
+-------
+
+When searching from a site, that site's results get a boost, set by
+``ownSiteBoost`` at the top of ``napari-sites.json``. Pagefind multiplies the
+relevance score of the current site's results by this value, while siblings'
+results keep a weight of 1. Set it to ``1`` so results rank the same from every
+site.
+
+Scores from different indexes aren't directly comparable, because they depend on
+how common a word is in each site, so the boost makes the current site's results
+more likely to rank first rather than guaranteeing it. The value is a starting
+point to adjust against real queries. Changing it takes a theme release, and each
+site picks it up when it updates the theme.
+
 What gets indexed
 -----------------
 
