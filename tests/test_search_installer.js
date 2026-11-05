@@ -5,6 +5,7 @@ const { test } = require('node:test');
 const {
   instanceOptions,
   isSearchShortcut,
+  labelRules,
   modalContents,
   reachableSites,
   siblingsOf,
@@ -109,10 +110,30 @@ test('each site reaches Pagefind with a filter value', () => {
   assert.deepEqual(options.mergeIndex[0].mergeFilter, { site: 'Workshops' });
 });
 
+test('labels default to this site, with siblings matched by path', () => {
+  const rules = labelRules(
+    [
+      { ...docs, label: 'Docs' },
+      { ...workshops, label: 'Workshops' },
+    ],
+    'docs',
+  ).split('\n');
+  assert.equal(rules.length, 2);
+  assert.match(rules[0], /\.pf-result-link::before \{ content: "Docs"; \}/);
+  assert.match(
+    rules[1],
+    /\[href\^="\/workshops\/"\]::before \{ content: "Workshops"; \}/,
+  );
+});
+
 test('the filter is only offered when there are siblings', () => {
   assert.match(modalContents(true), /pagefind-filter-dropdown filter="site"/);
   assert.doesNotMatch(modalContents(false), /pagefind-filter-dropdown/);
   assert.match(modalContents(false), /pagefind-results/);
+});
+
+test('every listed site has a label', () => {
+  for (const site of sites) assert.ok(site.label, site.name);
 });
 
 test("a site's own boost overrides the shared one", () => {
