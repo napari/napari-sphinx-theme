@@ -81,18 +81,28 @@ test('siblings reach Pagefind as merged indexes', () => {
   const options = instanceOptions(
     'https://napari.org/dev/pagefind/',
     { sites: [docs, workshops] },
+    'docs',
     [workshops],
   );
   assert.deepEqual(options.mergeIndex, [{ bundlePath: '/workshops/pagefind/' }]);
 });
 
 test('the current site gets the own-site boost', () => {
-  const boosted = { ownSiteBoost: 1.5, sites: [] };
-  assert.equal(instanceOptions('', boosted, []).indexWeight, 1.5);
-  assert.equal(instanceOptions('', { sites: [] }, []).indexWeight, 1);
+  const boosted = { ownSiteBoost: 1.5, sites: [docs] };
+  assert.equal(instanceOptions('', boosted, 'docs', []).indexWeight, 1.5);
+  assert.equal(instanceOptions('', { sites: [docs] }, 'docs', []).indexWeight, 1);
 });
 
-test('the own-site boost never lowers the current site', () => {
+test("a site's own boost overrides the shared one", () => {
+  const lowered = {
+    ownSiteBoost: 1.5,
+    sites: [{ ...docs, ownSiteBoost: 0.8 }, workshops],
+  };
+  assert.equal(instanceOptions('', lowered, 'docs', []).indexWeight, 0.8);
+  assert.equal(instanceOptions('', lowered, 'workshops', []).indexWeight, 1.5);
+});
+
+test('the shared own-site boost never lowers the current site', () => {
   assert.ok(config.ownSiteBoost >= 1);
 });
 
