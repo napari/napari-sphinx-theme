@@ -151,3 +151,21 @@ def test_build_index_requires_entry_file(tmp_path: Path) -> None:
         pytest.raises(search.SearchIndexError, match="pagefind-entry.json"),
     ):
         search.build_index(tmp_path)
+
+
+def test_real_index_covers_articles_only(tmp_path: Path) -> None:
+    pytest.importorskip("pagefind")
+    html = build(tmp_path, {"search": "pagefind", "search_site": "docs"})
+
+    assert (html / "pagefind" / "pagefind-entry.json").is_file()
+    assert (html / "pagefind" / "pagefind-component-ui.js").is_file()
+
+    pages = indexed_pages(html)
+    urls = set(pages)
+    assert any("api" in url for url in urls)
+    assert not any(
+        word in url for url in urls for word in ("genindex", "py-modindex", "search")
+    )
+    assert "Docstring for the image layer" in " ".join(pages.values())
+    assert SIDEBAR_ONLY_WORD not in " ".join(pages.values())
+    assert SIDEBAR_ONLY_WORD in (html / "api.html").read_text(encoding="utf-8")
