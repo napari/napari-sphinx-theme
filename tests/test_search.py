@@ -14,6 +14,7 @@ from sphinx.application import Sphinx
 from sphinx.errors import ExtensionError
 
 from napari_sphinx_theme import _search as search
+from napari_sphinx_theme import search as search_cli
 
 SIDEBAR_ONLY_WORD = "zzsidebarword"
 
@@ -169,3 +170,91 @@ def test_real_index_covers_articles_only(tmp_path: Path) -> None:
     assert "Docstring for the image layer" in " ".join(pages.values())
     assert SIDEBAR_ONLY_WORD not in " ".join(pages.values())
     assert SIDEBAR_ONLY_WORD in (html / "api.html").read_text(encoding="utf-8")
+
+
+def test_inject_adds_script_once(tmp_path: Path) -> None:
+    (tmp_path / "sub").mkdir()
+    for page in (tmp_path / "index.html", tmp_path / "sub" / "index.html"):
+        page.write_text("<html><head></head><body></body></html>")
+    (tmp_path / "fragment.html").write_text("<p>no head</p>")
+
+    count = search.inject(tmp_path, "workshops", ".myst-search-bar", "/workshops/")
+    assert count == 2
+    assert (tmp_path / "_static/search/napari-sites.json").is_file()
+
+    text = (tmp_path / "sub" / "index.html").read_text()
+    assert 'src="/workshops/_static/search/napari-search-installer.js"' in text
+    assert 'data-site="workshops"' in text
+    assert 'data-hook-button=".myst-search-bar"' in text
+    assert "defer" not in text
+
+    assert search.inject(tmp_path, "workshops", ".myst-search-bar") == 0
+    assert text == (tmp_path / "sub" / "index.html").read_text()
+
+
+def test_inject_keeps_line_endings(tmp_path: Path) -> None:
+    page = tmp_path / "index.html"
+    page.write_bytes(b"<html>\n<head>\n</head>\n</html>\n")
+    search.inject(tmp_path, "workshops", ".myst-search-bar")
+    assert b"\r\n" not in page.read_bytes()
+
+
+def test_cli_rejects_unknown_site(tmp_path: Path) -> None:
+    with pytest.raises(SystemExit):
+        search_cli.main(
+            [
+                "prepare",
+                "--site",
+                str(tmp_path),
+                "--site-name",
+                "nope",
+                "--hook-button",
+                ".b",
+            ]
+        )
+
+
+def test_cli_reports_index_failure(tmp_path: Path, capsys: Any) -> None:
+    with patch(
+        "napari_sphinx_theme._search.importlib.util.find_spec",
+        return_value=None,
+    ):
+        code = search_cli.main(
+            [
+                "prepare",
+                "--site",
+                str(tmp_path),
+                "--site-name",
+                "workshops",
+                "--hook-button",
+                ".b",
+            ]
+        )
+    assert code == 1
+    assert "napari-sphinx-theme[search]" in capsys.readouterr().err
+    assert not (tmp_path / "_static").exists()
+
+
+def test_cli_builds_a_real_index(tmp_path: Path) -> None:
+    pytest.importorskip("pagefind")
+    (tmp_path / "index.html").write_text(
+        "<html><head><title>Home</title></head><body><nav>skipme</nav>"
+        "<article><h1>Home</h1><p>Express workshop.</p></article></body></html>"
+    )
+    code = search_cli.main(
+        [
+            "prepare",
+            "--site",
+            str(tmp_path),
+            "--site-name",
+            "workshops",
+            "--hook-button",
+            ".b",
+            "--root-selector",
+            "article",
+        ]
+    )
+    assert code == 0
+    pages = indexed_pages(tmp_path)
+    assert "Express workshop" in " ".join(pages.values())
+    assert "skipme" not in " ".join(pages.values())
