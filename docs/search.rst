@@ -94,6 +94,25 @@ more likely to rank first rather than guaranteeing it. The value is a starting
 point to adjust against real queries. Changing it takes a theme release, and each
 site picks it up when it updates the theme.
 
+Page weights
+~~~~~~~~~~~~
+
+Within a site, ``search_page_weights`` lowers or raises whole groups of pages. It
+maps page-name patterns to weights from 0 to 10, where 1 is normal:
+
+.. code-block:: python
+
+   html_theme_options = {
+       "search": "pagefind",
+       "search_site": "docs",
+       "search_page_weights": {"release/*": 0.3},
+   }
+
+A page takes the weight of the first pattern it matches. Patterns use
+``fnmatch`` syntax against Sphinx page names, which have no ``.html`` suffix.
+Lowered pages stay searchable but rank below other matches. This suits release
+notes, which mention nearly every feature.
+
 What gets indexed
 -----------------
 
