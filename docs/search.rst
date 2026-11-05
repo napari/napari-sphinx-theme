@@ -88,6 +88,16 @@ relevance score of the current site's results by this value, while siblings'
 results keep a weight of 1. Set it to ``1`` so results rank the same from every
 site.
 
+A site's own entry can set ``ownSiteBoost`` to override the shared value. Docs
+sets ``0.8``: it has far more pages than the other sites, so even unboosted it
+fills most results, and lowering it lets relevant workshop pages show up when
+searching from docs. The other sites keep the shared boost, so searching from
+workshops still favours workshops.
+
+.. code-block:: json
+
+   { "name": "docs", "bundlePath": "/stable/pagefind/", "ownSiteBoost": 0.8 }
+
 Scores from different indexes aren't directly comparable, because they depend on
 how common a word is in each site, so the boost makes the current site's results
 more likely to rank first rather than guaranteeing it. The value is a starting
