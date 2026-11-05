@@ -4,7 +4,9 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
 from docutils.nodes import Node
+from sphinx.errors import ExtensionError
 
+from . import _search
 from .napari_code_theme import NapariCodeTheme
 
 if TYPE_CHECKING:
@@ -69,6 +71,57 @@ def set_config_defaults(app: Sphinx) -> None:
     app.builder.theme_options = theme
 
 
+def _search_options(app: Sphinx) -> dict[str, Any]:
+    """Return the HTML builder's theme options, or nothing for other builders."""
+    return getattr(app.builder, "theme_options", None) or {}
+
+
+def setup_search(app: Sphinx) -> None:
+    """Check the search options and load the unified search on every page."""
+    options = _search_options(app)
+    provider = options.get("search", "sphinx")
+    if provider == "sphinx":
+        return
+    if provider != "pagefind":
+        msg = (
+            f"napari-sphinx-theme: unknown search provider {provider!r}; "
+            "use 'sphinx' or 'pagefind'."
+        )
+        raise ExtensionError(msg)
+
+    site = options.get("search_site")
+    names = _search.site_names()
+    if site not in names:
+        msg = (
+            "napari-sphinx-theme: search='pagefind' needs search_site set to "
+            f"one of {sorted(names)}, got {site!r}. New sites are added to "
+            "static/search/napari-sites.json in the theme."
+        )
+        raise ExtensionError(msg)
+
+    app.add_js_file(
+        "search/napari-search-installer.js",
+        **{"data-site": site, "data-hook-button": ".search-button__button"},
+    )
+
+
+def build_search_index(app: Sphinx, exception: BaseException | None) -> None:
+    """Index the finished site, failing the build if that isn't possible.
+
+    A site that opted in would otherwise deploy without its index and silently
+    drop out of every other site's results.
+    """
+    if exception is not None:
+        return
+    if _search_options(app).get("search", "sphinx") != "pagefind":
+        return
+    try:
+        _search.build_index(app.outdir)
+    except _search.SearchIndexError as error:
+        msg = f"napari-sphinx-theme: {error}"
+        raise ExtensionError(msg) from error
+
+
 def get_html_theme_path() -> list[str]:
     """Return list of HTML theme paths."""
     return [str(Path(__file__).parent.parent.resolve())]
@@ -85,7 +138,9 @@ def setup(app: Sphinx) -> dict[str, Any]:
 
     # connect event handlers for configuration and template processing
     app.connect("builder-inited", set_config_defaults)
+    app.connect("builder-inited", setup_search)
     app.connect("html-page-context", setup_html_template_context)
+    app.connect("build-finished", build_search_index)
 
     # add sidebar templates to the search path for templates
     app.config.templates_path.append(str(here / "_templates"))
