@@ -1,7 +1,9 @@
-"""Build tooling for the unified napari.org search.
+"""The unified napari.org search.
 
 Each site builds its own Pagefind index from its own HTML. The theme only
-provides the machinery around it, so sites don't each carry a copy.
+provides the machinery around it, so sites don't each carry a copy: the
+Sphinx hooks registered by ``setup`` and the indexing they share with the
+command for non-Sphinx sites.
 """
 
 from __future__ import annotations
@@ -11,6 +13,12 @@ import json
 import subprocess
 import sys
 from pathlib import Path
+from typing import TYPE_CHECKING, Any
+
+from sphinx.errors import ExtensionError
+
+if TYPE_CHECKING:
+    from sphinx.application import Sphinx
 
 ASSET_DIR = Path(__file__).parent / "static" / "search"
 SITES_FILE = ASSET_DIR / "napari-sites.json"
@@ -50,3 +58,60 @@ def build_index(
     if not entry.is_file():
         msg = f"Pagefind reported success but did not write {entry}."
         raise SearchIndexError(msg)
+
+
+def _search_options(app: Sphinx) -> dict[str, Any]:
+    """Return the HTML builder's theme options, or nothing for other builders."""
+    return getattr(app.builder, "theme_options", None) or {}
+
+
+def setup_search(app: Sphinx) -> None:
+    """Check the search options and load the unified search on every page."""
+    options = _search_options(app)
+    provider = options.get("search", "sphinx")
+    if provider == "sphinx":
+        return
+    if provider != "pagefind":
+        msg = (
+            f"napari-sphinx-theme: unknown search provider {provider!r}; "
+            "use 'sphinx' or 'pagefind'."
+        )
+        raise ExtensionError(msg)
+
+    site = options.get("search_site")
+    names = site_names()
+    if site not in names:
+        msg = (
+            "napari-sphinx-theme: search='pagefind' needs search_site set to "
+            f"one of {sorted(names)}, got {site!r}. New sites are added to "
+            "static/search/napari-sites.json in the theme."
+        )
+        raise ExtensionError(msg)
+
+    app.add_js_file(
+        "search/napari-search-installer.js",
+        **{"data-site": site, "data-hook-button": ".search-button__button"},
+    )
+
+
+def build_search_index(app: Sphinx, exception: BaseException | None) -> None:
+    """Index the finished site, failing the build if that isn't possible.
+
+    A site that opted in would otherwise deploy without its index and silently
+    drop out of every other site's results.
+    """
+    if exception is not None:
+        return
+    if _search_options(app).get("search", "sphinx") != "pagefind":
+        return
+    try:
+        build_index(app.outdir)
+    except SearchIndexError as error:
+        msg = f"napari-sphinx-theme: {error}"
+        raise ExtensionError(msg) from error
+
+
+def setup(app: Sphinx) -> None:
+    """Register the search hooks, which do nothing unless a site opts in."""
+    app.connect("builder-inited", setup_search)
+    app.connect("build-finished", build_search_index)
