@@ -94,6 +94,11 @@ test('the current site gets the own-site boost', () => {
 });
 
 test("a site's own boost overrides the shared one", () => {
+  const overridden = { ownSiteBoost: 1.5, sites: [{ ...docs, ownSiteBoost: 0.8 }] };
+  assert.equal(instanceOptions('', overridden, 'docs', []).indexWeight, 0.8);
+});
+
+test("a site's own boost overrides the shared one", () => {
   const lowered = {
     ownSiteBoost: 1.5,
     sites: [{ ...docs, ownSiteBoost: 0.8 }, workshops],
