@@ -97,4 +97,6 @@ test('Ctrl+K and Cmd+K open search, other combinations do not', () => {
   assert.ok(!isSearchShortcut(key({})));
   assert.ok(!isSearchShortcut(key({ ctrlKey: true, shiftKey: true })));
   assert.ok(!isSearchShortcut(key({ ctrlKey: true, key: 'j' })));
+  // Chrome's autofill sends keydown events with no key.
+  assert.ok(!isSearchShortcut(key({ ctrlKey: true, key: undefined })));
 });

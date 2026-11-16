@@ -63,7 +63,7 @@
       (event.metaKey || event.ctrlKey) &&
       !event.shiftKey &&
       !event.altKey &&
-      event.key.toLowerCase() === 'k'
+      event.key?.toLowerCase() === 'k'
     );
   }
 
