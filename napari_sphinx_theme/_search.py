@@ -14,7 +14,7 @@ import json
 import shutil
 import subprocess
 import sys
-from fnmatch import fnmatch
+from fnmatch import fnmatchcase
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
@@ -162,7 +162,7 @@ def set_search_weight(
         (
             weight
             for pattern, weight in _page_weights(app).items()
-            if fnmatch(pagename, pattern)
+            if fnmatchcase(pagename, pattern)
         ),
         None,
     )
