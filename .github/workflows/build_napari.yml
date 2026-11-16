@@ -46,7 +46,7 @@ jobs:
       - name: Install napari Dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install "napari/[pyqt5, docs]"
+          python -m pip install "napari/[pyqt6, docs]"
         env:
           PIP_CONSTRAINT: ${{ github.workspace }}/napari/resources/constraints/constraints_py3.12_docs.txt
 
