@@ -50,6 +50,11 @@
     return sites.filter((_, index) => reachable[index]);
   }
 
+  // What results from this site are called in the labels and the filter.
+  function labelOf(site) {
+    return site.label ?? site.name;
+  }
+
   // The current site's results count for ownSiteBoost (napari-sites.json),
   // so they tend to rank first there. A site's own entry can override the
   // shared value. Siblings keep Pagefind's default of 1.
@@ -58,10 +63,10 @@
     return {
       bundlePath: bundleUrl,
       indexWeight: self?.ownSiteBoost ?? config.ownSiteBoost ?? 1,
-      mergeFilter: { site: self?.label ?? siteName },
+      mergeFilter: { site: self ? labelOf(self) : siteName },
       mergeIndex: siblings.map((site) => ({
         bundlePath: site.bundlePath,
-        mergeFilter: { site: site.label ?? site.name },
+        mergeFilter: { site: labelOf(site) },
       })),
       excerptLength: 15,
     };
@@ -75,11 +80,11 @@
     const link = '.pf-result-title .pf-result-link';
     const self = sites.find((site) => site.name === siteName);
     const rules = [
-      `${link}::before { content: ${JSON.stringify(self?.label ?? siteName)}; }`,
+      `${link}::before { content: ${JSON.stringify(self ? labelOf(self) : siteName)}; }`,
     ];
     for (const site of siblingsOf(sites, siteName)) {
       const root = site.bundlePath.replace(/pagefind\/$/, '');
-      const label = JSON.stringify(site.label ?? site.name);
+      const label = JSON.stringify(labelOf(site));
       rules.push(`${link}[href^="${root}"]::before { content: ${label}; }`);
     }
     return rules.join('\n');
