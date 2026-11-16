@@ -5,3 +5,4 @@ tests/
 src/napari_sphinx_theme/assets/scripts/*
 src/napari_sphinx_theme/assets/styles/*
 src/napari_sphinx_theme/theme
+napari_sphinx_theme/static/brand/pygments.css

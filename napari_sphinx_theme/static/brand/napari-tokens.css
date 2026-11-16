@@ -1,0 +1,52 @@
+/* napari brand tokens: the colours every napari site shares.
+ *
+ * Framework-free: plain CSS custom properties, no Sphinx or pydata classes.
+ * napari-sphinx-theme imports this file; other sites (the napari hub,
+ * napari/workshops) copy it at a pinned release. See brand/README.md.
+ *
+ * Dark mode follows the reader's OS (prefers-color-scheme) unless the page
+ * picks a mode itself, as pydata-sphinx-theme does with
+ * <html data-theme="light|dark"> and mystmd does with <html class="light|dark">.
+ */
+
+:root {
+  /* Palette */
+  --napari-primary-blue: #80d1ff;
+  --napari-deep-blue: #009bf2;
+  --napari-light-blue: #d2efff;
+  --napari-dark-blue: #526a77;
+  --napari-dark-gray: #686868;
+  --napari-light-gray: #9ca4af;
+  --napari-gray: #f7f7f7;
+  --napari-purple: #4d485c;
+
+  /* Roles, light mode */
+  --napari-color-text-base: black;
+  --napari-color-text-muted: var(--napari-dark-gray);
+  --napari-color-border: var(--napari-gray);
+  --napari-navbar: var(--napari-primary-blue);
+  --napari-navbar-text: black;
+  --napari-footer: black;
+  --napari-footer-text: white;
+}
+
+/* Roles, dark mode: when the page leaves it to the OS... */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']):not(.light) {
+    --napari-color-text-base: white;
+    --napari-color-text-muted: var(--napari-light-gray);
+    --napari-color-border: var(--napari-dark-gray);
+    --napari-navbar: var(--napari-purple);
+    --napari-navbar-text: white;
+  }
+}
+
+/* ...or when the page chose dark mode. Keep in step with the block above. */
+html[data-theme='dark'],
+html.dark {
+  --napari-color-text-base: white;
+  --napari-color-text-muted: var(--napari-light-gray);
+  --napari-color-border: var(--napari-dark-gray);
+  --napari-navbar: var(--napari-purple);
+  --napari-navbar-text: white;
+}
