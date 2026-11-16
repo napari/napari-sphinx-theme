@@ -58,6 +58,8 @@ napari_sphinx_theme = [
     "theme.conf",
     "*.html",
     "static/css/*.css",
+    "static/brand/*",
+    "static/brand/icons/*.svg",
     "components/*.html",
     "partials/*.html",
     "scripts/*.js",
@@ -104,6 +106,8 @@ isort.required-imports = ["from __future__ import annotations"]
 
 [tool.mypy]
 python_version = "3.13"
+# tests/test_brand.py imports scripts/build_brand.py.
+mypy_path = "scripts"
 strict = true
 warn_return_any = true
 warn_unused_configs = true

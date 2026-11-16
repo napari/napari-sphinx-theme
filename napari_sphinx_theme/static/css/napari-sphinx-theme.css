@@ -1,16 +1,13 @@
+/* The napari palette and its light/dark roles (--napari-primary-blue,
+   --napari-color-text-base, --napari-navbar, ...) live in brand/, shared
+   with napari sites that don't use Sphinx. */
+@import url('../brand/napari-tokens.css');
+
 /***************************
  napari custom colors
 ***************************/
 
 html {
-  --napari-primary-blue: #80d1ff;
-  --napari-deep-blue: #009bf2;
-  --napari-light-blue: #d2efff;
-  --napari-dark-blue: #526a77;
-  --napari-dark-gray: #686868;
-  --napari-light-gray: #9ca4af;
-  --napari-gray: #f7f7f7;
-  --napari-purple: #4d485c;
   --napari-color-text-title: black;
   --pst-font-family-base: var(--pst-font-family-base-system);
   --pst-font-family-heading: var(--pst-font-family-base-system);
@@ -27,7 +24,6 @@ html {
 
 html[data-theme='light'] {
   --pst-color-primary: black;
-  --napari-color-text-base: black;
   --pst-color-link: black;
   --pst-color-link-hover: black !important;
   --pst-color-inline-code: black !important;
@@ -36,14 +32,12 @@ html[data-theme='light'] {
   --pst-color-text-muted: var(--napari-dark-gray);
   --pst-color-border: var(--napari-gray);
   --pst-color-target: var(--napari-gray);
-  --napari-navbar: var(--napari-primary-blue);
   --napari-calendar-dark: var(--napari-deep-blue);
   --napari-calendar-light: var(--napari-light-blue);
 }
 
 html[data-theme='dark'] {
   --pst-color-primary: white;
-  --napari-color-text-base: white;
   --pst-color-link: white;
   --pst-color-link-hover: white !important;
   --pst-color-inline-code: white !important;
@@ -51,7 +45,6 @@ html[data-theme='dark'] {
   --pst-color-text-muted: var(--napari-light-gray);
   --pst-color-border: var(--napari-dark-gray);
   --pst-color-target: var(--napari-dark-gray);
-  --napari-navbar: var(--napari-purple);
   --napari-calendar-dark: #26283d;
   --napari-calendar-light: var(--napari-dark-blue);
 }
@@ -196,15 +189,15 @@ html[data-theme='dark'] .sphx-glr-download > p > a.reference.download::before {
 
 /* Each footer icon is one SVG drawn in currentColor, coloured here. */
 .napari-footer .footer-icon {
-  color: white;
+  color: var(--napari-footer-text);
 }
 
 html[data-theme='light'] .napari-footer .footer-icon__hover:hover .footer-icon {
-  color: #d2efff;
+  color: var(--napari-light-blue);
 }
 
 html[data-theme='dark'] .napari-footer .footer-icon__hover:hover .footer-icon {
-  color: #564c69;
+  color: var(--napari-purple);
 }
 
 /* Recommended by PST */
