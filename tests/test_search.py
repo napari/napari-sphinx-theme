@@ -148,7 +148,7 @@ def test_build_index_requires_entry_file(tmp_path: Path) -> None:
     with (
         patch("importlib.util.find_spec"),
         patch("subprocess.run", return_value=passed),
-        pytest.raises(search.SearchIndexError, match="pagefind-entry.json"),
+        pytest.raises(search.SearchIndexError, match=r"pagefind-entry\.json"),
     ):
         search.build_index(tmp_path)
 
