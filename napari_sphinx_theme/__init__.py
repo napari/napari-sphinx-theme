@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING, Any
 
 from docutils.nodes import Node
 
+from . import _search
 from .napari_code_theme import NapariCodeTheme
 
 if TYPE_CHECKING:
@@ -86,6 +87,8 @@ def setup(app: Sphinx) -> dict[str, Any]:
     # connect event handlers for configuration and template processing
     app.connect("builder-inited", set_config_defaults)
     app.connect("html-page-context", setup_html_template_context)
+    # after set_config_defaults, which fills in the theme options it reads
+    _search.setup(app)
 
     # add sidebar templates to the search path for templates
     app.config.templates_path.append(str(here / "_templates"))
