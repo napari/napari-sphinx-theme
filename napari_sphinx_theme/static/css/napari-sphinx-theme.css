@@ -211,6 +211,26 @@ html[data-theme='dark']
   display: block;
 }
 
+/* The napari logo is one SVG filled with currentColor, coloured to match the
+   other icons' hover copies. */
+.napari-footer .footer-icon__logo {
+  color: white;
+}
+
+html[data-theme='light']
+  .napari-footer
+  .footer-icon__hover:hover
+  .footer-icon__logo {
+  color: #d2efff;
+}
+
+html[data-theme='dark']
+  .napari-footer
+  .footer-icon__hover:hover
+  .footer-icon__logo {
+  color: #564c69;
+}
+
 /* Recommended by PST */
 .footer-items__start,
 .footer-items__end {
