@@ -93,4 +93,13 @@ def setup(app: Sphinx) -> dict[str, Any]:
     # add sidebar templates to the search path for templates
     app.config.templates_path.append(str(here / "_templates"))
 
+    # napari's logos come from napari-resources, as they do in napari itself.
+    # Templates include them by file name, e.g.
+    # {% include "silhouette-current-color.svg" %}. Imported here, not at the
+    # top, so importing the package (the Pygments style) stays light.
+    from napari_resources import special_logo_path  # noqa: PLC0415
+
+    logos = special_logo_path("silhouette-current-color").parent
+    app.config.templates_path.append(str(logos))
+
     return {"version": __version__, "parallel_read_safe": True}
