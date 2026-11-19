@@ -3,11 +3,14 @@ from __future__ import annotations
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
-from docutils.nodes import Node
-
 from .napari_code_theme import NapariCodeTheme
 
+# Sphinx and docutils are imported for type hints only, so importing this
+# package needs only Pygments. Sites built without Sphinx (the hub,
+# workshops) can then install it with --no-deps and use the napari Pygments
+# style, e.g. `pygmentize -S napari`.
 if TYPE_CHECKING:
+    from docutils.nodes import Node
     from sphinx.application import Sphinx
 
 try:
