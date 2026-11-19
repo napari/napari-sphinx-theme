@@ -79,6 +79,50 @@ button and from :kbd:`Ctrl+K` or :kbd:`Cmd+K`. It doesn't add or remove any page
 elements, which would break sites hydrated by React. If Pagefind can't load, the
 host's own search opens instead.
 
+Ranking
+-------
+
+When searching from a site, that site's results get a boost, set by
+``ownSiteBoost`` at the top of ``napari-sites.json``. Pagefind multiplies the
+relevance score of the current site's results by this value, while siblings'
+results keep a weight of 1. Set it to ``1`` so results rank the same from every
+site.
+
+A site's own entry can set ``ownSiteBoost`` to override the shared value. Docs
+sets ``0.8``: it has far more pages than the other sites, so even unboosted it
+fills most results, and lowering it lets relevant workshop pages show up when
+searching from docs. The other sites keep the shared boost, so searching from
+workshops still favours workshops.
+
+.. code-block:: json
+
+   { "name": "docs", "bundlePath": "/stable/pagefind/", "ownSiteBoost": 0.8 }
+
+Scores from different indexes aren't directly comparable, because they depend on
+how common a word is in each site, so the boost makes the current site's results
+more likely to rank first rather than guaranteeing it. The value is a starting
+point to adjust against real queries. Changing it takes a theme release, and each
+site picks it up when it updates the theme.
+
+Page weights
+~~~~~~~~~~~~
+
+Within a site, ``search_page_weights`` lowers or raises whole groups of pages. It
+maps page-name patterns to weights from 0 to 10, where 1 is normal:
+
+.. code-block:: python
+
+   html_theme_options = {
+       "search": "pagefind",
+       "search_site": "docs",
+       "search_page_weights": {"release/*": 0.3},
+   }
+
+A page takes the weight of the first pattern it matches. Patterns use
+``fnmatch`` syntax against Sphinx page names, which have no ``.html`` suffix.
+Lowered pages stay searchable but rank below other matches. This suits release
+notes, which mention nearly every feature.
+
 What gets indexed
 -----------------
 

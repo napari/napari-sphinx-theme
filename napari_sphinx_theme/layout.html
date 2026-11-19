@@ -12,7 +12,10 @@
   {%- if theme_search == "pagefind"
         and pagename not in ("genindex", "py-modindex", "np-modindex", "search")
         and not pagename.startswith("_modules/") %}
-    <div data-pagefind-body>{{ super() }}</div>
+    <div data-pagefind-body
+      {%- if napari_search_weight is not none %} data-pagefind-weight="{{ napari_search_weight }}"{% endif %}>
+      {{- super() -}}
+    </div>
   {%- else %}
     {{ super() }}
   {%- endif %}
