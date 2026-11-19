@@ -61,3 +61,15 @@ html.dark {
 pagefind-modal mark {
   padding: 0;
 }
+
+/* The site label on each result. Its text comes from napari-sites.json. */
+.pf-result-title .pf-result-link::before {
+  display: inline-block;
+  margin-right: 0.5em;
+  padding: 0 0.4em;
+  border: 1px solid var(--pf-border);
+  border-radius: 4px;
+  color: var(--pf-text-secondary);
+  font-size: 0.8em;
+  font-weight: normal;
+}
