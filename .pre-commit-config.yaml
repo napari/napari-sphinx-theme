@@ -34,13 +34,15 @@ repos:
     rev: 'v1.11.2'
     hooks:
       - id: mypy
-        additional_dependencies: ['types-docutils']
+        additional_dependencies: ['types-docutils', 'pytest']
         args: ['--config-file=pyproject.toml']
 
   - repo: https://github.com/codespell-project/codespell
     rev: 'v2.4.1'
     hooks:
       - id: codespell
+        # Pygments class names (.nd, .ges) read as typos.
+        exclude: ^napari_sphinx_theme/static/brand/pygments.css$
 
   - repo: https://github.com/adamchainz/blacken-docs
     rev: '1.19.1' # replace with latest tag on GitHub
