@@ -187,16 +187,17 @@ html[data-theme='dark'] .sphx-glr-download > p > a.reference.download::before {
   color: white;
 }
 
-/* Each footer icon is one SVG drawn in currentColor, coloured here. */
-.napari-footer .footer-icon {
+/* Each footer icon is one SVG drawn in currentColor, coloured here. The
+   napari logo comes from napari-resources, so select by position, not class. */
+.napari-footer .footer-icon__hover > svg {
   color: var(--napari-footer-text);
 }
 
-html[data-theme='light'] .napari-footer .footer-icon__hover:hover .footer-icon {
+html[data-theme='light'] .napari-footer .footer-icon__hover:hover > svg {
   color: var(--napari-light-blue);
 }
 
-html[data-theme='dark'] .napari-footer .footer-icon__hover:hover .footer-icon {
+html[data-theme='dark'] .napari-footer .footer-icon__hover:hover > svg {
   color: var(--napari-purple);
 }
 
